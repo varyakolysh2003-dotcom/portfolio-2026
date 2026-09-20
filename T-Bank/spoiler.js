@@ -32,10 +32,18 @@ export function setupSpoilers(openPassword) {
       if(!picture) {
         picture=document.createElement('picture');
         const source=document.createElement('source');source.media='(max-width:963px)';source.srcset=`/api/tbank/media/${spoiler.dataset.mobile}`;
+        source.width=311;source.height=Number(spoiler.style.getPropertyValue('--mobile-height'));
         const img=document.createElement('img');img.alt='T-Bank profile interface';img.src=`/api/tbank/media/${spoiler.dataset.desktop}`;
+        img.width=600;img.height=Number(spoiler.style.getPropertyValue('--media-height'));
+        img.decoding='async';
+        img.loading=spoiler.getBoundingClientRect().top<innerHeight?'eager':'lazy';
+        if(img.loading==='eager')img.fetchPriority='high';
         picture.append(source,img);spoiler.prepend(picture);
       }
-      await picture.querySelector('img').decode();
+      // Waiting for an offscreen lazy image would block password submission
+      // until the visitor scrolls to every image in the case.
+      const image=picture.querySelector('img');
+      if(image.loading!=='lazy')await image.decode();
       spoiler.querySelector('.spoiler-preview')?.remove();
       spoiler.classList.add('spoiler--open');
       spoiler.querySelector('.spoiler-trigger')?.remove();observer.unobserve(spoiler);

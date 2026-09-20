@@ -1,6 +1,12 @@
 import { setupSoundEffects } from './sound-effects.js';
 import { setupIconInteractions } from './icon-interactions.js';
 
+// The gallery starts beside the profile on desktop, below it on mobile.
+// Promote only images intersecting the initial viewport to eager loading.
+for (const image of document.querySelectorAll('.gallery img[loading="lazy"]')) {
+  if (image.getBoundingClientRect().top < innerHeight) image.loading = 'eager';
+}
+
 setupIconInteractions(document.querySelector('.icon-study'));
 
 const links = {

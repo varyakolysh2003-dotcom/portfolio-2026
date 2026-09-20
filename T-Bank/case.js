@@ -66,7 +66,16 @@ async function selectTab(tab) {
       const response=await fetch('/api/tbank/cases/main',{cache:'no-store'});
       if(response.status===401){location.reload();return;}
       if(!response.ok)throw new Error('Could not load this case. Please try again.');
-      document.querySelector('#main-cases').innerHTML=await response.text();
+      const content=document.createElement('template');
+      content.innerHTML=await response.text();
+      const images=[...content.content.querySelectorAll('img')];
+      for(const [index,image] of images.entries()) {
+        image.decoding='async';
+        image.loading=index===0?'eager':'lazy';
+        if(index===0)image.fetchPriority='high';
+      }
+      for(const video of content.content.querySelectorAll('video'))video.preload='metadata';
+      document.querySelector('#main-cases').replaceChildren(content.content);
     })();
     try {await loadingMain;}catch(problem){status.hidden=false;status.textContent=problem.message;return;}finally{loadingMain=null;}
   }
