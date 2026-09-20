@@ -2,7 +2,7 @@ const motion = matchMedia('(prefers-reduced-motion: reduce)');
 const seen = new WeakSet();
 
 export function setupPageReveal(root = document) {
-  for (const image of root.querySelectorAll('img:not(.video-poster)')) {
+  for (const image of root.querySelectorAll('img:not(.video-poster):not([data-immediate])')) {
     if (seen.has(image)) continue;
     seen.add(image);
     const ready = () => {

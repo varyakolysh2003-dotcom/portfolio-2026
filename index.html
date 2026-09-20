@@ -10,6 +10,8 @@
   <title>Varvara Kolysh — Product Designer</title>
 
   <link rel="icon" href="./assets/imgAvatarPng.png">
+  <link rel="preload" as="image" href="./assets/imgAvatarPng.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/imgMaterialSymbolsVolumeDownRounded.svg" fetchpriority="high">
 
   <link
     rel="preload"
@@ -21,6 +23,9 @@
 
   <link rel="stylesheet" href="./styles.css">
   <script type="module" src="./app.js"></script>
+  <link rel="preload" as="image" href="./assets/imgGroup1.svg" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/imgGroup3.svg" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/imgComponent1.svg" fetchpriority="high">
 </head>
 
 <body>
@@ -35,7 +40,8 @@
           width="40"
           height="40"
           alt="Varvara Kolysh"
-         decoding="async">
+          loading="eager" fetchpriority="high" data-immediate
+         decoding="auto">
 
         <button
           class="sound"
@@ -48,7 +54,8 @@
             width="24"
             height="24"
             alt=""
-           decoding="async">
+            loading="eager" fetchpriority="high" data-immediate
+           decoding="auto">
         </button>
       </div>
 
@@ -101,7 +108,7 @@
             class="telegram"
             src="./assets/imgGroup1.svg"
             alt="Telegram"
-           decoding="async">
+           decoding="auto" loading="eager" fetchpriority="high" data-immediate>
           <span class="tooltip">Telegram</span>
         </span>
 
@@ -110,7 +117,7 @@
             class="twitter"
             src="./assets/imgGroup3.svg"
             alt="X"
-           decoding="async">
+           decoding="auto" loading="eager" fetchpriority="high" data-immediate>
           <span class="tooltip">X (Twitter)</span>
         </span>
 
@@ -119,7 +126,7 @@
             class="linkedin"
             src="./assets/imgComponent1.svg"
             alt="LinkedIn"
-           decoding="async">
+           decoding="auto" loading="eager" fetchpriority="high" data-immediate>
           <span class="tooltip">LinkedIn</span>
         </a>
 
