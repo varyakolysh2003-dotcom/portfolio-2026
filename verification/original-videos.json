@@ -1,0 +1,53 @@
+{
+  "info": [
+    {
+      "title": "Birthday notification concept",
+      "src": "/assets/birthday-original.mp4",
+      "width": 1710,
+      "height": 1710,
+      "duration": 16.466667,
+      "playing": true,
+      "originalBytesMatch": true
+    },
+    {
+      "title": "Album of the year animation concept",
+      "src": "/assets/album-original.mp4",
+      "width": 1484,
+      "height": 1484,
+      "duration": 6.8,
+      "playing": true,
+      "originalBytesMatch": true
+    },
+    {
+      "title": "Smart Home animation concept",
+      "src": "/assets/smart-home-original.mp4",
+      "width": 1920,
+      "height": 1920,
+      "duration": 6.483333,
+      "playing": true,
+      "originalBytesMatch": true
+    }
+  ],
+  "mobile": [
+    {
+      "src": "/assets/birthday-original.mp4",
+      "duration": 16.466667,
+      "playing": true,
+      "width": 1710
+    },
+    {
+      "src": "/assets/album-original.mp4",
+      "duration": 6.8,
+      "playing": true,
+      "width": 1484
+    },
+    {
+      "src": "/assets/smart-home-original.mp4",
+      "duration": 6.483333,
+      "playing": true,
+      "width": 1920
+    }
+  ],
+  "seekToEnd": true,
+  "errors": []
+}

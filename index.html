@@ -1,14 +1,64 @@
 <!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/avatar/Profile.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Колыш Варвара — Портфолио</title>
-
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Varvara Kolysh — Product Designer. Selected product design work, interfaces and animation concepts.">
+  <title>Varvara Kolysh — Product Designer</title>
+  <link rel="icon" href="/assets/imgAvatarPng.png">
+  <link rel="preload" href="/fonts/Geist-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <main class="portfolio">
+    <aside class="profile" aria-label="About Varvara">
+      <div class="profile-top">
+        <img class="avatar" src="/assets/imgAvatarPng.png" width="40" height="40" alt="Varvara Kolysh">
+        <button class="sound" type="button" aria-label="Turn off click sounds" aria-pressed="true"><img src="/assets/imgMaterialSymbolsVolumeDownRounded.svg" width="24" height="24" alt=""></button>
+      </div>
+      <div class="bio">
+        <section class="bio-section">
+          <h1>Varvara Kolysh</h1>
+          <p class="body-copy">Product Designer. I apply product thinking to create intuitive user experiences, combining creative UI design with strong UX principles.</p>
+        </section>
+        <section class="bio-section">
+          <h2>Experience</h2>
+          <p class="body-copy desktop-copy">Experience working in design studios and product teams. Currently, working as a Product Designer at T-Bank.</p>
+          <p class="body-copy mobile-copy">Experience working in design studios and product teams. Currently, working as a Product Designer at T-Bank.</p>
+          <span class="text-link cv" data-link="cv">CV</span>
+        </section>
+        <section class="bio-section">
+          <h2>Portfolio projects</h2>
+          <div class="project-link"><span class="text-link" data-link="tbank">T-Bank</span><span class="year">2026</span></div>
+          <div class="project-link"><span class="text-link" data-link="lavka">Yandex Lavka</span><span class="year">2026</span></div>
+        </section>
+      </div>
+      <div class="socials" aria-label="Social profiles">
+        <span class="social" data-link="telegram" aria-label="Telegram"><img class="telegram" src="/assets/imgGroup1.svg" alt="Telegram"><span class="tooltip">Telegram</span></span>
+        <span class="social" data-link="twitter" aria-label="X (Twitter)"><img class="twitter" src="/assets/imgGroup3.svg" alt="X"><span class="tooltip">X (Twitter)</span></span>
+        <span class="social" data-link="linkedin" aria-label="LinkedIn"><img class="linkedin" src="/assets/imgComponent1.svg" alt="LinkedIn"><span class="tooltip">LinkedIn</span></span>
+      </div>
+    </aside>
+    <div class="gallery" aria-label="Selected design work">
+      <div class="first-row">
+        <figure class="concept birthday"><div class="birthday-media"><video class="concept-media" poster="/assets/birthday.png" src="/assets/birthday-original.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Birthday notification concept in a banking app"></video></div><figcaption>Birthday notification concept</figcaption></figure>
+        <div class="icon-study" role="group" aria-label="Design 30 Club: illustrated app icons">
+          <img class="study-icon sold" src="/assets/imgFrame21361419663.png" alt="Sneakers icon">
+          <img class="study-icon food" src="/assets/imgFrame21361419661.png" alt="Food icon">
+          <img class="study-icon live" src="/assets/imgFrame21361419664.png" alt="Live icon">
+          <div class="club"><img src="/assets/club-logo.png" width="28" height="28" alt=""><span>Design 30 Club</span></div>
+          <img class="study-icon cat" src="/assets/imgFrame21361419665.png" alt="Cat icon">
+        </div>
+      </div>
+      <figure class="home-interface"><img src="/assets/imgOverlayBorder.png" width="448" height="338" alt="Smart home dashboard and room controls"></figure>
+      <div class="middle-row">
+        <figure class="captcha"><img src="/assets/imgFrame21313294431.png" alt="Cake captcha interface concept" width="245" height="377"></figure>
+        <figure class="concept album"><video class="concept-media" poster="/assets/album.png" src="/assets/album-original.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Album collection displayed on a phone"></video><figcaption>Album of the year animation concept</figcaption></figure>
+      </div>
+      <figure class="redesign"><div class="redesign-image"><picture><source media="(max-width:963px)" srcset="/assets/redesign-mobile.png"><img src="/assets/imgImage2.png" width="622" height="590" alt="Wildberries banking app: original and redesigned interface"></picture></div><div class="empty-caption" aria-hidden="true"></div></figure>
+      <figure class="concept smart-home"><video class="concept-media" poster="/assets/smart-home.png" src="/assets/smart-home-original.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Smart Home animation concept on a phone"></video><figcaption>Smart Home animation concept</figcaption></figure>
+    </div>
+  </main>
+</body>
 </html>

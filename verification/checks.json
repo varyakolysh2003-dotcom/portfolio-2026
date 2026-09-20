@@ -1,0 +1,60 @@
+{
+  "errors": [],
+  "media": [
+    {
+      "src": "/assets/birthday.mp4",
+      "width": 300,
+      "height": 312,
+      "duration": 2.033333,
+      "playing": true
+    },
+    {
+      "src": "/assets/album.mp4",
+      "width": 300,
+      "height": 302,
+      "duration": 2.033333,
+      "playing": true
+    },
+    {
+      "src": "/assets/smart-home.mp4",
+      "width": 300,
+      "height": 302,
+      "duration": 2.033333,
+      "playing": true
+    }
+  ],
+  "soundWorks": true,
+  "stickyWorks": true,
+  "layouts": [
+    {
+      "viewport": 1200,
+      "width": 1200,
+      "height": 2000,
+      "fontLoaded": true
+    },
+    {
+      "viewport": 375,
+      "width": 375,
+      "height": 2955,
+      "fontLoaded": true
+    },
+    {
+      "viewport": 320,
+      "width": 320,
+      "height": 2914,
+      "fontLoaded": true
+    },
+    {
+      "viewport": 768,
+      "width": 768,
+      "height": 3008,
+      "fontLoaded": true
+    },
+    {
+      "viewport": 1024,
+      "width": 1024,
+      "height": 2000,
+      "fontLoaded": true
+    }
+  ]
+}

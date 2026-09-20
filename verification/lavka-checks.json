@@ -1,0 +1,45 @@
+{
+  "errors": [],
+  "layouts": [
+    {
+      "viewport": 1200,
+      "width": 1200,
+      "height": 7708,
+      "fontLoaded": true,
+      "articles": 13
+    },
+    {
+      "viewport": 375,
+      "width": 375,
+      "height": 5888,
+      "fontLoaded": true,
+      "articles": 14
+    },
+    {
+      "viewport": 320,
+      "width": 320,
+      "height": 5629,
+      "fontLoaded": true,
+      "articles": 14
+    },
+    {
+      "viewport": 768,
+      "width": 768,
+      "height": 9369,
+      "fontLoaded": true,
+      "articles": 14
+    },
+    {
+      "viewport": 1024,
+      "width": 1024,
+      "height": 7708,
+      "fontLoaded": true,
+      "articles": 13
+    }
+  ],
+  "navigation": true,
+  "tabsAndKeyboard": true,
+  "soundPreference": true,
+  "cartFeedback": true,
+  "stickySidebar": true
+}

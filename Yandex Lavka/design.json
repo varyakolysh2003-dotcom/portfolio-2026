@@ -1,0 +1,1022 @@
+{
+  "desktop": [
+    {
+      "id": "12:151",
+      "width": 600,
+      "height": 496.68499755859375,
+      "y": 0,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:152",
+          "type": "FRAME",
+          "width": 600,
+          "height": 389,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:153",
+          "type": "FRAME",
+          "width": 600,
+          "height": 99.68499755859375,
+          "y": 397,
+          "gap": 4
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:155",
+          "text": "Feature Onboarding",
+          "height": 16
+        },
+        {
+          "id": "12:157",
+          "text": "Share icon without context is not intuitive. Custdev research showed that some users were unaware they could send a link to Lavka items. Onboarding lowers the entry barrier for the new scenario and develops the share cart feature by adding the ability to create shared orders.",
+          "height": 79
+        }
+      ]
+    },
+    {
+      "id": "12:158",
+      "width": 600,
+      "height": 413,
+      "y": 528.6849975585938,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:159",
+          "type": "FRAME",
+          "width": 600,
+          "height": 389,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:160",
+          "type": "FRAME",
+          "width": 600,
+          "height": 16,
+          "y": 397,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:162",
+          "text": "Scenario Entry Point",
+          "height": 16
+        }
+      ]
+    },
+    {
+      "id": "12:163",
+      "width": 600,
+      "height": 540,
+      "y": 973.6849975585938,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:164",
+          "type": "FRAME",
+          "width": 600,
+          "height": 516,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:165",
+          "type": "FRAME",
+          "width": 600,
+          "height": 16,
+          "y": 524,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:167",
+          "text": "Invitation to Join Cart",
+          "height": 16
+        }
+      ]
+    },
+    {
+      "id": "12:168",
+      "width": 600,
+      "height": 649.780029296875,
+      "y": 1545.68505859375,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:169",
+          "type": "FRAME",
+          "width": 600,
+          "height": 578,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:170",
+          "type": "FRAME",
+          "width": 600,
+          "height": 63.78000259399414,
+          "y": 586,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:172",
+          "text": "Payment Method Selection",
+          "height": 16
+        },
+        {
+          "id": "12:174",
+          "text": "The organizer decides the payment method. Separate — each pays for their own. Joint — one pays for all. This makes the scenario financially flexible for different user group categories.",
+          "height": 40
+        }
+      ]
+    },
+    {
+      "id": "12:175",
+      "width": 600,
+      "height": 578,
+      "y": 2227.465087890625,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:176",
+          "type": "FRAME",
+          "width": 600,
+          "height": 554,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:177",
+          "type": "FRAME",
+          "width": 600,
+          "height": 16,
+          "y": 562,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:179",
+          "text": "Screen States for Invited User with Joint Payment",
+          "height": 16
+        }
+      ]
+    },
+    {
+      "id": "12:182",
+      "width": 600,
+      "height": 665.6849975585938,
+      "y": 2837.465087890625,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:183",
+          "type": "FRAME",
+          "width": 600,
+          "height": 597,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:184",
+          "type": "FRAME",
+          "width": 600,
+          "height": 60.685001373291016,
+          "y": 605,
+          "gap": 4
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:186",
+          "text": "Address Verification Before Payment",
+          "height": 16
+        },
+        {
+          "id": "12:188",
+          "text": "The solution helps avoid address errors while providing a choice — continue with separate payment or stay in the shared cart.",
+          "height": 40
+        }
+      ]
+    },
+    {
+      "id": "12:189",
+      "width": 600,
+      "height": 437.68499755859375,
+      "y": 3535.150146484375,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:190",
+          "type": "FRAME",
+          "width": 600,
+          "height": 389,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:191",
+          "type": "FRAME",
+          "width": 600,
+          "height": 40.68499755859375,
+          "y": 397,
+          "gap": 4
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:193",
+          "text": "Order Confirmation After Full Payment",
+          "height": 16
+        },
+        {
+          "id": "12:195",
+          "text": "The order is processed only after all participants have paid their share.",
+          "height": 20
+        }
+      ]
+    },
+    {
+      "id": "12:196",
+      "width": 600,
+      "height": 648,
+      "y": 4004.835205078125,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:197",
+          "type": "FRAME",
+          "width": 600,
+          "height": 600,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:198",
+          "type": "TEXT",
+          "width": 600,
+          "height": 40,
+          "y": 608,
+          "gap": null
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:198",
+          "text": "When a user delays collection or payment, they receive a push reminder. If they're the last one unpaid, they get 20 minutes to complete before items are cancelled.",
+          "height": 40
+        }
+      ]
+    },
+    {
+      "id": "12:199",
+      "width": 600,
+      "height": 460.7799987792969,
+      "y": 4684.8349609375,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:200",
+          "type": "FRAME",
+          "width": 600,
+          "height": 389,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:201",
+          "type": "FRAME",
+          "width": 600,
+          "height": 63.78000259399414,
+          "y": 397,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:203",
+          "text": "Resuming Shared Order",
+          "height": 16
+        },
+        {
+          "id": "12:205",
+          "text": "After the payment timer expires, the organizer can resend invitations to avoid recreating the shared cart.",
+          "height": 40
+        }
+      ]
+    },
+    {
+      "id": "12:206",
+      "width": 600,
+      "height": 457.68499755859375,
+      "y": 5177.61474609375,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:207",
+          "type": "FRAME",
+          "width": 600,
+          "height": 389,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:208",
+          "type": "FRAME",
+          "width": 600,
+          "height": 60.685001373291016,
+          "y": 397,
+          "gap": 4
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:210",
+          "text": "Promoting Special Offers in Group",
+          "height": 16
+        },
+        {
+          "id": "12:212",
+          "text": "Personalized offers for different group types encourage repeat shared cart usage and increase average order value.",
+          "height": 40
+        }
+      ]
+    },
+    {
+      "id": "12:213",
+      "width": 600,
+      "height": 654.6849975585938,
+      "y": 5667.2998046875,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:214",
+          "type": "FRAME",
+          "width": 600,
+          "height": 586,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:215",
+          "type": "FRAME",
+          "width": 600,
+          "height": 60.685001373291016,
+          "y": 594,
+          "gap": 4
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:217",
+          "text": "Creating Permanent Groups",
+          "height": 16
+        },
+        {
+          "id": "12:219",
+          "text": "Group cart creation. Users can form permanent groups for different categories, saving on delivery and time collecting participants.",
+          "height": 40
+        }
+      ]
+    },
+    {
+      "id": "12:220",
+      "width": 600,
+      "height": 661.6849975585938,
+      "y": 6353.98486328125,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:221",
+          "type": "FRAME",
+          "width": 600,
+          "height": 613,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:222",
+          "type": "FRAME",
+          "width": 600,
+          "height": 40.68499755859375,
+          "y": 621,
+          "gap": 4
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:224",
+          "text": "Auto-creation of Group Cart",
+          "height": 16
+        },
+        {
+          "id": "12:226",
+          "text": "After completing the first shared order, an offer to create a permanent group appears.",
+          "height": 20
+        }
+      ]
+    },
+    {
+      "id": "12:227",
+      "width": 600,
+      "height": 413,
+      "y": 7047.669921875,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:228",
+          "type": "FRAME",
+          "width": 600,
+          "height": 389,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:229",
+          "type": "FRAME",
+          "width": 600,
+          "height": 16,
+          "y": 397,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:231",
+          "text": "Task Statuses",
+          "height": 16
+        }
+      ]
+    },
+    {
+      "id": "12:234",
+      "width": 216,
+      "height": 151,
+      "y": 7492.669921875,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:235",
+          "type": "RECTANGLE",
+          "width": 120,
+          "height": 111,
+          "y": 0,
+          "gap": null
+        },
+        {
+          "id": "12:236",
+          "type": "TEXT",
+          "width": 216,
+          "height": 32,
+          "y": 119,
+          "gap": null
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:236",
+          "text": "Put the cursor item in the cart if you’ve scrolled to the end of the case.",
+          "height": 32
+        }
+      ]
+    }
+  ],
+  "mobile": [
+    {
+      "id": "12:385",
+      "width": 311,
+      "height": 392.2835693359375,
+      "y": 0,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:386",
+          "type": "FRAME",
+          "width": 311,
+          "height": 225,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:387",
+          "type": "FRAME",
+          "width": 311,
+          "height": 161.77999877929688,
+          "y": 230.50357055664062,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:389",
+          "text": "Feature Onboarding",
+          "height": 16
+        },
+        {
+          "id": "12:391",
+          "text": "Share icon without context is not intuitive. Custdev research showed that some users were unaware they could send a link to Lavka items. Onboarding lowers the entry barrier for the new scenario and develops the share cart feature by adding the ability to create shared orders.",
+          "height": 138
+        }
+      ]
+    },
+    {
+      "id": "12:392",
+      "width": 311,
+      "height": 245.50357055664062,
+      "y": 424.2835693359375,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:393",
+          "type": "FRAME",
+          "width": 311,
+          "height": 224,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:394",
+          "type": "FRAME",
+          "width": 311,
+          "height": 16,
+          "y": 229.50357055664062,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:396",
+          "text": "Scenario Entry Point",
+          "height": 16
+        }
+      ]
+    },
+    {
+      "id": "12:397",
+      "width": 311,
+      "height": 332.5035705566406,
+      "y": 701.787109375,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:398",
+          "type": "FRAME",
+          "width": 311,
+          "height": 311,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:399",
+          "type": "FRAME",
+          "width": 311,
+          "height": 16,
+          "y": 316.5035400390625,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:401",
+          "text": "Invitation to Join Cart",
+          "height": 16
+        }
+      ]
+    },
+    {
+      "id": "12:402",
+      "width": 311,
+      "height": 419.2835693359375,
+      "y": 1066.2906494140625,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:403",
+          "type": "FRAME",
+          "width": 311,
+          "height": 311,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:404",
+          "type": "FRAME",
+          "width": 311,
+          "height": 102.77999877929688,
+          "y": 316.5035400390625,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:406",
+          "text": "Payment Method Selection",
+          "height": 16
+        },
+        {
+          "id": "12:408",
+          "text": "The organizer decides the payment method. Separate — each pays for their own. Joint — one pays for all. This makes the scenario financially flexible for different user group categories.",
+          "height": 79
+        }
+      ]
+    },
+    {
+      "id": "12:409",
+      "width": 311,
+      "height": 332.5035705566406,
+      "y": 1517.57421875,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:410",
+          "type": "FRAME",
+          "width": 311,
+          "height": 311,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:411",
+          "type": "FRAME",
+          "width": 311,
+          "height": 16,
+          "y": 316.5035400390625,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:413",
+          "text": "Screen States for Invited User with Joint Payment",
+          "height": 16
+        }
+      ]
+    },
+    {
+      "id": "12:416",
+      "width": 311,
+      "height": 399.2835693359375,
+      "y": 1882.0777587890625,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:417",
+          "type": "FRAME",
+          "width": 311,
+          "height": 311,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:418",
+          "type": "FRAME",
+          "width": 311,
+          "height": 82.77999877929688,
+          "y": 316.5035400390625,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:420",
+          "text": "Address Verification Before Payment",
+          "height": 16
+        },
+        {
+          "id": "12:422",
+          "text": "The solution helps avoid address errors while providing a choice — continue with separate payment or stay in the shared cart.",
+          "height": 59
+        }
+      ]
+    },
+    {
+      "id": "12:423",
+      "width": 311,
+      "height": 293.2835693359375,
+      "y": 2313.361328125,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:424",
+          "type": "FRAME",
+          "width": 311,
+          "height": 224,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:425",
+          "type": "FRAME",
+          "width": 311,
+          "height": 63.78000259399414,
+          "y": 229.50357055664062,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:427",
+          "text": "Order Confirmation After Full Payment",
+          "height": 16
+        },
+        {
+          "id": "12:429",
+          "text": "The order is processed only after all participants have paid their share.",
+          "height": 40
+        }
+      ]
+    },
+    {
+      "id": "12:430",
+      "width": 311,
+      "height": 395.5035705566406,
+      "y": 2638.64501953125,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:431",
+          "type": "FRAME",
+          "width": 311,
+          "height": 311,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:433",
+          "type": "TEXT",
+          "width": 311,
+          "height": 79,
+          "y": 316.5035400390625,
+          "gap": null
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:433",
+          "text": "When a user delays collection or payment, they receive a push reminder. If they're the last one unpaid, they get 20 minutes to complete before items are cancelled.",
+          "height": 79
+        }
+      ]
+    },
+    {
+      "id": "12:434",
+      "width": 311,
+      "height": 312.2835693359375,
+      "y": 3066.148681640625,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:435",
+          "type": "FRAME",
+          "width": 311,
+          "height": 224,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:436",
+          "type": "FRAME",
+          "width": 311,
+          "height": 82.77999877929688,
+          "y": 229.50357055664062,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:438",
+          "text": "Resuming Shared Order",
+          "height": 16
+        },
+        {
+          "id": "12:440",
+          "text": "After the payment timer expires, the organizer can resend invitations to avoid recreating the shared cart.",
+          "height": 59
+        }
+      ]
+    },
+    {
+      "id": "12:441",
+      "width": 311,
+      "height": 312.2835693359375,
+      "y": 3410.43212890625,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:442",
+          "type": "FRAME",
+          "width": 311,
+          "height": 224,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:443",
+          "type": "FRAME",
+          "width": 311,
+          "height": 82.77999877929688,
+          "y": 229.50357055664062,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:445",
+          "text": "Promoting Special Offers in Group",
+          "height": 16
+        },
+        {
+          "id": "12:447",
+          "text": "Personalized offers for different group types encourage repeat shared cart usage and increase average order value.",
+          "height": 59
+        }
+      ]
+    },
+    {
+      "id": "12:448",
+      "width": 311,
+      "height": 312.2835693359375,
+      "y": 3754.7158203125,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:449",
+          "type": "FRAME",
+          "width": 311,
+          "height": 224,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:450",
+          "type": "FRAME",
+          "width": 311,
+          "height": 82.77999877929688,
+          "y": 229.50357055664062,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:452",
+          "text": "Creating Permanent Groups",
+          "height": 16
+        },
+        {
+          "id": "12:454",
+          "text": "Group cart creation. Users can form permanent groups for different categories, saving on delivery and time collecting participants.",
+          "height": 59
+        }
+      ]
+    },
+    {
+      "id": "12:455",
+      "width": 311,
+      "height": 380.2835693359375,
+      "y": 4098.99951171875,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:456",
+          "type": "FRAME",
+          "width": 311,
+          "height": 311,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:457",
+          "type": "FRAME",
+          "width": 311,
+          "height": 63.78000259399414,
+          "y": 316.5035400390625,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:459",
+          "text": "Auto-creation of Group Cart",
+          "height": 16
+        },
+        {
+          "id": "12:461",
+          "text": "After completing the first shared order, an offer to create a permanent group appears.",
+          "height": 40
+        }
+      ]
+    },
+    {
+      "id": "12:462",
+      "width": 311,
+      "height": 332.5035705566406,
+      "y": 4511.283203125,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:463",
+          "type": "FRAME",
+          "width": 311,
+          "height": 311,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:464",
+          "type": "FRAME",
+          "width": 311,
+          "height": 16,
+          "y": 316.5035705566406,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:466",
+          "text": "Task Statuses",
+          "height": 16
+        }
+      ]
+    },
+    {
+      "id": "12:469",
+      "width": 311,
+      "height": 293.2835693359375,
+      "y": 4875.78662109375,
+      "gap": 5.503570079803467,
+      "children": [
+        {
+          "id": "12:470",
+          "type": "FRAME",
+          "width": 311,
+          "height": 224,
+          "y": 0,
+          "gap": 0
+        },
+        {
+          "id": "12:471",
+          "type": "FRAME",
+          "width": 311,
+          "height": 63.78000259399414,
+          "y": 229.50357055664062,
+          "gap": 7.09499979019165
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:473",
+          "text": "Auto-creation of Group Cart",
+          "height": 16
+        },
+        {
+          "id": "12:475",
+          "text": "After completing the first shared order, an offer to create a permanent group appears.",
+          "height": 40
+        }
+      ]
+    },
+    {
+      "id": "12:476",
+      "width": 216,
+      "height": 136,
+      "y": 5201.0703125,
+      "gap": 8,
+      "children": [
+        {
+          "id": "12:477",
+          "type": "RECTANGLE",
+          "width": 105,
+          "height": 96,
+          "y": 0,
+          "gap": null
+        },
+        {
+          "id": "12:478",
+          "type": "TEXT",
+          "width": 216,
+          "height": 32,
+          "y": 104,
+          "gap": null
+        }
+      ],
+      "texts": [
+        {
+          "id": "12:478",
+          "text": "Tap on cart if you’ve scrolled to the end of the case.",
+          "height": 32
+        }
+      ]
+    }
+  ],
+  "context": "Lavka allows sending cart items via link to another user. The recipient opens the link and items are added to their cart.\n\nThis solution doesn't develop the logic of collaborative item collection, doesn't support joint purchase planning scenarios, and doesn't create a sense of shared cart as a unified space for interaction and order coordination.",
+  "process": "Conducted 20+ in-depth interviews across different group scenarios, including friends, families, colleagues, and couples, complemented by a public survey with 73 respondents.\n\nAnalyzed competitors in the food delivery and grocery delivery markets, including Uber Eats, Amazon Fresh, Samokat, VkusVill, and Instacart.\n\nDesigned the final mockups and validated them with users during follow-up interviews.",
+  "result": "User testing showed a clear preference for the proposed experience over the current flow. \nThe shared cart reduced friction in group ordering and was perceived as a meaningful competitive advantage. The research validated the key product hypotheses."
+}

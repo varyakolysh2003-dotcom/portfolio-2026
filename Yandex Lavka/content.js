@@ -1,0 +1,5 @@
+export const sections = {
+  "context": "Lavka allows sending cart items via link to another user. The recipient opens the link and items are added to their cart.\n\nThis solution doesn't develop the logic of collaborative item collection, doesn't support joint purchase planning scenarios, and doesn't create a sense of shared cart as a unified space for interaction and order coordination.",
+  "process": "Conducted 20+ in-depth interviews across different group scenarios, including friends, families, colleagues, and couples, complemented by a public survey with 73 respondents.\n\nAnalyzed competitors in the food delivery and grocery delivery markets, including Uber Eats, Amazon Fresh, Samokat, VkusVill, and Instacart.\n\nDesigned the final mockups and validated them with users during follow-up interviews.",
+  "result": "User testing showed a clear preference for the proposed experience over the current flow. \nThe shared cart reduced friction in group ordering and was perceived as a meaningful competitive advantage. The research validated the key product hypotheses."
+};

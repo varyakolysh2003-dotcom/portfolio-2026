@@ -1,0 +1,6 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="avatar.png">
+<path d="M0 6C0 2.68629 2.68629 0 6 0H34C37.3137 0 40 2.68629 40 6V34C40 37.3137 37.3137 40 34 40H6C2.68629 40 0 37.3137 0 34V6Z" fill="#FFDD2D"/>
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M10 11V18.1306C10.9483 17.0295 12.6725 16.2844 14.644 16.2844H16.7863V24.5736C16.7863 26.7788 16.2035 28.9382 15.3389 30H24.6578C23.7951 28.9371 23.2137 26.7804 23.2137 24.5778V16.2844H25.3562C27.3275 16.2844 29.0517 17.0295 30 18.1306V11H10Z" fill="#333333"/>
+</g>
+</svg>

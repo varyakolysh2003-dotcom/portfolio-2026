@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+# Varvara Kolysh — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Адаптивная вёрстка Figma: desktop `0:537` (1200 × 2000), mobile `0:633` (375 × 2955). Главная страница: `/`.
 
-Currently, two official plugins are available:
+## Запуск
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Нужен Node.js 20 или новее. Внешних зависимостей для запуска и сборки нет.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Открыть http://localhost:5173. `npm run build` создаёт готовую статическую версию в `dist/`; `npm run preview` запускает её на том же порту после остановки dev-сервера.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Файлы
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `index.html` — семантическая разметка страницы.
+- `styles.css` — локальный Geist, desktop/mobile layout и состояния наведения.
+- `app.js` — адреса ссылок, переключение звука, адаптивные видео, reduced motion.
+- `public/assets/` — оригинальные PNG/SVG из Figma, кадры и экспортированные MP4.
+- `public/fonts/` — загруженный пользователем Geist Variable.
+- `scripts/` — сервер, сборка и браузерная проверка.
+- `verification/` — эталоны, скриншоты браузера, наложения, pixel diff и отчёт проверок.
+
+## Подключение содержимого
+
+В Figma не заданы адреса CV, T-Bank, Yandex Lavka и социальных профилей. Заполните объект `links` в `app.js`: подписи автоматически станут ссылками. До этого они остаются текстом, без выдуманных адресов и пустых переходов.
+
+Оригинальные ролики из папки `video/` подключены через `public/assets/*-original.mp4`. Файлы скопированы без перекодирования и сокращения длительности. Desktop и mobile используют один и тот же оригинал; при смене ширины воспроизведение не перезапускается. Настройка reduced motion отключает автоматическое воспроизведение.
+
+## Проверки
+
+Иконка звука управляет всеми эффектами: обычные клики — `sounds/click or tap/`, кот — `sounds/cat/`, Live — `sounds/bid/`, еда — `sounds/food/`, кроссовки — `sounds/shoes/`. Каждый набор чередуется независимо; если в папке один файл, он повторяется. Они включены по умолчанию, проигрываются на click/tap и случайно чередуются без последовательных повторов. Выбор включения сохраняется локально. Звук видео остаётся выключенным.
+
+Четыре иконки Design 30 Club пружинят при отпускании и перетаскиваются мышью или пальцем в пределах своего блока. Положение сохраняется до изменения размера блока или перезагрузки. Для клавиатуры: стрелки перемещают иконку, Enter/Space запускают отклик, Escape возвращает исходную позицию.
+
+Сравнение сделано на 1200 и 375 px с зафиксированными постерами, чтобы кадры анимации не искажали diff. Проверены ширины 320, 375, 768, 1024 и 1200 px, загрузка изображений и Geist, воспроизведение видео, sticky-колонка и отсутствие ошибок браузера.
+
+Для повторного запуска `scripts/verify.mjs` нужен Playwright. Можно задать `PLAYWRIGHT_PATH` (путь к установленному пакету) и `CHROME_PATH` (путь к Chrome). Скрипт ожидает сервер на порту 5173. Инструменты проверки не входят в зависимости сайта.
+
+Известные ограничения: небольшие различия сглаживания шрифта и растеризации изображений между Figma и браузером; незаполненные адреса ссылок в исходном макете.

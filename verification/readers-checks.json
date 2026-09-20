@@ -1,0 +1,11 @@
+{
+  "errors": [],
+  "cursorVariants": 5,
+  "randomCursorChangesOnReload": true,
+  "cursorRestoredAtCart": true,
+  "uniqueBrowserCounting": true,
+  "touchCounting": true,
+  "repeatAndConcurrentRequestsDeduplicated": true,
+  "persistsAfterServerRestart": true,
+  "homeCursorUnchanged": true
+}
