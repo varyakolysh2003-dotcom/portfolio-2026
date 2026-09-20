@@ -1,5 +1,23 @@
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
 const seen = new WeakSet();
+const waiting = new Map();
+const imageObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    const show = waiting.get(entry.target);
+    waiting.delete(entry.target);
+    imageObserver.unobserve(entry.target);
+    show?.();
+  }
+}) : null;
+motion.addEventListener('change', () => {
+  if (!motion.matches) return;
+  for (const [image, show] of waiting) {
+    imageObserver?.unobserve(image);
+    show();
+  }
+  waiting.clear();
+});
 
 export function setupPageReveal(root = document) {
   for (const image of root.querySelectorAll('img:not(.video-poster):not([data-immediate])')) {
@@ -14,6 +32,16 @@ export function setupPageReveal(root = document) {
     };
     const ready = async () => {
       try { await image.decode(); } catch { /* Show the browser fallback on failure. */ }
+      // Case images can be fetched far ahead by native lazy loading. Keep
+      // their fade for the moment they are actually visible to the reader.
+      if (!motion.matches && imageObserver && image.closest('.case-gallery, .bank-gallery')) {
+        const rect = image.getBoundingClientRect();
+        if (!image.getClientRects().length || rect.top >= innerHeight || rect.bottom <= 0) {
+          waiting.set(image, show);
+          imageObserver.observe(image);
+          return;
+        }
+      }
       show();
     };
     if (image.complete) ready();
