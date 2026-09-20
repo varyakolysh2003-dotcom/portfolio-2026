@@ -1,4 +1,5 @@
 import { setupSoundEffects } from './sound-effects.js';
+import { setupPageReveal, setupVideoLoading } from './page-reveal.js';
 import { setupIconInteractions } from './icon-interactions.js';
 
 // The gallery starts beside the profile on desktop, below it on mobile.
@@ -49,25 +50,16 @@ document.addEventListener('pointerdown', (event) => {
 document.addEventListener('pointercancel', clearTapFeedback);
 window.addEventListener('scroll', clearTapFeedback, { passive: true });
 
-const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const videos = [...document.querySelectorAll('video')];
-function updateMotion() {
-  for (const video of videos) {
-    if (motion.matches) { video.pause(); video.removeAttribute('autoplay'); }
-    else video.play().catch(() => {});
-  }
-}
-motion.addEventListener('change', updateMotion);
-updateMotion();
-
 const mobileLayout = window.matchMedia('(max-width:963px)');
 function updatePosters() {
   for (const video of videos) {
-    const name = video.getAttribute('src').split('/').pop().replace(/-original\.mp4$/, '');
+    const name = (video.dataset.src || video.getAttribute('src')).split('/').pop().replace(/-original\.mp4$/, '');
     const asset = `/assets/${name}${mobileLayout.matches ? '-mobile' : ''}`;
     video.poster = `${asset}.png`;
   }
-  updateMotion();
 }
 mobileLayout.addEventListener('change', updatePosters);
 updatePosters();
+setupVideoLoading(videos);
+setupPageReveal();

@@ -1,4 +1,5 @@
 import { setupSoundEffects } from '/sound-effects.js';
+import { setupPageReveal } from '/page-reveal.js';
 import { sections } from './content.js';
 import { setupReaderInteraction } from './reader-interaction.js';
 
@@ -46,3 +47,4 @@ function thankReader() {
 }
 cart.addEventListener('click', thankReader);
 cart.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') thankReader(); });
+setupPageReveal();

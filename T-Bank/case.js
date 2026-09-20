@@ -1,4 +1,5 @@
 import { setupSoundEffects } from '/sound-effects.js';
+import { setupPageReveal, setupVideoLoading } from '/page-reveal.js';
 import { setupSpoilers } from './spoiler.js';
 
 setupSoundEffects(document.querySelector('.sound'));
@@ -34,6 +35,7 @@ async function unlock() {
   if(!response.ok)throw new Error('Could not load case text');
   caseCopy=await response.json();
   await reveal();
+  setupPageReveal();
   updateIntro('profile');
   authorized=true;
   access.hidden=true;tablist.hidden=false;
@@ -54,7 +56,7 @@ const motion=matchMedia('(prefers-reduced-motion:reduce)');
 function updateVideos() {
   for(const video of document.querySelectorAll('video')) {
     if(motion.matches || video.closest('[hidden]'))video.pause();
-    else video.play().catch(()=>{});
+    else if(video.getAttribute('src'))video.play().catch(()=>{});
   }
 }
 motion.addEventListener('change',updateVideos);
@@ -74,7 +76,9 @@ async function selectTab(tab) {
         image.loading=index===0?'eager':'lazy';
         if(index===0)image.fetchPriority='high';
       }
-      for(const video of content.content.querySelectorAll('video'))video.preload='metadata';
+      for(const video of content.content.querySelectorAll('video')) {
+        video.dataset.src=video.getAttribute('src');video.removeAttribute('src');video.preload='none';
+      }
       document.querySelector('#main-cases').replaceChildren(content.content);
     })();
     try {await loadingMain;}catch(problem){status.hidden=false;status.textContent=problem.message;return;}finally{loadingMain=null;}
@@ -84,6 +88,8 @@ async function selectTab(tab) {
   updateIntro(name);
   updateVideos();
   window.scrollTo({top:0,behavior:'instant'});
+  setupPageReveal();
+  setupVideoLoading(document.querySelectorAll('#main-cases video:not([data-loading-ready])'));
 }
 for(const tab of tabs) {
   tab.addEventListener('click',()=>selectTab(tab));
@@ -98,3 +104,4 @@ for(const tab of tabs) {
 }
 // A restored history entry must not bring back previously revealed content.
 window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();});
+setupPageReveal();

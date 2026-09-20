@@ -547,3 +547,16 @@ figcaption {
 .case-close { display:flex;align-items:center;justify-content:center;width:40px;height:40px;flex-shrink:0 }
 .case-close img { width:16px;height:16px;transform:translateX(1px) }
 .case-close:hover { opacity:.65 }
+/* Media fades preserve existing layout and transforms. */
+.media-pending { opacity:0 }
+.media-entering { animation:media-reveal 200ms ease-out both }
+@keyframes media-reveal { from { opacity:0 } to { opacity:1 } }
+.media-host { position:relative }
+.video-poster { position:absolute;top:0;left:0;pointer-events:none;transition:opacity 200ms ease-out }
+.video-poster-ready { opacity:0 }
+.bank-video .video-poster { transform:scale(1.1);transform-origin:center }
+@media(prefers-reduced-motion:reduce) {
+  .media-pending { opacity:1 }
+  .media-entering { animation:none }
+  .video-poster { transition:none }
+}
