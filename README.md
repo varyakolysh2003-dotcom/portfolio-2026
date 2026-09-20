@@ -12,7 +12,27 @@ npm run dev
 
 Открыть http://localhost:5173. `npm run build` создаёт готовую статическую версию в `dist/`; `npm run preview` запускает её на том же порту после остановки dev-сервера.
 
-## Файлы
+## Счётчик читателей на Vercel
+
+Локально `/api/lavka/readers` обслуживает `scripts/serve.mjs`, а данные сохраняются
+в `.data/lavka-readers.json`. Одна статическая сборка `dist/` не запускает этот API.
+На Vercel маршрут реализован в `api/lavka/readers.js` и использует постоянный Redis.
+
+1. В проекте Vercel подключите Upstash Redis через Storage / Marketplace.
+2. Для Production задайте `UPSTASH_REDIS_REST_KV_REST_API_URL` и `UPSTASH_REDIS_REST_KV_REST_API_TOKEN`
+   из существующей интеграции Upstash Redis.
+   Используйте токен с правом записи; не добавляйте его в исходники или клиентский JS.
+3. Для Preview используйте отдельную базу либо отдельный `READER_REDIS_KEY`,
+   например `portfolio:preview:lavka:readers`, чтобы проверки не меняли production-счётчик.
+4. Опубликуйте проект из корня репозитория, а не только папку `dist`, и выполните Redeploy.
+5. `GET /api/lavka/readers` должен возвращать JSON с `count`, статус 200 и `Cache-Control: no-store`.
+   После взаимодействия с корзиной значение увеличивается один раз для одного браузера.
+
+Без настроенной базы API возвращает 503, а не выдуманный счётчик.
+Локальные просмотры автоматически в production не переносятся.
+Cookie идентифицирует браузер; удаление cookie или другой браузер считаются новым посетителем.
+
+## Структура проекта
 
 - `index.html` — семантическая разметка страницы.
 - `styles.css` — локальный Geist, desktop/mobile layout и состояния наведения.

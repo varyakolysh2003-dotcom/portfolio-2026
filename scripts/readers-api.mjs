@@ -3,7 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { randomUUID, createHash } from 'node:crypto';
 
 // One persistent store shared by dev and preview, never copied into dist.
-export function createReadersApi(file = resolve(process.env.READER_STORE || '.data/lavka-readers.json')) {
+export function createReadersApi(file = resolve(process.env.READER_STORE || '.data/lavka-readers.json'), { store } = {}) {
   let queue = Promise.resolve();
   return async function readersApi(req, res) {
     res.setHeader('Cache-Control', 'no-store');
@@ -19,6 +19,7 @@ export function createReadersApi(file = resolve(process.env.READER_STORE || '.da
     if (!cookie) res.setHeader('Set-Cookie', `lavka_reader=${visitor}; Path=/; HttpOnly; SameSite=Lax; Max-Age=34560000${req.socket.encrypted || req.headers['x-forwarded-proto'] === 'https' ? '; Secure' : ''}`);
     const hash = createHash('sha256').update(visitor).digest('hex');
     const operation = queue.then(async () => {
+      if (store) return store(req.method, hash);
       let state;
       try { state = JSON.parse(await readFile(file, 'utf8')); }
       catch (error) { if (error.code !== 'ENOENT') throw error; state = { visitors:[] }; }
