@@ -8,7 +8,7 @@ const links = {
   tbank: '/t-bank/', lavka: '/yandex-lavka/',
   telegram: 'https://t.me/BarbaraKolysh',
   twitter: 'https://x.com/BarbaraKolysh',
-  linkedin: 'https://t.me/BarbaraKolysh'
+  linkedin: 'https://www.linkedin.com/in/varvara-kolysh-5401492a3/'
 };
 for (const element of document.querySelectorAll('[data-link]')) {
   const url = links[element.dataset.link];
