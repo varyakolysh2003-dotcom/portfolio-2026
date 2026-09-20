@@ -5,19 +5,20 @@ export function setupPageReveal(root = document) {
   for (const image of root.querySelectorAll('img:not(.video-poster):not([data-immediate])')) {
     if (seen.has(image)) continue;
     seen.add(image);
-    const ready = () => {
+    // Cached or already painting images must never be hidden again when
+    // the module arrives later than the image (common on production/CDN).
+    if (image.complete || image.naturalWidth > 0 || motion.matches) continue;
+    const ready = async () => {
+      try { await image.decode(); } catch { /* Let the browser display its fallback. */ }
       image.classList.remove('media-pending');
       if (!motion.matches && image.naturalWidth) {
         image.classList.add('media-entering');
         image.addEventListener('animationend', () => image.classList.remove('media-entering'), { once:true });
       }
     };
-    if (image.complete) ready();
-    else {
-      image.classList.add('media-pending');
-      image.addEventListener('load', ready, { once:true });
-      image.addEventListener('error', () => image.classList.remove('media-pending'), { once:true });
-    }
+    image.classList.add('media-pending');
+    image.addEventListener('load', ready, { once:true });
+    image.addEventListener('error', () => image.classList.remove('media-pending'), { once:true });
   }
 }
 
