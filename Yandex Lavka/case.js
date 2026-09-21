@@ -1,3 +1,4 @@
+import { setupLanguage } from '/i18n.js';
 import { setupSoundEffects } from '/sound-effects.js';
 import { setupPageReveal } from '/page-reveal.js';
 import { sections } from './content.js';
@@ -48,3 +49,5 @@ function thankReader() {
 cart.addEventListener('click', thankReader);
 cart.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') thankReader(); });
 setupPageReveal();
+
+setupLanguage();

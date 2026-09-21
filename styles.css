@@ -86,6 +86,14 @@ button:focus-visible,a:focus-visible {
 .sound[aria-pressed=false] img {
   opacity:.4
 }
+.language-toggle {
+  display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;padding:0;border:0;background:none;
+  color:#9f9f9f;font:inherit;font-size:14px;line-height:19.6px;
+  letter-spacing:-.14px;cursor:pointer;flex-shrink:0
+}
+.language-toggle:hover { color:rgba(17,17,17,.9) }
+.language-toggle:focus-visible { outline:2px solid currentColor;outline-offset:2px;border-radius:6px }
 
 .bio {
   display:flex;

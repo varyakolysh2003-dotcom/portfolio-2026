@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { createHmac, scrypt as derive, timingSafeEqual } from 'node:crypto';
 import { promisify } from 'node:util';
+import { tbankTranslations } from './tbank-translations.mjs';
 const scrypt = promisify(derive);
 const privateRoot = resolve(process.env.TBANK_PRIVATE_DIR || '.private/tbank');
 const configPath = resolve(process.env.TBANK_AUTH_FILE || '.data/tbank-auth.json');
@@ -47,6 +48,10 @@ export async function tbankApi(req,res,pathname) {
     else if(pathname==='/api/tbank/cases/main') {file=resolve(privateRoot,'main.html');type='text/html; charset=utf-8';}
     else {json(404,{error:'Not found'});return;}
     const content=await readFile(file);
+    if(pathname==='/api/tbank/copy') {
+      const copy=JSON.parse(content);
+      json(200,{...copy,translations:tbankTranslations(copy)});return;
+    }
     res.writeHead(200,{'Content-Type':type,'Content-Length':content.length}).end(content);
   } catch(error) {json(error.code==='ENOENT'?503:500,{error:'Cases are temporarily unavailable. Please try again.'});}
 }

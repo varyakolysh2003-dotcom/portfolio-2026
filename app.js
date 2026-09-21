@@ -1,3 +1,4 @@
+import { setupLanguage } from '/i18n.js';
 import { setupSoundEffects } from './sound-effects.js';
 import { setupPageReveal, setupVideoLoading } from './page-reveal.js';
 import { setupIconInteractions } from './icon-interactions.js';
@@ -63,3 +64,5 @@ mobileLayout.addEventListener('change', updatePosters);
 updatePosters();
 setupVideoLoading(videos);
 setupPageReveal();
+
+setupLanguage();

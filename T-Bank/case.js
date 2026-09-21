@@ -1,3 +1,4 @@
+import { setupLanguage, translatePage, addTranslations } from '/i18n.js';
 import { setupSoundEffects } from '/sound-effects.js';
 import { setupPageReveal, setupVideoLoading } from '/page-reveal.js';
 import { setupSpoilers } from './spoiler.js';
@@ -34,12 +35,14 @@ async function unlock() {
   const response=await fetch('/api/tbank/copy',{cache:'no-store'});
   if(!response.ok)throw new Error('Could not load case text');
   caseCopy=await response.json();
+  addTranslations(caseCopy.translations || []);
   await reveal();
   setupPageReveal();
   updateIntro('profile');
   authorized=true;
   access.hidden=true;tablist.hidden=false;
   document.querySelector('#profile-cases').setAttribute('aria-labelledby','tab-profile');
+  translatePage();
 }
 form.addEventListener('submit',async event=>{
   event.preventDefault();if(busy || !input.value)return;
@@ -105,3 +108,5 @@ for(const tab of tabs) {
 // A restored history entry must not bring back previously revealed content.
 window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();});
 setupPageReveal();
+
+setupLanguage();

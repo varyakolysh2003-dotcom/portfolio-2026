@@ -41,10 +41,12 @@ export function setupTextSpoiler(element) {
   const intersection=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;start();});intersection.observe(element);
   const visibility=()=>start();document.addEventListener('visibilitychange',visibility);
   motion.addEventListener('change',start);
+  window.addEventListener('languagechange',measure);
   document.fonts.ready.then(measure);
   return ()=>{
     opened=true;stop();resize.disconnect();intersection.disconnect();
     document.removeEventListener('visibilitychange',visibility);motion.removeEventListener('change',start);
+    window.removeEventListener('languagechange',measure);
     layers.forEach(({canvas})=>canvas.remove());layers=[];
   };
 }
