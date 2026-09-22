@@ -77,7 +77,7 @@ export function translatePage() {
     link.download = language === 'ru' ? 'Колыш Варвара Резюме_ru.pdf' : 'Kolysh Varvara Resume_eng.pdf';
   }
   for (const button of document.querySelectorAll('.language-toggle')) {
-    button.textContent = language === 'ru' ? 'Ru' : 'Eng';
+    button.textContent = language === 'ru' ? 'Eng' : 'Ru';
     button.setAttribute('aria-label', language === 'ru' ? 'Switch to English' : 'Переключить на русский');
     button.title = language === 'ru' ? 'Switch to English' : 'Переключить на русский';
   }
