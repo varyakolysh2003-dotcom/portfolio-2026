@@ -552,8 +552,8 @@ figcaption {
   
 }
 
-.case-close { position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:40px;height:40px;flex-shrink:0;cursor:pointer;touch-action:manipulation }
-.case-close img { width:16px;height:16px;transform:translateX(1px);pointer-events:none;-webkit-user-drag:none;user-select:none }
+.case-close { display:flex;align-items:center;justify-content:center;width:40px;height:40px;flex-shrink:0 }
+.case-close img { width:16px;height:16px;transform:translateX(1px) }
 .case-close:hover { opacity:.65 }
 /* Media fades preserve existing layout and transforms. */
 .media-fade-enabled img:not([data-immediate]):not(.video-poster):not(.media-ready) { opacity:0 }

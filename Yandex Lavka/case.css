@@ -9,7 +9,7 @@
 .case-gallery { gap:32px }
 .case-article { width:100%; display:flex; flex-direction:column; gap:8px }
 .case-media { width:100%; aspect-ratio:600 / var(--media-height); border-radius:24px; overflow:hidden; position:relative }
-.case-media img { position:absolute; width:100%; height:100%; object-fit:cover; pointer-events:none; -webkit-user-drag:none; user-select:none }
+.case-media img { position:absolute; width:100%; height:100%; object-fit:cover }
 .case-article-3 .case-media img { width:135.17%; left:-19.58%; top:-.11%; object-fit:fill }
 .case-caption { display:flex; flex-direction:column; gap:var(--caption-gap) }
 .case-copy { font-size:14px; line-height:19.6px; letter-spacing:-.14px; min-height:calc(var(--copy-height) + .685px); padding-bottom:.685px }
@@ -21,8 +21,7 @@
 .cart-button img { width:100%; height:100%; object-fit:cover; pointer-events:none }
 .cart-button,.cart-button:active { cursor:default }
 @media(any-hover:hover) and (any-pointer:fine) {
- html.lavka-cursor,html.lavka-cursor body,html.lavka-cursor body *,html.lavka-cursor body *::before,html.lavka-cursor body *::after { cursor:var(--lavka-cursor) }
- html.lavka-cursor .case-close,html.lavka-cursor .case-close * { cursor:pointer }
+ html.lavka-cursor,html.lavka-cursor body,html.lavka-cursor body * { cursor:var(--lavka-cursor) }
  html.lavka-cursor .cart-button,html.lavka-cursor .cart-button * { cursor:default }
 }
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap }
