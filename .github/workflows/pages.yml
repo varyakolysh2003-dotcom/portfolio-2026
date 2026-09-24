@@ -30,6 +30,36 @@ jobs:
       - uses: actions/configure-pages@v5
 
       - run: npm run build
+            - name: Adapt paths for GitHub Pages
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          base = "/portfolio-2026"
+          prefixes = (
+              "/assets/", "/fonts/", "/sounds/",
+              "/t-bank/", "/yandex-lavka/",
+              "/i18n.js", "/translations.js",
+              "/styles.css", "/sound-effects.js",
+              "/page-reveal.js", "/icon-interactions.js",
+          )
+
+          for path in Path("dist").rglob("*"):
+              if path.suffix not in {".html", ".css", ".js"}:
+                  continue
+              text = path.read_text(encoding="utf-8")
+              for quote in ('"', "'", "`"):
+                  for prefix in prefixes:
+                      text = text.replace(
+                          quote + prefix,
+                          quote + base + prefix
+                      )
+                  text = text.replace(
+                      quote + "/" + quote,
+                      quote + base + "/" + quote
+                  )
+              path.write_text(text, encoding="utf-8")
+          PY
 
       - uses: actions/upload-pages-artifact@v3
         with:
