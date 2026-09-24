@@ -1,4 +1,5 @@
 export const translations = [
+['Well done, you made it to the end!', 'Молодец, ты долистал до конца!'],
 ['Varvara Kolysh — Product Designer. Selected product design work, interfaces and animation concepts.','Варвара Колыш — продуктовый дизайнер. Избранные проекты, интерфейсы и концепции анимации.'],
 ['A product design case study by Varvara Kolysh: shared carts, collaborative ordering and flexible payments in Yandex Lavka.','Кейс Варвары Колыш: общие корзины, совместные заказы и гибкая оплата в Яндекс Лавке.'],
 ['Product design work at T-Bank by Varvara Kolysh.','Проекты Варвары Колыш в Т-Банке.'],

@@ -1,3 +1,6 @@
+import '/assets/vendor/lottie-light.min.js';
+import { translatePage } from '/i18n.js';
+
 export function setupReaderInteraction(cart) {
   const page = document.documentElement;
   const pointer = matchMedia('(any-hover:hover) and (any-pointer:fine)');
@@ -9,44 +12,47 @@ export function setupReaderInteraction(cart) {
   page.style.setProperty('--lavka-cursor', `url("/assets/yandex-lavka/cursors/item-${variant}.png") 16 16, auto`);
   page.classList.add('lavka-cursor');
 
-  const labels = document.querySelectorAll('.case-end > p');
-  const status = document.querySelector('#cart-status');
-  let reached = false;
-  let pending = false;
-  let registered = false;
-  async function request(method) {
-    const response = await fetch('/api/lavka/readers', { method, credentials:'same-origin', cache:'no-store' });
-    if (!response.ok) throw new Error('Counter unavailable');
-    const data = await response.json();
-    if (!Number.isSafeInteger(data.count) || data.count < 0) throw new Error('Invalid counter');
-    return data;
-  }
-  // Establish the anonymous cookie before recording the first interaction.
-  const ready = request('GET').catch(() => null);
-  function showCount(count) {
-    const text = `You're one of ${count.toLocaleString('en-US')} who made it to the end!`;
-    labels.forEach(label => { label.textContent = text; });
-    status.textContent = text;
-  }
-  async function register() {
-    reached = true;
+  const footer = cart.closest('.case-end');
+  const container = document.createElement('div');
+  container.className = 'cart-confetti';
+  container.setAttribute('aria-hidden', 'true');
+  footer.append(container);
+  const animation = window.lottie.loadAnimation({
+    container,
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: '/assets/yandex-lavka/confetti.json',
+  });
+  let celebrated = false;
+  let ready = false;
+  let queued = false;
+  animation.addEventListener('DOMLoaded', () => {
+    ready = true;
+    if (queued) playConfetti();
+  });
+  animation.addEventListener('complete', () => {
+    container.classList.remove('is-playing');
+  });
+  function celebrate() {
+    if (celebrated) return;
+    celebrated = true;
     page.classList.remove('lavka-cursor');
-    if (pending || registered) return;
-    pending = true;
-    try {
-      await ready;
-      showCount((await request('POST')).count);
-      registered = true;
-    } catch {
-      labels.forEach(label => { label.textContent = 'You made it to the end! Tap the cart to load the reader count.'; });
-    } finally { pending = false; }
+    const message = 'Well done, you made it to the end!';
+    footer.querySelectorAll(':scope > p').forEach(label => { label.textContent = message; });
+    footer.querySelector('#cart-status').textContent = message;
+    translatePage();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!ready) { queued = true; return; }
+    playConfetti();
   }
-  cart.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse' && pointer.matches) register(); });
-  cart.addEventListener('click', register);
-  // Refresh the shared total when another visitor finishes while this page is open.
-  const timer = setInterval(async () => {
-    if (!reached || !registered || document.hidden) return;
-    try { showCount((await request('GET')).count); } catch { /* Keep the last confirmed total. */ }
-  }, 15000);
-  window.addEventListener('pagehide', () => clearInterval(timer), { once:true });
+  function playConfetti() {
+    queued = false;
+    container.classList.add('is-playing');
+    animation.goToAndPlay(0, true);
+  }
+  cart.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse' && pointer.matches) celebrate();
+  });
+  cart.addEventListener('click', celebrate);
 }

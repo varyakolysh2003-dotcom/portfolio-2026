@@ -40,3 +40,10 @@
  .cart-button { width:105px; height:96px }
  .case-end .mobile-caption { display:block }
 }
+
+.case-end { position:relative; isolation:isolate }
+.cart-confetti { position:absolute; width:300px; height:240px; left:-90px; top:-120px; pointer-events:none; visibility:hidden; z-index:2 }
+.cart-confetti.is-playing { visibility:visible }
+@media(max-width:963px) {
+ .cart-confetti { width:240px; height:192px; left:-67.5px; top:-96px }
+}
