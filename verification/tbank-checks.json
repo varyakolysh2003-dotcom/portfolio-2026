@@ -1,43 +1,22 @@
 {
-  "errors": [],
-  "layouts": [
-    {
-      "viewport": 1200,
-      "width": 1200,
-      "height": 3272,
-      "profileHeight": 809
-    },
-    {
-      "viewport": 375,
-      "width": 375,
-      "height": 3211,
-      "profileHeight": 809
-    },
-    {
-      "viewport": 320,
-      "width": 320,
-      "height": 3132,
-      "profileHeight": 848
-    },
-    {
-      "viewport": 768,
-      "width": 768,
-      "height": 4637,
-      "profileHeight": 809
-    },
-    {
-      "viewport": 1024,
-      "width": 1024,
-      "height": 3272,
-      "profileHeight": 848
-    }
-  ],
-  "passwordGate": true,
-  "protectedAssets": true,
+  "staticSubpath": true,
+  "noBackendRequests": true,
+  "buildWithoutPrivateFilesOrPassword": true,
+  "missingBundleRejected": true,
   "wrongPasswordRejected": true,
-  "reloadResetsSpoilersAndSession": true,
-  "focusHidesPlaceholderWithoutOutline": true,
+  "tamperedCiphertextRejected": true,
   "profileAndMainTabs": true,
-  "quiziDisabled": true,
-  "originalVideo": true
+  "imagesDecoded": true,
+  "videoLoaded": true,
+  "reloadLocks": true,
+  "russianTranslations": true,
+  "responsiveWidths": [
+    1200,
+    375,
+    320,
+    768,
+    1024
+  ],
+  "plaintextScanPassed": true,
+  "errors": []
 }

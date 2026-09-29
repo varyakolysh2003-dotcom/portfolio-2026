@@ -24,16 +24,16 @@ export function setupSpoilers(openPassword) {
     dots.append(fragment);spoiler.append(blur,dots);observer.observe(spoiler);
     spoiler.querySelector('.spoiler-trigger').addEventListener('click',openPassword);
   }
-  return async function reveal() {
+  return async function reveal(mediaUrl) {
     await Promise.all(spoilers.map(async spoiler=>{
       if(spoiler.classList.contains('spoiler--open'))return;
       if(spoiler.classList.contains('text-spoiler'))return;
       let picture=spoiler.querySelector('picture');
       if(!picture) {
         picture=document.createElement('picture');
-        const source=document.createElement('source');source.media='(max-width:963px)';source.srcset=`/api/tbank/media/${spoiler.dataset.mobile}`;
+        const source=document.createElement('source');source.media='(max-width:963px)';source.srcset=mediaUrl(spoiler.dataset.mobile);
         source.width=311;source.height=Number(spoiler.style.getPropertyValue('--mobile-height'));
-        const img=document.createElement('img');img.alt='T-Bank profile interface';img.src=`/api/tbank/media/${spoiler.dataset.desktop}`;
+        const img=document.createElement('img');img.alt='T-Bank profile interface';img.src=mediaUrl(spoiler.dataset.desktop);
         img.width=600;img.height=Number(spoiler.style.getPropertyValue('--media-height'));
         img.decoding='async';
         img.loading=spoiler.getBoundingClientRect().top<innerHeight?'eager':'lazy';

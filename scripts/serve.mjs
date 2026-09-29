@@ -2,7 +2,6 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
 import { createReadersApi } from './readers-api.mjs';
-import { tbankApi } from './tbank-api.mjs';
 const readersApi = createReadersApi();
 const root = resolve(process.argv[2] || '.');
 const port = Number(process.env.PORT || 5173);
@@ -11,7 +10,6 @@ createServer(async (req, res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
     if (pathname === '/api/lavka/readers') { await readersApi(req, res); return; }
-    if (pathname.startsWith('/api/tbank/')) { await tbankApi(req,res,pathname); return; }
     if (pathname.split('/').some(part => part.startsWith('.'))) { res.writeHead(403).end(); return; }
     let relative = pathname === '/' ? 'index.html' : pathname.slice(1);
     if (relative === 'yandex-lavka') { res.writeHead(302, { Location: '/yandex-lavka/' }).end(); return; }

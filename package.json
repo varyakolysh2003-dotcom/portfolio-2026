@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
-    "preview": "node scripts/serve.mjs dist"
+    "preview": "node scripts/serve.mjs dist",
+    "encrypt:tbank": "node scripts/encrypt-tbank.mjs",
+    "verify:tbank": "node scripts/verify-tbank.mjs"
   }
 }

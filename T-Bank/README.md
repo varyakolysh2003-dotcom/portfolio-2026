@@ -1,23 +1,67 @@
-# T-Bank cases
+# T-Bank case
 
-Page: `/t-bank/`, linked from the home page. The logo returns home.
+The same static client runs locally and on GitHub Pages, including under
+`/portfolio-2026/`. It has no authentication API dependency.
 
-Figma references: locked desktop `19:499`, Profile desktop `19:587`, Main 8.0 desktop `19:675`, mobile `19:837`, `19:924`, `19:1005` in the Portfolio file. Quizi is deliberately disabled and has no page or request handler.
+## Local preparation
 
-`index.html`, `case.css`, `case.js` implement the page with shared Geist typography, layout and click sounds. `spoiler.js` follows `spoiler-effect-instruction.md`: blur plus animated white dots, paused outside the viewport and disabled for reduced motion. The sidebar pill is a password input. Clicking a locked image focuses this input. Enter submits the masked password; an unsuccessful attempt silently clears and resets the field. Successful authentication reveals all Profile images and enables the case tabs.
+Original content stays in `.private/tbank/`: `copy.json`, `main.html`, `media/`,
+and `translations.mjs` (the private translations migrated from public source).
+Keep this directory backed up privately; it is ignored by Git.
 
-## Protected content
+Run once before publishing and again whenever private content or the password changes:
 
-The supplied password is configured as a salted scrypt hash in `.data/tbank-auth.json`, alongside a random session signing secret. The plaintext password is not included in the client or build. The API in `scripts/tbank-api.mjs` issues an HttpOnly, SameSite session cookie valid for at most eight hours and cleared on each page load and checks it before returning images or Main 8.0 content. Failed password attempts are rate-limited. Public previews contain only the already blurred Figma images.
+```sh
+TBANK_PASSWORD='your-strong-password' npm run encrypt:tbank
+npm run build
+```
 
-Protected Figma exports and Main 8.0 markup live in `.private/tbank/`, which the static server refuses to serve directly. The original birthday video is reused from the existing public home page. Private screenshots and source measurements are kept under `.private/tbank/verification/` and `.private/tbank/design.json`.
+Alternatively, read the password without including it in shell history (zsh):
 
-For deployment, retain `.private/tbank/` and `.data/tbank-auth.json` outside the public web root and run the Node server (`npm run preview` after building). `TBANK_PRIVATE_DIR` and `TBANK_AUTH_FILE` override these locations. Do not upload either directory to a static public bucket. Static-only hosting cannot provide the password API. Credentials and private working files are excluded from the static build and Git.
+```sh
+read -s 'TBANK_PASSWORD?Case password: '
+export TBANK_PASSWORD
+npm run encrypt:tbank
+unset TBANK_PASSWORD
+npm run build
+```
+
+Commit all `T-Bank/encrypted/*.json` files along with the application changes.
+Never commit `.private/`, `.data/`, passwords, or derived keys. GitHub Actions needs
+neither the private directory nor an environment secret; it copies the prepared
+ciphertext into `dist/t-bank/encrypted/`. A missing bundle/file fails the build.
+The checkout intentionally contains no bundle encrypted with a known test password.
+
+## Format and runtime
+
+`manifest.json` records version 1, PBKDF2/SHA-256, 310,000 iterations, a random
+16-byte salt, and the required encrypted filenames. Every numbered JSON file
+contains version 1, a fresh 12-byte IV, and base64 AES-256-GCM ciphertext including
+the authentication tag. One key is derived per bundle. Keys are non-extractable in
+the browser. The encrypted content index contains copy, translations, Main HTML,
+and media mapping; all media previously served by the private API are encrypted.
+
+The browser authenticates and decrypts before revealing the case. Images use Blob
+URLs, released when leaving the page; no password, key, session, or unlocked state
+is written to storage or cookies. Reload locks the case. Wrong passwords clear the
+input. Locked caption particle effects use dummy text, with real copy restored
+only after decryption. Private captions and translations are absent from public JS.
+
+The birthday showreel and poster remain public because the portfolio homepage
+already uses them; they were never protected by the old API. The legacy API files
+remain for reference but `serve.mjs` no longer routes to them.
+
+Client-side encryption permits offline password guessing. Use a strong, unique
+password. Changing it does not revoke previously downloaded/decrypted material.
+Removing plaintext from the current checkout does not erase earlier Git history.
 
 ## Verification
 
-`scripts/verify-tbank.mjs` uses an isolated test password and server to check locked assets, incorrect/correct password, session reset on reload, keyboard tabs, mobile tap, disabled Quizi, shared sound, original video, image decoding and responsive widths. Browser comparison screenshots are stored privately. Main layout and text match Figma; intended differences are the requested dot spoiler, inline password input and working mobile tabs (the unlocked Profile mobile reference still shows the password label).
-
-Every reload starts with locked spoilers and an empty password field. Focusing the field hides its placeholder without an outline; blur restores the placeholder when empty.
-
-Unlocked artwork uses the original Figma SVG compositions with embedded original PNG screens (1080–1500 px wide), preserving vector gradients, crops and shadows. Both desktop and mobile variants use these originals, not reduced screenshot exports. Successful password entry no longer transfers focus to Profile; keyboard tab navigation remains available.
+`npm run verify:tbank` requires Playwright and Chrome (optional `PLAYWRIGHT_PATH`
+and `CHROME_PATH` overrides). It creates an isolated temporary copy, encrypts with a
+random test-only password, removes the private inputs, builds, applies the exact
+GitHub Pages path adaptation, and serves only static files under `/portfolio-2026/`.
+It checks wrong/correct password, reload, tabs, responsive image decoding, video,
+Russian translations, absent API requests, missing bundle failures, and scans the
+build against private text and media hashes. Test ciphertext is deleted afterwards;
+screenshots stay in `.private/tbank/verification/`.

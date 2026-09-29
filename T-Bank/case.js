@@ -1,6 +1,7 @@
-import { setupLanguage, translatePage, addTranslations } from '/i18n.js';
-import { setupSoundEffects } from '/sound-effects.js';
-import { setupPageReveal, setupVideoLoading } from '/page-reveal.js';
+import { decryptCase } from './decrypt.js';
+import { setupLanguage, translatePage, addTranslations } from '../i18n.js';
+import { setupSoundEffects } from '../sound-effects.js';
+import { setupPageReveal, setupVideoLoading } from '../page-reveal.js';
 import { setupSpoilers } from './spoiler.js';
 
 setupSoundEffects(document.querySelector('.sound'));
@@ -15,6 +16,7 @@ let authorized=false;
 let busy=false;
 let loadingMain;
 let caseCopy;
+let unlockedCase;
 function updateIntro(name) {
   const intro=document.querySelector('.bank-intro');
   intro.querySelectorAll('section').forEach(section=>section.remove());
@@ -32,11 +34,13 @@ const reveal=setupSpoilers(openPassword);
 form.addEventListener('click',openPassword);
 
 async function unlock() {
-  const response=await fetch('/api/tbank/copy',{cache:'no-store'});
-  if(!response.ok)throw new Error('Could not load case text');
-  caseCopy=await response.json();
+  caseCopy=unlockedCase.copy;
   addTranslations(caseCopy.translations || []);
-  await reveal();
+  document.querySelectorAll('#profile-cases .bank-article').forEach((article,index)=>{
+    article.querySelectorAll('.bank-caption p').forEach(p=>{p.textContent=caseCopy.profile.captions[index];});
+    article.querySelectorAll('.bank-caption h2').forEach(h=>{h.textContent='Profile settings';});
+  });
+  await reveal(unlockedCase.mediaUrl);
   setupPageReveal();
   updateIntro('profile');
   authorized=true;
@@ -48,10 +52,10 @@ form.addEventListener('submit',async event=>{
   event.preventDefault();if(busy || !input.value)return;
   busy=true;input.readOnly=true;form.setAttribute('aria-busy','true');
   try {
-    const response=await fetch('/api/tbank/session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:input.value})});
-    if(!response.ok)throw new Error('Unable to unlock');
+    const pending=decryptCase(input.value);input.value='';
+    unlockedCase=await pending;
     await unlock();input.value='';input.blur();
-  } catch {input.value='';input.blur();}
+  } catch {unlockedCase?.dispose();unlockedCase=undefined;input.value='';input.blur();}
   finally {busy=false;input.readOnly=false;form.removeAttribute('aria-busy');}
 });
 
@@ -68,11 +72,15 @@ async function selectTab(tab) {
   const name=tab.dataset.case;
   if(name==='main' && !document.querySelector('#main-cases').children.length) {
     if(!loadingMain)loadingMain=(async()=>{
-      const response=await fetch('/api/tbank/cases/main',{cache:'no-store'});
-      if(response.status===401){location.reload();return;}
-      if(!response.ok)throw new Error('Could not load this case. Please try again.');
       const content=document.createElement('template');
-      content.innerHTML=await response.text();
+      content.innerHTML=unlockedCase.main;
+      for(const element of content.content.querySelectorAll('[src],[srcset],[poster]')) {
+        for(const attribute of ['src','srcset','poster']) {
+          const value=element.getAttribute(attribute);
+          if(value?.startsWith('tbank-media:'))element.setAttribute(attribute,unlockedCase.mediaUrl(value.slice('tbank-media:'.length)));
+          else if(value?.startsWith('../assets/'))element.setAttribute(attribute,new URL(value,import.meta.url).href);
+        }
+      }
       const images=[...content.content.querySelectorAll('img')];
       for(const [index,image] of images.entries()) {
         image.decoding='async';
@@ -89,6 +97,7 @@ async function selectTab(tab) {
   status.hidden=true;
   for(const item of tabs){const selected=item===tab;item.setAttribute('aria-selected',String(selected));item.tabIndex=selected?0:-1;document.querySelector(`#${item.dataset.case}-cases`).hidden=!selected;}
   updateIntro(name);
+  translatePage();
   updateVideos();
   window.scrollTo({top:0,behavior:'instant'});
   setupPageReveal();
@@ -110,3 +119,5 @@ window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();
 setupPageReveal();
 
 setupLanguage();
+
+window.addEventListener('pagehide',()=>unlockedCase?.dispose());
