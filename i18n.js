@@ -1,5 +1,10 @@
 import { translations } from './translations.js';
 const normalize = value => value.replace(/\s+/g, ' ').trim();
+// Keep short function words with the following word without joining paragraphs.
+const keepShortWords = value => value.replace(
+  /(?<=^|[\s«„“"'([{—–])([вкосуиаa])[ \t\u00a0]+(?=\S)/giu,
+  '$1\u00a0',
+);
 const dictionary = new Map();
 const originals = new WeakMap();
 let language = new URL(location.href).searchParams.get('lang') === 'ru' ? 'ru' : 'en';
@@ -35,13 +40,20 @@ function translate(node, field, read, write) {
   let record = fields.get(field);
   if (!record || current !== record.last) {
     const pair = pairFor(current);
-    if (!pair) return;
+    if (!pair) {
+      if (field === 'text') {
+        const formatted = keepShortWords(current);
+        if (formatted !== current) write(formatted);
+      }
+      return;
+    }
     record = { en:normalize(current) === normalize(pair.en) ? current : pair.en, ru:pair.ru, last:current };
     fields.set(field, record);
   }
-  const next = language === 'ru' && field === 'text'
+  let next = language === 'ru' && field === 'text'
     ? record.en.match(/^\s*/)[0] + record.ru + record.en.match(/\s*$/)[0]
     : record[language];
+  if (field === 'text') next = keepShortWords(next);
   if (current !== next) write(next);
   record.last = next;
 }
@@ -52,7 +64,7 @@ export function translatePage() {
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   while (walker.nextNode()) {
     const node = walker.currentNode;
-    if (!node.textContent.trim() || node.parentElement.closest('script,style,svg,canvas,.language-toggle')) continue;
+    if (!node.textContent.trim() || node.parentElement.closest('script,style,svg,canvas,code,pre,textarea,[contenteditable],.language-toggle')) continue;
     translate(node, 'text', () => node.textContent, value => { node.textContent = value; });
   }
   for (const element of document.querySelectorAll('[aria-label],[alt],[title],[placeholder]')) {
