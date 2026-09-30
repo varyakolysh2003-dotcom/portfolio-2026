@@ -55,3 +55,5 @@
 @media(max-width:963px) {
  .cart-confetti { width:240px; height:192px; left:-67.5px; top:-96px }
 }
+
+.case-article-auto .case-media img { width:158.81%; height:136.71%; left:-29.32%; top:0; object-fit:fill }

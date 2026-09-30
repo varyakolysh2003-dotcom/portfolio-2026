@@ -1,5 +1,17 @@
 // Every new or updated case text keeps its English and Russian versions together.
 export const copy = {
+  "autoCartHeading": {
+    "en": "Automatic Cart Creation",
+    "ru": "Автосоздание корзины"
+  },
+  "autoCartDescription": {
+    "en": "After an order with new people, the app offers to create a permanent cart for shopping together, saving the time it takes to set up a group manually.",
+    "ru": "После заказа с новыми людьми приложение предлагает сразу создать постоянную корзину для совместных покупок, чтобы ускорить создание группы вручную"
+  },
+  "CSAT68": {
+    "en": "CSAT in testing: 68% ↑",
+    "ru": "CSAT по тестированию составил: 68% ↑"
+  },
   "processHeading": {
     "en": "Customer research and competitor analysis",
     "ru": "Касдев и анализ конкурентов"
