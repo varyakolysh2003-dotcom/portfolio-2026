@@ -1,7 +1,7 @@
 .bank-page [hidden] { display:none!important }
 .bank-intro { display:flex;flex-direction:column;gap:24px }
 .bank-intro h1 { font-size:14px;line-height:19.6px;letter-spacing:-.14px;font-weight:400;color:#000;min-height:20.685px }
-.bank-context { display:flex;flex-direction:column;gap:7.095px }
+.bank-context { display:flex;flex-direction:column;gap:var(--text-gap) }
 .bank-context p { font-size:14px;line-height:19.6px;letter-spacing:-.14px;white-space:pre-wrap;padding-bottom:.685px }
 .bank-access,.bank-tabs { width:100% }
 .bank-tabs button { border:0;border-radius:30px;flex:1;height:36px;padding:0 10px;background:transparent;color:#9f9f9f;line-height:19.6px;letter-spacing:-.14px;cursor:pointer;white-space:nowrap }
@@ -16,10 +16,9 @@
 .bank-media img,.bank-media video { width:100%;height:100%;position:absolute;inset:0;object-fit:cover }
 .bank-media picture { display:contents }
 .bank-video video { transform:scale(1.1);transform-origin:center }
-.bank-caption { display:flex;flex-direction:column;gap:4px }
-.bank-caption p { font-size:14px;min-height:var(--text-height);white-space:pre-wrap }
+.bank-caption { display:flex;flex-direction:column;gap:var(--text-gap) }
+.bank-caption p { font-size:14px;white-space:pre-wrap }
 .bank-caption.mobile-caption { display:none }
-.video-article { min-height:637px }
 .spoiler .blur-block { position:absolute;inset:0;z-index:2;background:#777;border-radius:inherit;transition:opacity .3s ease }
 .spoiler .dots { position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;transition:opacity .3s ease }
 .spoiler .dot { position:absolute;border-radius:50%;background:rgba(255,255,255,.9);animation:move-dot 3s ease-in-out infinite alternate;animation-play-state:paused }
@@ -34,7 +33,6 @@
  .bank-media { aspect-ratio:311 / var(--mobile-height) }
  .bank-caption.desktop-caption { display:none }
  .bank-caption.mobile-caption { display:flex }
- .video-article { min-height:0 }
 }
 @media(prefers-reduced-motion:reduce) { .spoiler .dot { animation:none } .spoiler .blur-block,.spoiler .dots { transition:none } }
 

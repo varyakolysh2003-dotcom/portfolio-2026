@@ -1,9 +1,10 @@
-import { setupLanguage } from '/i18n.js';
+import { setupLanguage, addTranslations, translatePage } from '/i18n.js';
 import { setupSoundEffects } from '/sound-effects.js';
 import { setupPageReveal } from '/page-reveal.js';
-import { sections } from './content.js';
+import { sections, copy } from './content.js';
 import { setupReaderInteraction } from './reader-interaction.js';
 
+addTranslations(Object.values(copy).map(({ en, ru }) => [en, ru]));
 setupSoundEffects(document.querySelector('.sound'));
 
 const tabs = [...document.querySelectorAll('[role=tab]')];
@@ -15,9 +16,11 @@ function selectTab(tab) {
     item.tabIndex = selected ? 0 : -1;
   }
   panel.setAttribute('aria-labelledby', tab.id);
-  document.querySelector('#case-heading').textContent = tab.textContent;
+  document.querySelector('#case-heading').textContent = tab.dataset.tab === 'process' ? copy.processHeading.en : tab.textContent;
   document.querySelector('#case-description').textContent = sections[tab.dataset.tab];
-  panel.style.setProperty('--description-height', `${{ context:177, process:255, result:138 }[tab.dataset.tab]}px`);
+  document.querySelector('.case-task').hidden = tab.dataset.tab !== 'context';
+  document.querySelector('.case-results').hidden = tab.dataset.tab !== 'result';
+  translatePage();
 }
 for (const tab of tabs) {
   tab.addEventListener('click', () => selectTab(tab));
@@ -50,4 +53,5 @@ cart.addEventListener('click', thankReader);
 cart.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') thankReader(); });
 setupPageReveal();
 
+selectTab(tabs[0]);
 setupLanguage();

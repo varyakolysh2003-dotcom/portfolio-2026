@@ -1,3 +1,5 @@
+:root { --text-gap:4px; --content-gap:8px }
+
 @font-face {
   font-family:Geist;
   src:url('./fonts/Geist-VariableFont_wght.ttf') format('truetype');
@@ -103,7 +105,7 @@ button:focus-visible,a:focus-visible {
 .bio-section {
   display:flex;
   flex-direction:column;
-  gap:8px
+  gap:var(--text-gap)
 }
 h1,h2 {
   font-size:12px;
@@ -116,7 +118,6 @@ h1,h2 {
   font-size:14px;
   line-height:19.6px;
   letter-spacing:-.14px;
-  min-height:59px;
   padding-bottom:.685px;
   box-sizing:content-box
 }
@@ -410,9 +411,6 @@ figcaption {
     flex-basis:260px;
     width:260px
   }
-  .body-copy {
-    min-height:0
-  }
   
 }
 
@@ -440,9 +438,6 @@ figcaption {
   }
   .middle-row {
     row-gap:56px
-  }
-  .body-copy {
-    min-height:59px
   }
   .desktop-copy {
     display:none
