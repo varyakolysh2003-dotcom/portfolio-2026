@@ -8,8 +8,11 @@
 .case-results dl { margin:0; display:flex; flex-direction:column; gap:8px }
 .case-results dl div { display:flex; align-items:baseline; justify-content:space-between; gap:12px }
 .case-results dt { text-decoration:underline; text-decoration-color:#9f9f9f; text-underline-offset:5px }
-.case-results dd { margin:0; flex-shrink:0; color:transparent; background-image:linear-gradient(90deg,#2cbaf9,#918fff 50.476%,#2cbaf9); background-clip:text; -webkit-background-clip:text }
-.case-metric { width:fit-content; max-width:100%; font-size:14px; line-height:19.6px; letter-spacing:-.14px; font-weight:500; color:transparent; background-clip:text; -webkit-background-clip:text; background-image:linear-gradient(90deg,#00a7f2,#918fff 50.476%,#00a7f2) }
+.case-results dd { font-size:12px; margin:0; flex-shrink:0; color:transparent; background-image:linear-gradient(90deg,#2cbaf9,#918fff 50.476%,#2cbaf9); background-clip:text; -webkit-background-clip:text }
+.case-metric { width:fit-content; max-width:100%; font-size:12px; line-height:19.6px; letter-spacing:-.14px; font-weight:500; color:transparent; background-clip:text; -webkit-background-clip:text; background-image:linear-gradient(90deg,#00a7f2,#918fff 50.476%,#00a7f2) }
+.case-finding { display:flex; flex-direction:column; gap:8px }
+.case-finding.compact { gap:4px }
+.case-finding.mobile-caption { display:none }
 .case-metric.green { background-image:linear-gradient(90deg,#58c500 31.707%,#4ac3ff 51.393%,#58c500 132.93%) }
 .case-tabs { width:100% }
 .case-tabs button { flex:1; min-width:0; height:36px; border:0; border-radius:30px; background:transparent; padding:0 10px; color:#9f9f9f; cursor:pointer; line-height:19.6px; letter-spacing:-.14px }
@@ -41,7 +44,7 @@
  .case-media { aspect-ratio:311 / var(--mobile-height) }
  .case-caption { gap:var(--text-gap) }
  .desktop-caption { display:none }
- .mobile-caption { display:flex }
+ .mobile-caption,.case-finding.mobile-caption { display:flex }
  .case-article-1 .case-media img { width:114.79%; height:101.03%; left:-7.4%; top:-.54%; object-fit:fill }
  .case-article-2 .case-media img { width:114.79%; height:101.48%; left:-7.4%; top:-.29%; object-fit:fill }
  .case-article-3 .case-media img { width:157.32%; height:100.16%; left:-28.66%; top:-.08% }

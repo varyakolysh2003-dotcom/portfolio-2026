@@ -9,8 +9,8 @@ export const copy = {
     "ru": "После заказа с новыми людьми приложение предлагает сразу создать постоянную корзину для совместных покупок, чтобы ускорить создание группы вручную"
   },
   "CSAT68": {
-    "en": "CSAT in testing: 68% ↑",
-    "ru": "CSAT по тестированию составил: 68% ↑"
+    "en": "CSAT in testing: 68%",
+    "ru": "CSAT по тестированию составил: 68%"
   },
   "processHeading": {
     "en": "Customer research and competitor analysis",
@@ -57,40 +57,80 @@ export const copy = {
     "ru": "Пользователи могут получать дополнительные скидки и бонусы через выполнение заданий в корзинах."
   },
   "OCR96": {
-    "en": "OCR in testing: 96% ↑",
-    "ru": "OCR по тестированию составил: 96% ↑"
+    "en": "OCR in testing: 96%",
+    "ru": "OCR по тестированию составил: 96%"
   },
   "OCR98": {
-    "en": "OCR in testing: 98% ↑",
-    "ru": "OCR по тестированию составил: 98% ↑"
+    "en": "Expectation Match Rate: 10% → 98% ↑",
+    "ru": "Expectation Match Rate: 10% → 98% ↑"
   },
   "Expectation Match Rate70": {
-    "en": "Expectation Match Rate in testing: 70% ↑",
-    "ru": "Expectation Match Rate по тестированию составил: 70% ↑"
+    "en": "Expectation Match Rate in testing: 70%",
+    "ru": "Expectation Match Rate по тестированию составил: 70%"
   },
   "CSAT84": {
-    "en": "CSAT in testing: 84% ↑",
-    "ru": "CSAT по тестированию составил: 84% ↑"
+    "en": "CSAT in testing: 84%",
+    "ru": "CSAT по тестированию составил: 84%"
   },
   "CSAT100": {
-    "en": "CSAT in testing: 100% ↑",
-    "ru": "CSAT по тестированию составил: 100% ↑"
+    "en": "CSAT in testing: 100%",
+    "ru": "CSAT по тестированию составил: 100%"
   },
   "CSAT94": {
-    "en": "CSAT in testing: 94% ↑",
-    "ru": "CSAT по тестированию составил: 94% ↑"
+    "en": "CSAT in testing: 94%",
+    "ru": "CSAT по тестированию составил: 94%"
   },
   "CSAT83": {
-    "en": "CSAT in testing: 83% ↑",
-    "ru": "CSAT по тестированию составил: 83% ↑"
+    "en": "CSAT in testing: 83%",
+    "ru": "CSAT по тестированию составил: 83%"
   },
   "CSAT70": {
-    "en": "CSAT in testing: 70% ↑",
-    "ru": "CSAT по тестированию составил: 70% ↑"
+    "en": "CSAT in testing: 70%",
+    "ru": "CSAT по тестированию составил: 70%"
   },
   "CSAT69": {
-    "en": "CSAT in testing: 69% ↑",
-    "ru": "CSAT по тестированию составил: 69% ↑"
+    "en": "CSAT in testing: 68%",
+    "ru": "CSAT по тестированию составил: 68%"
+  },
+  "onboardingFinding": {
+    "en": "18 out of 20 respondents said the onboarding clearly highlighted and explained the new feature.",
+    "ru": "18 из 20 респондентов отметили, что онбординг понятно объясняет новую функцию и акцентирует на ней внимание."
+  },
+  "entryFinding": {
+    "en": "19 out of 20 respondents said the icon now matched their expectations.",
+    "ru": "19 из 20 респондентов отметили, что теперь ассоциация с иконкой соответствует их ожиданиям."
+  },
+  "paymentFinding": {
+    "en": "16 out of 20 respondents appreciated being able to choose the payment type in the cart and group settings. They found this entry point logical and clear. Only some tried to manage payment through their profile settings.",
+    "ru": "16 из 20 респондентов оценили возможность настраивать тип оплаты в настройках корзины и групп: эта точка входа показалась им логичной и понятной. Только часть пыталась разобраться с оплатой через настройки профиля."
+  },
+  "addressFinding": {
+    "en": "18 out of 20 respondents found the solution convenient for address issues or accidental taps. However, automatic synchronization with the organizer’s address still needs to be considered.",
+    "ru": "18 из 20 респондентов отметили, что решение удобно в случае проблем с адресом или случайного нажатия. Но нужно продумать вариант автоматической синхронизации с адресом создателя."
+  },
+  "confirmationFinding": {
+    "en": "20 out of 20 respondents said the solution was very useful when a family member, partner, or friend forgot to add something they needed.",
+    "ru": "20 из 20 респондентов отметили, что решение очень полезно, если кто-то из семьи, партнёров или друзей забыл добавить нужные товары."
+  },
+  "retryFinding": {
+    "en": "19 out of 20 respondents appreciated not having to recreate the cart each time or switch between apps.",
+    "ru": "19 из 20 респондентов оценили возможность не создавать каждый раз корзину заново и не переключаться между приложениями."
+  },
+  "offersFinding": {
+    "en": "17 out of 20 respondents felt the solution offered financial benefits. The others said they were satisfied with store loyalty cards and their product discounts.",
+    "ru": "17 из 20 респондентов сказали, что решение кажется им финансово выгодным. Остальные отметили, что их вполне устраивают бонусные карты магазинов со скидками на продукты."
+  },
+  "groupsFinding": {
+    "en": "17 out of 20 respondents liked the option to create permanent groups, but felt they could also manage with temporary carts for one-time orders.",
+    "ru": "17 из 20 респондентов понравилась возможность создавать постоянные группы, но в целом они могли бы обойтись временными корзинами для разовых заказов."
+  },
+  "autoCartFinding": {
+    "en": "16 out of 20 respondents appreciated the option to automatically create a cart after a one-time order, but said the prompt would become annoying if it appeared constantly.",
+    "ru": "16 из 20 респондентов оценили возможность автоматически создать корзину после разового заказа, но отметили, что постоянное появление такой плашки начнёт их раздражать."
+  },
+  "tasksFinding": {
+    "en": "16 out of 20 respondents found it interesting to offer different tasks for different cart segments. The others felt that small bonuses were not enough to motivate them to complete tasks deliberately, so the motivation needs to be clearer or the rewards more valuable.",
+    "ru": "16 из 20 респондентов сочли интересным разнообразить список заданий для разных сегментов корзин. Остальные отметили, что небольшой бонус недостаточно мотивирует их целенаправленно выполнять задания. Поэтому нужно яснее обозначить мотивацию или повысить ценность бонусов за выполнение заданий."
   }
 };
 
