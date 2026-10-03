@@ -9,8 +9,8 @@ export const copy = {
     "ru": "После заказа с новыми людьми приложение предлагает сразу создать постоянную корзину для совместных покупок, чтобы ускорить создание группы вручную"
   },
   "CSAT68": {
-    "en": "CSAT in testing: 68%",
-    "ru": "CSAT по тестированию составил: 68%"
+    "en": "CSAT in testing: 80%",
+    "ru": "CSAT по тестированию составил: 80%"
   },
   "processHeading": {
     "en": "Customer research and competitor analysis",
@@ -57,40 +57,40 @@ export const copy = {
     "ru": "Пользователи могут получать дополнительные скидки и бонусы через выполнение заданий в корзинах."
   },
   "OCR96": {
-    "en": "OCR in testing: 96%",
-    "ru": "OCR по тестированию составил: 96%"
+    "en": "OCR in testing: 90%",
+    "ru": "OCR по тестированию составил: 90%"
   },
   "OCR98": {
-    "en": "Expectation Match Rate: 10% → 98% ↑",
-    "ru": "Expectation Match Rate: 10% → 98% ↑"
+    "en": "Expectation Match Rate: 10% → 100% ↑",
+    "ru": "Expectation Match Rate: 10% → 100% ↑"
   },
   "Expectation Match Rate70": {
-    "en": "Expectation Match Rate in testing: 70%",
-    "ru": "Expectation Match Rate по тестированию составил: 70%"
+    "en": "Expectation Match Rate in testing: 80%",
+    "ru": "Expectation Match Rate по тестированию составил: 80%"
   },
   "CSAT84": {
-    "en": "CSAT in testing: 84%",
-    "ru": "CSAT по тестированию составил: 84%"
+    "en": "CSAT in testing: 90%",
+    "ru": "CSAT по тестированию составил: 90%"
   },
   "CSAT100": {
     "en": "CSAT in testing: 100%",
     "ru": "CSAT по тестированию составил: 100%"
   },
   "CSAT94": {
-    "en": "CSAT in testing: 94%",
-    "ru": "CSAT по тестированию составил: 94%"
+    "en": "CSAT in testing: 95%",
+    "ru": "CSAT по тестированию составил: 95%"
   },
   "CSAT83": {
-    "en": "CSAT in testing: 83%",
-    "ru": "CSAT по тестированию составил: 83%"
+    "en": "CSAT in testing: 85%",
+    "ru": "CSAT по тестированию составил: 85%"
   },
   "CSAT70": {
-    "en": "CSAT in testing: 70%",
-    "ru": "CSAT по тестированию составил: 70%"
+    "en": "CSAT in testing: 85%",
+    "ru": "CSAT по тестированию составил: 85%"
   },
   "CSAT69": {
-    "en": "CSAT in testing: 68%",
-    "ru": "CSAT по тестированию составил: 68%"
+    "en": "CSAT in testing: 60%",
+    "ru": "CSAT по тестированию составил: 60%"
   },
   "onboardingFinding": {
     "en": "9 out of 10 respondents said the onboarding clearly highlighted and explained the new feature.",
@@ -129,8 +129,8 @@ export const copy = {
     "ru": "16 из 20 респондентов оценили возможность автоматически создать корзину после разового заказа, но отметили, что постоянное появление такой плашки начнёт их раздражать."
   },
   "tasksFinding": {
-    "en": "16 out of 20 respondents found it interesting to offer different tasks for different cart segments. The others felt that small bonuses were not enough to motivate them to complete tasks deliberately, so the motivation needs to be clearer or the rewards more valuable.",
-    "ru": "16 из 20 респондентов сочли интересным разнообразить список заданий для разных сегментов корзин. Остальные отметили, что небольшой бонус недостаточно мотивирует их целенаправленно выполнять задания. Поэтому нужно яснее обозначить мотивацию или повысить ценность бонусов за выполнение заданий."
+    "en": "12 out of 20 respondents found it interesting to offer different tasks for different cart segments. The others felt that small bonuses were not enough to motivate them to complete tasks deliberately, so the motivation needs to be clearer or the rewards more valuable.",
+    "ru": "12 из 20 респондентов сочли интересным разнообразить список заданий для разных сегментов корзин. Остальные отметили, что небольшой бонус недостаточно мотивирует их целенаправленно выполнять задания. Поэтому нужно яснее обозначить мотивацию или повысить ценность бонусов за выполнение заданий."
   },
   "onboardingDescription": {
     "en": "The Share icon is unclear without context. Interviews revealed that some users did not know they could share a link to items in Lavka. I decided to split the focus group to test the solution. I guided 10 people through onboarding that introduces the new scenario and expands cart sharing to include shared orders.",
