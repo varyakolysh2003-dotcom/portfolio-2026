@@ -19,7 +19,7 @@ await mkdir('dist/yandex-lavka', { recursive: true });
 for (const file of ['index.html', 'case.css', 'case.js', 'content.js', 'reader-interaction.js']) await cp(`Yandex Lavka/${file}`, `dist/yandex-lavka/${file}`);
 console.log('Built portfolio in dist/');
 await mkdir('dist/t-bank',{recursive:true});
-for (const file of ['index.html','case.css','case.js','decrypt.js','spoiler.js','text-spoiler.js','text-particles.js']) await cp(`T-Bank/${file}`, `dist/t-bank/${file}`);
+for (const file of ['index.html','case.css','case.js','decrypt.js','lazy-media.js','spoiler.js','text-spoiler.js','text-particles.js']) await cp(`T-Bank/${file}`, `dist/t-bank/${file}`);
 
 await mkdir('dist/t-bank/encrypted',{recursive:true});
 for(const name of await readdir('T-Bank/encrypted')) if (/^(manifest|\d+)\.json$/.test(name)) await cp(`T-Bank/encrypted/${name}`,`dist/t-bank/encrypted/${name}`);

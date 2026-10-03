@@ -71,6 +71,29 @@ try {
  await page.goto(url);await page.waitForSelector('.dots');
  assert.equal(await page.locator('.bank-tabs').isVisible(),false);
  async function submit(value){await page.locator('#case-password').fill(value);await page.locator('#case-password').press('Enter');await page.waitForFunction(()=>!document.querySelector('#password-form').hasAttribute('aria-busy'));}
+ const apiChecks=await page.evaluate(async({password})=>{
+  const {decryptCase}=await import('./decrypt.js');
+  const originalFetch=window.fetch,originalCreate=URL.createObjectURL,originalRevoke=URL.revokeObjectURL;
+  const fetched=[],created=[],revoked=[];
+  window.fetch=(...args)=>{fetched.push(String(args[0]));return originalFetch(...args)};
+  URL.createObjectURL=blob=>{const url=originalCreate(blob);created.push(url);return url};
+  URL.revokeObjectURL=url=>{revoked.push(url);originalRevoke(url)};
+  try {
+   const result=await decryptCase(password);
+   const contentOnly=fetched.length===2;
+   window.testMediaFiles=result.media;
+   const name=Object.keys(result.media)[0];
+   const urls=await Promise.all([result.mediaUrl(name),result.mediaUrl(name)]);
+   await result.mediaUrl(name);
+   const cached=fetched.length===3 && urls[0]===urls[1] && created.length===1;
+   const pending=result.mediaUrl(Object.keys(result.media)[1]);
+   result.dispose();
+   const cancelled=await pending.then(()=>false,()=>true);
+   const rejectsDisposed=await result.mediaUrl(name).then(()=>false,()=>true);
+   return {contentOnly,cached,cancelled,rejectsDisposed,revoked:revoked.length===created.length};
+  } finally {window.fetch=originalFetch;URL.createObjectURL=originalCreate;URL.revokeObjectURL=originalRevoke}
+ },{password});
+ assert.ok(Object.values(apiChecks).every(Boolean),JSON.stringify(apiChecks));
  await submit('wrong');assert.equal(await page.locator('.spoiler--open').count(),0);assert.equal(await page.locator('#case-password').inputValue(),'');
  const contentPath=join(temp,'dist/t-bank/encrypted',manifest.content);
  const originalEnvelope=await readFile(contentPath,'utf8');
@@ -78,21 +101,60 @@ try {
  await writeFile(contentPath,JSON.stringify(corrupt));
  await submit(password);assert.equal(await page.locator('.spoiler--open').count(),0);
  await writeFile(contentPath,originalEnvelope);
- await submit(password);assert.equal(await page.locator('#password-form').isVisible(),false);assert.equal(await page.locator('.spoiler--open').count(),16);
+ // Content authentication must finish while media responses are deliberately held.
+ const requestStart=requests.length;
+ const held=[];
+ let releaseMedia;
+ const mediaGate=new Promise(resolve=>{releaseMedia=resolve;});
+ await page.route('**/encrypted/*.json',async route=>{
+  if(route.request().url().endsWith('/manifest.json') || route.request().url().endsWith('/'+manifest.content))return route.continue();
+  held.push(route);
+  await mediaGate;
+  await route.continue();
+ });
+ await submit(password);assert.equal(await page.locator('#password-form').isVisible(),false);assert.equal(await page.locator('.text-spoiler.spoiler--open').count(),10);
  assert.ok((await page.locator('.bank-intro').innerText()).includes(copy.profile.result));
+ await page.waitForFunction(()=>document.querySelector('.bank-media[aria-busy=true]'));
+ assert.equal(await page.locator('#main-cases').locator('*').count(),0);
+ assert.ok(held.length<protectedFiles.length);
+ assert.ok(await page.locator('.bank-media:not(.spoiler--open)').count()>0);
+ releaseMedia();
+ async function loadVisibleMedia(root) {
+  for(const media of await page.locator(root+' .bank-media').all()) {
+   await media.scrollIntoViewIfNeeded();
+   await page.waitForFunction(el=>!el.hasAttribute('aria-busy') && el.classList.contains('spoiler--open'),await media.elementHandle());
+  }
+ }
+ await loadVisibleMedia('#profile-cases');
+
  for(const width of [1200,375,320,768,1024]) {
   await page.setViewportSize({width,height:900});
   await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
-  await page.evaluate(async()=>{for(const img of document.images)img.loading='eager';await Promise.all([...document.images].map(img=>img.decode()));});
+  await loadVisibleMedia('#profile-cases');
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
  }
+ const mediaFiles=await page.evaluate(()=>window.testMediaFiles);
+ const mainFiles=Object.entries(mediaFiles).filter(([name])=>name.startsWith('main')).map(([,asset])=>asset.file);
+ assert.equal(requests.slice(requestStart).some(url=>mainFiles.some(file=>url.endsWith('/encrypted/'+file))),false);
+ const beforeMain=requests.length;
+ await page.emulateMedia({reducedMotion:'reduce'});
  await page.getByRole('tab',{name:'Main 8.4',exact:true}).click();
  await page.waitForFunction(()=>!document.querySelector('#main-cases').hidden);
- await page.evaluate(async()=>{for(const img of document.images)img.loading='eager';await Promise.all([...document.images].map(img=>img.decode()));});
+ await page.waitForFunction(()=>document.querySelector('#main-cases .bank-media.spoiler--open'));
+ const requestedMain=requests.slice(beforeMain).filter(url=>mainFiles.some(file=>url.endsWith('/encrypted/'+file)));
+ assert.ok(requestedMain.length>0 && requestedMain.length<mainFiles.length);
+ assert.equal(await page.locator('video').getAttribute('src'),null);
+ await loadVisibleMedia('#main-cases');
+ assert.equal(await page.locator('video').getAttribute('src'),null);
+ assert.equal(await page.locator('video').evaluate(video=>video.paused),true);
+ await page.emulateMedia({reducedMotion:'no-preference'});
  await page.locator('video').scrollIntoViewIfNeeded();
  await page.waitForFunction(()=>document.querySelector('video')?.readyState>=2);
  assert.ok((await page.locator('.bank-intro').innerText()).includes(copy.main.result));
  await page.getByRole('tab',{name:'Main 8.4',exact:true}).press('ArrowLeft');assert.equal(await page.locator('#profile-cases').isVisible(),true);
+ assert.equal(await page.locator('video').evaluate(video=>video.paused),true);
+ const mediaRequests=requests.slice(requestStart).filter(url=>/encrypted\/\d+\.json$/.test(url) && !url.endsWith('/'+manifest.content));
+ assert.equal(new Set(mediaRequests).size,mediaRequests.length);
  assert.equal((await page.context().cookies()).some(c=>c.name==='tbank_session'),false);
  assert.equal(requests.some(url=>url.includes('/api/tbank/')),false);
  assert.equal(requests.some(url=>url.includes(base+base)),false);
@@ -100,15 +162,15 @@ try {
  await page.reload();await page.waitForSelector('.dots');assert.equal(await page.locator('.spoiler--open').count(),0);
  await page.goto(url+'?lang=ru');await submit(password);
  assert.equal(await page.locator('html').getAttribute('lang'),'ru');
- assert.equal(await page.locator('.desktop-caption p').first().innerText(),(await import(new URL('../.private/tbank/translations.mjs',import.meta.url))).translations(copy).find(([en])=>en===copy.profile.captions[0])[1]);
+ assert.equal((await page.locator('.desktop-caption p').first().innerText()).replace(/\s+/g,' '),(await import(new URL('../.private/tbank/translations.mjs',import.meta.url))).translations(copy).find(([en])=>en===copy.profile.captions[0])[1].replace(/\s+/g,' '));
  await page.setViewportSize({width:375,height:812});
  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
- await page.evaluate(async()=>{for(const img of document.images)img.loading='eager';await Promise.all([...document.images].map(img=>img.decode()));});
+ await loadVisibleMedia('#profile-cases');
  await page.waitForFunction(()=>[...document.querySelectorAll('.blur-block')].every(el=>getComputedStyle(el).opacity==='0'));
  await mkdir('.private/tbank/verification',{recursive:true});
  await page.screenshot({path:'.private/tbank/verification/encrypted-mobile.png',fullPage:true});
  assert.deepEqual(errors,[]);
- const report={staticSubpath:true,noBackendRequests:true,buildWithoutPrivateFilesOrPassword:true,missingBundleRejected:true,wrongPasswordRejected:true,tamperedCiphertextRejected:true,profileAndMainTabs:true,imagesDecoded:true,videoLoaded:true,reloadLocks:true,russianTranslations:true,responsiveWidths:[1200,375,320,768,1024],plaintextScanPassed:true,errors};
+ const report={lazyApi:apiChecks,unlockWithMediaBlocked:true,mainDeferred:true,viewportOnly:true,noRepeatedMediaRequests:true,reducedMotion:true,hiddenVideoPaused:true,staticSubpath:true,noBackendRequests:true,buildWithoutPrivateFilesOrPassword:true,missingBundleRejected:true,wrongPasswordRejected:true,tamperedCiphertextRejected:true,profileAndMainTabs:true,imagesDecoded:true,videoLoaded:true,reloadLocks:true,russianTranslations:true,responsiveWidths:[1200,375,320,768,1024],plaintextScanPassed:true,errors};
  await writeFile('verification/tbank-checks.json',JSON.stringify(report,null,2)+'\n');console.log(report);
  if(process.env.TBANK_VERIFY_HOLD)await new Promise(resolve=>setTimeout(resolve,45000));
 } finally {await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));await rm(temp,{recursive:true,force:true});}

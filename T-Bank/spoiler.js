@@ -24,30 +24,20 @@ export function setupSpoilers(openPassword) {
     dots.append(fragment);spoiler.append(blur,dots);observer.observe(spoiler);
     spoiler.querySelector('.spoiler-trigger').addEventListener('click',openPassword);
   }
-  return async function reveal(mediaUrl) {
-    await Promise.all(spoilers.map(async spoiler=>{
-      if(spoiler.classList.contains('spoiler--open'))return;
-      if(spoiler.classList.contains('text-spoiler'))return;
-      let picture=spoiler.querySelector('picture');
-      if(!picture) {
-        picture=document.createElement('picture');
-        const source=document.createElement('source');source.media='(max-width:963px)';source.srcset=mediaUrl(spoiler.dataset.mobile);
-        source.width=311;source.height=Number(spoiler.style.getPropertyValue('--mobile-height'));
-        const img=document.createElement('img');img.alt='T-Bank profile interface';img.src=mediaUrl(spoiler.dataset.desktop);
-        img.width=600;img.height=Number(spoiler.style.getPropertyValue('--media-height'));
-        img.decoding='async';
-        img.loading=spoiler.getBoundingClientRect().top<innerHeight?'eager':'lazy';
-        if(img.loading==='eager')img.fetchPriority='high';
-        picture.append(source,img);spoiler.prepend(picture);
-      }
-      // Waiting for an offscreen lazy image would block password submission
-      // until the visitor scrolls to every image in the case.
-      const image=picture.querySelector('img');
-      if(image.loading!=='lazy')await image.decode();
-      spoiler.querySelector('.spoiler-preview')?.remove();
-      spoiler.classList.add('spoiler--open');
-      spoiler.querySelector('.spoiler-trigger')?.remove();observer.unobserve(spoiler);
-    }));
+  return function reveal() {
+    for (const spoiler of spoilers.filter(item => !item.classList.contains('text-spoiler'))) {
+      const picture = document.createElement('picture');
+      const source = document.createElement('source');
+      source.media = '(max-width:963px)';
+      source.dataset.srcset = `tbank-media:${spoiler.dataset.mobile}`;
+      const img = document.createElement('img');
+      img.alt = 'T-Bank profile interface';
+      img.dataset.src = `tbank-media:${spoiler.dataset.desktop}`;
+      img.decoding = 'async';
+      picture.append(source, img);
+      spoiler.prepend(picture);
+      spoiler.querySelector('.spoiler-trigger')?.remove();
+    }
     for(const spoiler of spoilers.filter(item=>item.classList.contains('text-spoiler'))) {
       textEffects.get(spoiler)?.();
       for(const child of spoiler.querySelectorAll('h2,p'))child.removeAttribute('aria-hidden');

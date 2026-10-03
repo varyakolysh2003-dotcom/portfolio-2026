@@ -1,4 +1,17 @@
 {
+  "lazyApi": {
+    "contentOnly": true,
+    "cached": true,
+    "cancelled": true,
+    "rejectsDisposed": true,
+    "revoked": true
+  },
+  "unlockWithMediaBlocked": true,
+  "mainDeferred": true,
+  "viewportOnly": true,
+  "noRepeatedMediaRequests": true,
+  "reducedMotion": true,
+  "hiddenVideoPaused": true,
   "staticSubpath": true,
   "noBackendRequests": true,
   "buildWithoutPrivateFilesOrPassword": true,

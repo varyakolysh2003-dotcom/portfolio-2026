@@ -19,12 +19,30 @@ export async function decryptCase(password) {
   }
   const content = JSON.parse(new TextDecoder().decode(await decrypt(manifest.content)));
   const urls = new Map();
-  const dispose = () => { for (const url of urls.values()) URL.revokeObjectURL(url); urls.clear(); };
-  try {
-    // Finish authentication and decryption before revealing any page content.
-    for (const [name, asset] of Object.entries(content.media)) {
-      urls.set(name, URL.createObjectURL(new Blob([await decrypt(asset.file)], { type: asset.type })));
-    }
-    return { ...content, mediaUrl(name) { if (!urls.has(name)) throw new Error('Missing case media'); return urls.get(name); }, dispose };
-  } catch (error) { dispose(); throw error; }
+  const pending = new Map();
+  let disposed = false;
+  function dispose() {
+    disposed = true;
+    for (const url of urls.values()) URL.revokeObjectURL(url);
+    urls.clear();
+    pending.clear();
+  }
+  async function mediaUrl(name) {
+    if (disposed) throw new Error('Case disposed');
+    if (urls.has(name)) return urls.get(name);
+    if (pending.has(name)) return pending.get(name);
+    if (!Object.hasOwn(content.media, name)) throw new Error('Missing case media');
+    const asset = content.media[name];
+    const request = (async () => {
+      const bytes = await decrypt(asset.file);
+      if (disposed) throw new Error('Case disposed');
+      const url = URL.createObjectURL(new Blob([bytes], { type: asset.type }));
+      urls.set(name, url);
+      return url;
+    })();
+    pending.set(name, request);
+    try { return await request; }
+    finally { pending.delete(name); }
+  }
+  return { ...content, mediaUrl, dispose };
 }

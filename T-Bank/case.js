@@ -1,7 +1,8 @@
 import { decryptCase } from './decrypt.js';
 import { setupLanguage, translatePage, addTranslations } from '../i18n.js';
 import { setupSoundEffects } from '../sound-effects.js';
-import { setupPageReveal, setupVideoLoading } from '../page-reveal.js';
+import { setupPageReveal } from '../page-reveal.js';
+import { setupLazyMedia } from './lazy-media.js';
 import { setupSpoilers } from './spoiler.js';
 
 setupSoundEffects(document.querySelector('.sound'));
@@ -14,7 +15,7 @@ const tabs=[...tablist.querySelectorAll('[data-case]')];
 const status=document.querySelector('#page-status');
 let authorized=false;
 let busy=false;
-let loadingMain;
+const mediaLoaders = new Map();
 let caseCopy;
 let unlockedCase;
 function updateIntro(name) {
@@ -33,20 +34,20 @@ function openPassword() {
 const reveal=setupSpoilers(openPassword);
 form.addEventListener('click',openPassword);
 
-async function unlock() {
+function unlock() {
   caseCopy=unlockedCase.copy;
   addTranslations(caseCopy.translations || []);
   document.querySelectorAll('#profile-cases .bank-article').forEach((article,index)=>{
     article.querySelectorAll('.bank-caption p').forEach(p=>{p.textContent=caseCopy.profile.captions[index];});
     article.querySelectorAll('.bank-caption h2').forEach(h=>{h.textContent='Profile settings';});
   });
-  await reveal(unlockedCase.mediaUrl);
-  setupPageReveal();
+  reveal();
   updateIntro('profile');
   authorized=true;
   access.hidden=true;tablist.hidden=false;
   document.querySelector('#profile-cases').setAttribute('aria-labelledby','tab-profile');
   translatePage();
+  mediaLoaders.set('profile', setupLazyMedia(document.querySelector('#profile-cases'), unlockedCase.mediaUrl));
 }
 form.addEventListener('submit',async event=>{
   event.preventDefault();if(busy || !input.value)return;
@@ -54,54 +55,38 @@ form.addEventListener('submit',async event=>{
   try {
     const pending=decryptCase(input.value);input.value='';
     unlockedCase=await pending;
-    await unlock();input.value='';input.blur();
+    unlock();input.value='';input.blur();
   } catch {unlockedCase?.dispose();unlockedCase=undefined;input.value='';input.blur();}
   finally {busy=false;input.readOnly=false;form.removeAttribute('aria-busy');}
 });
 
-const motion=matchMedia('(prefers-reduced-motion:reduce)');
-function updateVideos() {
-  for(const video of document.querySelectorAll('video')) {
-    if(motion.matches || video.closest('[hidden]'))video.pause();
-    else if(video.getAttribute('src'))video.play().catch(()=>{});
-  }
-}
-motion.addEventListener('change',updateVideos);
-async function selectTab(tab) {
+function selectTab(tab) {
   if(!authorized)return;
   const name=tab.dataset.case;
   if(name==='main' && !document.querySelector('#main-cases').children.length) {
-    if(!loadingMain)loadingMain=(async()=>{
-      const content=document.createElement('template');
-      content.innerHTML=unlockedCase.main;
-      for(const element of content.content.querySelectorAll('[src],[srcset],[poster]')) {
-        for(const attribute of ['src','srcset','poster']) {
-          const value=element.getAttribute(attribute);
-          if(value?.startsWith('tbank-media:'))element.setAttribute(attribute,unlockedCase.mediaUrl(value.slice('tbank-media:'.length)));
-          else if(value?.startsWith('../assets/'))element.setAttribute(attribute,new URL(value,import.meta.url).href);
-        }
+    const content=document.createElement('template');
+    content.innerHTML=unlockedCase.main;
+    for(const element of content.content.querySelectorAll('[src],[srcset],[poster]')) {
+      for(const attribute of ['src','srcset','poster']) {
+        const value=element.getAttribute(attribute);
+        if (!value) continue;
+        element.dataset[attribute]=value;
+        element.removeAttribute(attribute);
       }
-      const images=[...content.content.querySelectorAll('img')];
-      for(const [index,image] of images.entries()) {
-        image.decoding='async';
-        image.loading=index===0?'eager':'lazy';
-        if(index===0)image.fetchPriority='high';
-      }
-      for(const video of content.content.querySelectorAll('video')) {
-        video.dataset.src=video.getAttribute('src');video.removeAttribute('src');video.preload='none';
-      }
-      document.querySelector('#main-cases').replaceChildren(content.content);
-    })();
-    try {await loadingMain;}catch(problem){status.hidden=false;status.textContent=problem.message;return;}finally{loadingMain=null;}
+    }
+    for(const video of content.content.querySelectorAll('video')) {
+      video.autoplay=false;
+      video.preload='none';
+    }
+    document.querySelector('#main-cases').replaceChildren(content.content);
+    mediaLoaders.set('main', setupLazyMedia(document.querySelector('#main-cases'), unlockedCase.mediaUrl));
   }
   status.hidden=true;
   for(const item of tabs){const selected=item===tab;item.setAttribute('aria-selected',String(selected));item.tabIndex=selected?0:-1;document.querySelector(`#${item.dataset.case}-cases`).hidden=!selected;}
   updateIntro(name);
   translatePage();
-  updateVideos();
   window.scrollTo({top:0,behavior:'instant'});
-  setupPageReveal();
-  setupVideoLoading(document.querySelectorAll('#main-cases video:not([data-loading-ready])'));
+  for (const loader of mediaLoaders.values()) loader.refresh();
 }
 for(const tab of tabs) {
   tab.addEventListener('click',()=>selectTab(tab));
@@ -120,4 +105,7 @@ setupPageReveal();
 
 setupLanguage();
 
-window.addEventListener('pagehide',()=>unlockedCase?.dispose());
+window.addEventListener('pagehide',()=>{
+  for (const loader of mediaLoaders.values()) loader.dispose();
+  unlockedCase?.dispose();
+});
