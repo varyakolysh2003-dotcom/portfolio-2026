@@ -67,3 +67,5 @@
 #case-panel[data-active-tab="result"] { gap:7.095px }
 .case-results { gap:8px }
 .case-results dd.green { background-image:linear-gradient(90deg,#58c500 31.707%,#4ac3ff 51.393%,#58c500 132.93%) }
+.case-result-details { display:flex; flex-direction:column; gap:7.095px }
+.case-caption h2:not(:first-child) { margin-top:4px }

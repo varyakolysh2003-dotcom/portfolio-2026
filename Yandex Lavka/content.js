@@ -6,7 +6,7 @@ export const copy = {
   },
   "autoCartDescription": {
     "en": "After an order with new people, the app offers to create a permanent cart for shopping together, saving the time it takes to set up a group manually.",
-    "ru": "После заказа с новыми людьми приложение предлагает сразу создать постоянную корзину для совместных покупок, чтобы ускорить создание группы вручную"
+    "ru": "После заказа с новыми людьми приложение предлагает сразу создать постоянную корзину для совместных покупок, чтобы ускорить создание группы вручную."
   },
   "CSAT68": {
     "en": "CSAT in testing: 80%",
@@ -33,8 +33,8 @@ export const copy = {
     "ru": "Проработать сценарий совместной корзины в Яндекс Лавке между несколькими сегментами групп пользователей."
   },
   "resultsHeading": {
-    "en": "Testing results based on pain points",
-    "ru": "Результаты тестирования на основе болей"
+    "en": "Testing results:",
+    "ru": "Результаты тестирования:"
   },
   "csatLabel": {
     "en": "Solution CSAT",
@@ -53,8 +53,8 @@ export const copy = {
     "ru": "Чтобы не подкреплять негативный опыт по истечении времени оплаты, у организатора есть возможность разослать приглашение участникам повторно, чтобы не создавать корзину с позициями заново."
   },
   "rewards": {
-    "en": "Users can earn extra discounts and bonuses by completing tasks in their carts.",
-    "ru": "Пользователи могут получать дополнительные скидки и бонусы через выполнение заданий в корзинах."
+    "en": "We can add tasks for different cart categories to diversify the section and motivate users to place orders in permanent groups.",
+    "ru": "Мы можем добавить тип заданий под разные категории корзины, чтобы разнообразить раздел и добавить мотивацию пользователям совершать заказы в постоянных группах."
   },
   "OCR96": {
     "en": "OCR in testing: 90%",
@@ -133,12 +133,12 @@ export const copy = {
     "ru": "12 из 20 респондентов сочли интересным разнообразить список заданий для разных сегментов корзин. Остальные отметили, что небольшой бонус недостаточно мотивирует их целенаправленно выполнять задания. Поэтому нужно яснее обозначить мотивацию или повысить ценность бонусов за выполнение заданий."
   },
   "onboardingDescription": {
-    "en": "The Share icon is unclear without context. Interviews revealed that some users did not know they could share a link to items in Lavka. I decided to split the focus group to test the solution. I guided 10 people through onboarding that introduces the new scenario and expands cart sharing to include shared orders.",
-    "ru": "Иконка «Поделиться» без контекста непонятна. На интервью выяснилось, что часть пользователей не знала о возможности отправить ссылку на товары в Лавке. Я решила разделить фокус-группу для проверки решения. 10 человек я провела через онбординг, который знакомит с новым сценарием и развивает функцию отправки корзины, добавляя возможность совместных заказов."
+    "en": "If an update highlights the shared cart feature through onboarding, users will better understand the meaning of the Share icon in the app.",
+    "ru": "Если при обновлении мы подсветим фичу с совместной корзиной через онбординг, пользователям яснее станет понятно значение иконки шера в приложении."
   },
   "entryDescription": {
-    "en": "To check whether the icon conveyed the right meaning without onboarding, I asked another focus group of 10 people to do the same task: try sharing their cart.",
-    "ru": "Чтобы убедиться, что иконка вызывает правильную ассоциацию без онбординга, другую фокус-группу из 10 человек я попросила сделать всё то же самое — попробовать поделиться своей корзиной."
+    "en": "To check that the icon conveyed the right meaning without mandatory onboarding, I asked the same focus group to complete the flow with and without onboarding. Users’ expectations were confirmed, and the Share icon generated more interest than in the as-is experience.",
+    "ru": "Чтобы убедиться, что иконка вызывает правильную ассоциацию без обязательного присутствия онбординга, я попросила всё ту же фокус-группу пройти сценарий с онбордингом и без. В результате ожидания пользователей подтвердились и иконка шера вызвала больший интерес, чем в ситуации as is."
   },
   "painHeading": {
     "en": "Pain points from as-is testing",
@@ -165,8 +165,8 @@ export const copy = {
     "ru": "Сформировать гипотезы и JTBD, изучить рынок конкурентов с похожей механикой и провести качественное тестирование для сравнения As is и to be."
   },
   "resultHeading": {
-    "en": "To-be result",
-    "ru": "Результат to be"
+    "en": "To be",
+    "ru": "To be"
   },
   "resultDetails": {
     "en": "Designed 350+ screens covering cart participant and organizer flows. Tested each iteration of the hypotheses using an interactive prototype.",
@@ -175,6 +175,138 @@ export const copy = {
   "repeatLabel": {
     "en": "Repeat-use intent",
     "ru": "Repeat-use intent"
+  },
+  "onboardingAsIsTitle": {
+    "en": "As is",
+    "ru": "As is"
+  },
+  "onboardingAsIs": {
+    "en": "The Share icon is unclear without context. Interviews and testing in Lavka revealed that some users did not know they could share a link to items, and the icon led them to make incorrect assumptions about the next steps.",
+    "ru": "Иконка «Поделиться» без контекста непонятна. На интервью и тестировании внутри Лавки выяснилось, что часть пользователей не знала о возможности отправить ссылку на товары, а её ассоциации вызывали неправильные догадки о дальнейшем сценарии."
+  },
+  "onboardingDescriptionTitle": {
+    "en": "To be: Feature Onboarding",
+    "ru": "To be: Знакомство с функцией"
+  },
+  "entryDescriptionTitle": {
+    "en": "To be: Scenario Entry Point",
+    "ru": "To be: Точка входа в сценарий"
+  },
+  "invitationTitle": {
+    "en": "To be: Invitation to Join Cart",
+    "ru": "To be: Приглашение в общую корзину"
+  },
+  "invitation": {
+    "en": "Users can accept or decline invitations from other users to join a shared cart.",
+    "ru": "Пользователи могут принимать или отклонять запрос на присоединение к совместной корзине от других пользователей."
+  },
+  "paymentHypothesisTitle": {
+    "en": "To be: Payment Method Selection",
+    "ru": "To be: Выбор способа оплаты"
+  },
+  "paymentHypothesis": {
+    "en": "After studying respondents’ pain points, I hypothesized that choosing a payment method and explicitly naming the payment flow in the CTA would reduce uncertainty in shared orders and improve payment-flow completion.",
+    "ru": "После изучения болей респондентов я предположила, что выбор способа оплаты и явное обозначение платёжного сценария в CTA снизят неопределённость при совместном заказе и повысят успешность прохождения сценария оплаты."
+  },
+  "paymentTestTitle": {
+    "en": "To be: Prototype test result",
+    "ru": "To be: Результат тестирования прототипа"
+  },
+  "paymentTest": {
+    "en": "Users noticed the payment CTA change when toggling the setting, and the hint icon with its tooltip reduced confusion about how split payments work.",
+    "ru": "Пользователи действительно увидели разницу в CTA кнопке оплаты при переключении toggle настройки, а иконка hint с всплывающей подсказкой снизила вероятность непонимания работы разделения оплаты."
+  },
+  "readinessTitle": {
+    "en": "To be: Screen States for Invited User with Joint Payment",
+    "ru": "To be: Состояния экранов приглашённого участника при совместной оплате"
+  },
+  "readiness": {
+    "en": "Participants mark their order as ready themselves so they can collect and check all their items before the organizer pays. This reduces the risk of mistakes and missing items when paying for the order.",
+    "ru": "Пользователь сам отмечает готовность заказа, чтобы успеть собрать и проверить все свои позиции перед оплатой хостом. Таким образом снижаем вероятность ошибки и недостающих позиций при оплате заказа."
+  },
+  "addressDescriptionTitle": {
+    "en": "To be: Address Verification Before Payment",
+    "ru": "To be: Проверка адреса перед оплатой"
+  },
+  "addressDescription": {
+    "en": "The solution checks that the shared order goes to the right address, avoiding a situation where participants build a cart together but the order goes separately or to the wrong place. It also preserves the option to order separately.",
+    "ru": "Решение помогает убедиться, что общий заказ оформляется на правильный адрес, и избежать ситуации, когда участники собрали корзину вместе, но заказ уходит отдельно или не туда, и при этом сохранить гибкость, если человек захочет оформить заказ отдельно от остальных."
+  },
+  "confirmationAsIsTitle": {
+    "en": "As is",
+    "ru": "As is"
+  },
+  "confirmationAsIs": {
+    "en": "Lavka already lets users add items to an order until it enters the picking stage.",
+    "ru": "В Лавке уже есть возможность добавлять позиции в заказ до момента, пока он не перейдёт в статус сборки."
+  },
+  "confirmationDescriptionTitle": {
+    "en": "To be: Order Confirmation After Full Payment",
+    "ru": "To be: Подтверждение заказа после полной оплаты"
+  },
+  "confirmationDescription": {
+    "en": "In shared carts, this feature will address one of the core problems in organizing group purchases across different user segments.",
+    "ru": "В совместных корзинах эта функция закроет одну из core problem в организации совместных покупок между разными сегментами пользователей."
+  },
+  "groupsAsIsTitle": {
+    "en": "As is",
+    "ru": "As is"
+  },
+  "groupsAsIs": {
+    "en": "Users lack a shared space for long-term groups and carts, making organization and communication outside the app more difficult.",
+    "ru": "У пользователей нет единого пространства для формирования групп и корзин в долгосрочном использовании, это усложняет организацию и коммуникацию вне приложения."
+  },
+  "groupsDescriptionTitle": {
+    "en": "To be: Creating Permanent Groups",
+    "ru": "To be: Создание постоянных групп"
+  },
+  "groupsDescription": {
+    "en": "Group cart creation. Users can form permanent groups for different categories, saving on delivery and time collecting participants.",
+    "ru": "Пользователи могут создавать постоянные группы для разных категорий заказов, экономя на доставке и времени на сбор участников."
+  },
+  "autoCartDescriptionTitle": {
+    "en": "To be: Automatic Cart Creation",
+    "ru": "To be: Автосоздание корзины"
+  },
+  "autoCartTestTitle": {
+    "en": "To be: Prototype test result",
+    "ru": "To be: Результат тестирования прототипа"
+  },
+  "autoCartTest": {
+    "en": "Some respondents said that a prompt to create a permanent cart after every one-time order would become annoying.",
+    "ru": "Часть респондентов озвучила мысль, что если предложение создать постоянную корзину будет всплывать после каждого единоразового заказа — это начнёт вызывать раздражение."
+  },
+  "tasksAsIsTitle": {
+    "en": "As is",
+    "ru": "As is"
+  },
+  "tasksAsIs": {
+    "en": "Lavka’s current tasks section has almost no tasks and is consistently empty.",
+    "ru": "В текущем разделе заданий в Лавке почти нет заданий, раздел постоянно пустой."
+  },
+  "rewardsTitle": {
+    "en": "To be: Task Statuses",
+    "ru": "To be: Статусы заданий"
+  },
+  "tasksTestTitle": {
+    "en": "To be: Prototype test result",
+    "ru": "To be: Результат тестирования прототипа"
+  },
+  "tasksTest": {
+    "en": "Some respondents said that small bonuses did not motivate them to deliberately complete tasks. The motivation needs to be clearer or the rewards more valuable.",
+    "ru": "Часть поделилась мнением, что такие задания не сильно мотивируют их целенаправленно выполнять задания ради небольшого бонуса, следовательно, нужно обозначить точки мотивации или повышать ценность бонусов за выполнение заданий."
+  },
+  "updatedPayment confirmation time": {
+    "en": "To be: Payment confirmation time",
+    "ru": "To be: Время на подтверждение оплаты"
+  },
+  "updatedPromoting Special Offers in Group": {
+    "en": "To be: Promoting Special Offers in Group",
+    "ru": "To be: Специальные предложения для группы"
+  },
+  "resultConclusion": {
+    "en": "The Share icon now matches users’ expectations, and the main pain points in organizing a shared order have been examined through hypotheses and testing.",
+    "ru": "Иконка share теперь соответствует ожиданиям пользователей, а главные core боли в организации совместного заказа проверены через гипотезы и тестирование."
   }
 };
 
