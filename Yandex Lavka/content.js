@@ -93,20 +93,20 @@ export const copy = {
     "ru": "CSAT по тестированию составил: 68%"
   },
   "onboardingFinding": {
-    "en": "18 out of 20 respondents said the onboarding clearly highlighted and explained the new feature.",
-    "ru": "18 из 20 респондентов отметили, что онбординг понятно объясняет новую функцию и акцентирует на ней внимание."
+    "en": "9 out of 10 respondents said the onboarding clearly highlighted and explained the new feature.",
+    "ru": "9 из 10 респондентов отметили, что онбординг понятно объясняет новую функцию и акцентирует на ней внимание."
   },
   "entryFinding": {
-    "en": "19 out of 20 respondents said the icon now matched their expectations.",
-    "ru": "19 из 20 респондентов отметили, что теперь ассоциация с иконкой соответствует их ожиданиям."
+    "en": "10 out of 10 respondents said the icon now matched their expectations. This suggests that the revised flow creates the right association for users and increases interest in the product.",
+    "ru": "10 из 10 респондентов отметили, что теперь ассоциация с иконкой соответствует их ожиданиям. Это говорит о том, что доработка сценария вызывает правильную ассоциацию у пользователей и повышает интерес к продукту."
   },
   "paymentFinding": {
-    "en": "16 out of 20 respondents appreciated being able to choose the payment type in the cart and group settings. They found this entry point logical and clear. Only some tried to manage payment through their profile settings.",
+    "en": "16 out of 20 respondents appreciated being able to choose the payment type in the cart and group settings. They found this entry point logical and clear. Only some tried to manage payment by going through their profile settings.",
     "ru": "16 из 20 респондентов оценили возможность настраивать тип оплаты в настройках корзины и групп: эта точка входа показалась им логичной и понятной. Только часть пыталась разобраться с оплатой через настройки профиля."
   },
   "addressFinding": {
-    "en": "18 out of 20 respondents found the solution convenient for address issues or accidental taps. However, automatic synchronization with the organizer’s address still needs to be considered.",
-    "ru": "18 из 20 респондентов отметили, что решение удобно в случае проблем с адресом или случайного нажатия. Но нужно продумать вариант автоматической синхронизации с адресом создателя."
+    "en": "18 out of 20 respondents found the solution convenient for address issues or accidental taps. However, automatic synchronization with the organizer’s address and subsequent editing still need to be considered, as a warning that appears for every minor mistake could become frustrating.",
+    "ru": "18 из 20 респондентов отметили, что решение удобно в случае проблем с адресом или случайного нажатия. Но нужно продумать вариант автоматической синхронизации с адресом создателя и последующего редактирования, так как постоянное всплывающее предупреждение может вызывать раздражение при малейшей ошибке."
   },
   "confirmationFinding": {
     "en": "20 out of 20 respondents said the solution was very useful when a family member, partner, or friend forgot to add something they needed.",
@@ -131,6 +131,14 @@ export const copy = {
   "tasksFinding": {
     "en": "16 out of 20 respondents found it interesting to offer different tasks for different cart segments. The others felt that small bonuses were not enough to motivate them to complete tasks deliberately, so the motivation needs to be clearer or the rewards more valuable.",
     "ru": "16 из 20 респондентов сочли интересным разнообразить список заданий для разных сегментов корзин. Остальные отметили, что небольшой бонус недостаточно мотивирует их целенаправленно выполнять задания. Поэтому нужно яснее обозначить мотивацию или повысить ценность бонусов за выполнение заданий."
+  },
+  "onboardingDescription": {
+    "en": "The Share icon is unclear without context. Interviews revealed that some users did not know they could share a link to items in Lavka. I decided to split the focus group to test the solution. I guided 10 people through onboarding that introduces the new scenario and expands cart sharing to include shared orders.",
+    "ru": "Иконка «Поделиться» без контекста непонятна. На интервью выяснилось, что часть пользователей не знала о возможности отправить ссылку на товары в Лавке. Я решила разделить фокус-группу для проверки решения. 10 человек я провела через онбординг, который знакомит с новым сценарием и развивает функцию отправки корзины, добавляя возможность совместных заказов."
+  },
+  "entryDescription": {
+    "en": "To check whether the icon conveyed the right meaning without onboarding, I asked another focus group of 10 people to do the same task: try sharing their cart.",
+    "ru": "Чтобы убедиться, что иконка вызывает правильную ассоциацию без онбординга, другую фокус-группу из 10 человек я попросила сделать всё то же самое — попробовать поделиться своей корзиной."
   }
 };
 
