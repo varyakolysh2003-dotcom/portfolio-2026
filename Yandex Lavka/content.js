@@ -13,16 +13,16 @@ export const copy = {
     "ru": "CSAT по тестированию составил: 80%"
   },
   "processHeading": {
-    "en": "Customer research and competitor analysis",
-    "ru": "Касдев и анализ конкурентов"
+    "en": "As is",
+    "ru": "As is"
   },
   "process": {
-    "en": "Conducted 20+ in-depth interviews about group orders with friends, families, colleagues, and partners, as well as a public survey with 73 participants.\n\nThen analyzed competitors in food and grocery delivery to understand their cart sharing and organization features.\n\nThe competitors included Uber Eats, Amazon Fresh, Samokat, VkusVill, and Instacart.",
-    "ru": "Я провела более 20 глубинных интервью о совместных заказах с разными группами пользователей: друзьями, семьями, коллегами и партнёрами, а также открытый опрос с 73 участниками.\n\nДалее я проанализировала конкурентов на рынке доставки еды и продуктов, чтобы понять, какие механики и функции обмена и организации корзин они предлагают.\n\nВ качестве конкурентов я проанализировала: Uber Eats, Amazon Fresh, Самокат, ВкусВилл и Instacart."
+    "en": "At the start of the research, I selected 20 people from different group segments to interview and test the current user journey. I wanted to understand where users got stuck in the Yandex Lavka app.",
+    "ru": "В начале исследования отобрала 20 человек разных групповых сегментов для опроса и тестирования текущего пути пользователей. Мне было важно понять, в какой момент наступает ступор в сценарии внутри приложения Яндекс Лавки у пользователей."
   },
   "result": {
-    "en": "User testing showed a clear preference for the proposed experience over the current flow.\n\nThe shared cart made group ordering easier and was perceived as a meaningful competitive advantage. The research validated the key product hypotheses.\n\nDesigned 350+ screens for testing, covering the flows for both cart participants and organizers. Tested each iteration using an interactive prototype.",
-    "ru": "Во время качественного тестирования пользователи предпочли предложенное решение текущему сценарию.\n\nОбщая корзина упростила совместные заказы и воспринималась как значимое конкурентное преимущество. Исследование подтвердило ключевые продуктовые гипотезы.\n\nДля тестирования разработала 350+ экранов, включающих логику для участников и организаторов корзин. Проводила тестирование с помощью интерактивного прототипа на каждой итерации."
+    "en": "Developed hypotheses and screens for focus-group testing.",
+    "ru": "Составлены гипотезы и экраны для тестирования на фокус-группе."
   },
   "taskHeading": {
     "en": "Task",
@@ -33,16 +33,16 @@ export const copy = {
     "ru": "Проработать сценарий совместной корзины в Яндекс Лавке между несколькими сегментами групп пользователей."
   },
   "resultsHeading": {
-    "en": "Key testing results",
-    "ru": "Ключевые результаты тестирования"
+    "en": "Testing results based on pain points",
+    "ru": "Результаты тестирования на основе болей"
   },
   "csatLabel": {
-    "en": "Overall solution CSAT in the survey",
-    "ru": "CSAT всего решения по опросу"
+    "en": "Solution CSAT",
+    "ru": "CSAT решением"
   },
   "expectationLabel": {
     "en": "Expectation Match Rate",
-    "ru": "Соответствие ожиданиям"
+    "ru": "Expectation Match Rate"
   },
   "paymentHeading": {
     "en": "Payment confirmation time",
@@ -139,6 +139,42 @@ export const copy = {
   "entryDescription": {
     "en": "To check whether the icon conveyed the right meaning without onboarding, I asked another focus group of 10 people to do the same task: try sharing their cart.",
     "ru": "Чтобы убедиться, что иконка вызывает правильную ассоциацию без онбординга, другую фокус-группу из 10 человек я попросила сделать всё то же самое — попробовать поделиться своей корзиной."
+  },
+  "painHeading": {
+    "en": "Pain points from as-is testing",
+    "ru": "Боли пользователей по тестированию as is"
+  },
+  "painIcon": {
+    "en": "The share icon is not associated with starting a shared order.",
+    "ru": "Нет нужной ассоциации share icon как начало совместного заказа."
+  },
+  "painGroups": {
+    "en": "Families and couples value seeing who added what and whether everything has been bought. Friends want to know who is participating and paying. Colleagues need to split costs and wait for everyone.",
+    "ru": "В семьях и парах ценно видеть, кто что добавил и все ли купили. У друзей — кто участвует и кто платит. У коллег — как разделить расходы и дождаться всех."
+  },
+  "coreHeading": {
+    "en": "Core problem from customer interviews",
+    "ru": "Core problem из касдева"
+  },
+  "coreProblem": {
+    "en": "As a result, people spend time messaging and transferring money. Ordering takes longer, with a higher risk of forgetting something or placing the order incorrectly.",
+    "ru": "В результате люди тратят время на переписки и переводы денег, больше времени на заказ, выше риск что-то забыть или оформить не так."
+  },
+  "taskExtra": {
+    "en": "Form hypotheses and JTBD, study competitors with similar mechanics, and conduct qualitative testing to compare as-is and to-be experiences.",
+    "ru": "Сформировать гипотезы и JTBD, изучить рынок конкурентов с похожей механикой и провести качественное тестирование для сравнения As is и to be."
+  },
+  "resultHeading": {
+    "en": "To-be result",
+    "ru": "Результат to be"
+  },
+  "resultDetails": {
+    "en": "Designed 350+ screens covering cart participant and organizer flows. Tested each iteration of the hypotheses using an interactive prototype.",
+    "ru": "Разработала 350+ экранов, включающих логику для участников и организаторов корзин. Проводила тестирование с помощью интерактивного прототипа на каждой итерации гипотезы."
+  },
+  "repeatLabel": {
+    "en": "Repeat-use intent",
+    "ru": "Repeat-use intent"
   }
 };
 

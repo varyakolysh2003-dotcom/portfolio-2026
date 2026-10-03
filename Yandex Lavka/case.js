@@ -16,10 +16,13 @@ function selectTab(tab) {
     item.tabIndex = selected ? 0 : -1;
   }
   panel.setAttribute('aria-labelledby', tab.id);
-  document.querySelector('#case-heading').textContent = tab.dataset.tab === 'process' ? copy.processHeading.en : tab.textContent;
+  document.querySelector('#case-heading').textContent = tab.dataset.tab === 'process' ? copy.processHeading.en : tab.dataset.tab === 'result' ? copy.resultHeading.en : tab.textContent;
   document.querySelector('#case-description').textContent = sections[tab.dataset.tab];
   document.querySelector('.case-task').hidden = tab.dataset.tab !== 'context';
   document.querySelector('.case-results').hidden = tab.dataset.tab !== 'result';
+  document.querySelector('.case-process-details').hidden = tab.dataset.tab !== 'process';
+  document.querySelector('.case-result-details').hidden = tab.dataset.tab !== 'result';
+  panel.dataset.activeTab = tab.dataset.tab;
   translatePage();
 }
 for (const tab of tabs) {

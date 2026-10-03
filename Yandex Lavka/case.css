@@ -38,7 +38,6 @@
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap }
 @media(max-width:963px) {
  .case-profile { flex-shrink:0; width:100%; max-width:600px }
- .case-task { display:none }
  .case-intro .mobile-only { display:inline }
  .case-article.mobile-only { display:flex }
  .case-media { aspect-ratio:311 / var(--mobile-height) }
@@ -60,3 +59,11 @@
 }
 
 .case-article-auto .case-media img { width:158.81%; height:136.71%; left:-29.32%; top:0; object-fit:fill }
+
+.case-process-details { display:flex; flex-direction:column; gap:24px; margin-top:16px }
+.case-process-details section { display:flex; flex-direction:column; gap:8px }
+.case-process-details[hidden],.case-result-details[hidden] { display:none }
+#case-panel[data-active-tab="process"] { gap:8px }
+#case-panel[data-active-tab="result"] { gap:7.095px }
+.case-results { gap:8px }
+.case-results dd.green { background-image:linear-gradient(90deg,#58c500 31.707%,#4ac3ff 51.393%,#58c500 132.93%) }
