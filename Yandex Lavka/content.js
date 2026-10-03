@@ -21,8 +21,8 @@ export const copy = {
     "ru": "Я провела более 20 глубинных интервью о совместных заказах с разными группами пользователей: друзьями, семьями, коллегами и партнёрами, а также открытый опрос с 73 участниками.\n\nДалее я проанализировала конкурентов на рынке доставки еды и продуктов, чтобы понять, какие механики и функции обмена и организации корзин они предлагают.\n\nВ качестве конкурентов я проанализировала: Uber Eats, Amazon Fresh, Самокат, ВкусВилл и Instacart."
   },
   "result": {
-    "en": "User testing showed a clear preference for the proposed experience over the current flow.\n\nThe shared cart made group ordering easier and was perceived as a meaningful competitive advantage. The research validated the key product hypotheses.\n\nDesigned 350+ screens for testing, covering the flows for both cart participants and organizers.",
-    "ru": "Во время качественного тестирования пользователи предпочли предложенное решение текущему сценарию.\n\nОбщая корзина упростила совместные заказы и воспринималась как значимое конкурентное преимущество. Исследование подтвердило ключевые продуктовые гипотезы.\n\nДля тестирования разработала 350+ экранов, включающих логику для участников и организаторов корзин."
+    "en": "User testing showed a clear preference for the proposed experience over the current flow.\n\nThe shared cart made group ordering easier and was perceived as a meaningful competitive advantage. The research validated the key product hypotheses.\n\nDesigned 350+ screens for testing, covering the flows for both cart participants and organizers. Tested each iteration using an interactive prototype.",
+    "ru": "Во время качественного тестирования пользователи предпочли предложенное решение текущему сценарию.\n\nОбщая корзина упростила совместные заказы и воспринималась как значимое конкурентное преимущество. Исследование подтвердило ключевые продуктовые гипотезы.\n\nДля тестирования разработала 350+ экранов, включающих логику для участников и организаторов корзин. Проводила тестирование с помощью интерактивного прототипа на каждой итерации."
   },
   "taskHeading": {
     "en": "Task",
