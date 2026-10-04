@@ -177,9 +177,12 @@ try {
  await mkdir('.private/tbank/verification',{recursive:true});
  await page.screenshot({path:'.private/tbank/verification/encrypted-mobile.png',fullPage:true});
  await page.getByRole('tab',{name:'Главная 8.4',exact:true}).click();
- for(const width of [1200,375]) {
+ for(const width of [1200,932,375]) {
   await page.setViewportSize({width,height:900});
   await loadVisibleMedia('#main-cases');
+  const frames=await page.locator('#main-cases .bank-frame').evaluateAll(nodes=>nodes.map(node=>{const image=node.querySelector('img');const rect=node.getBoundingClientRect();return {ratio:rect.width/rect.height,naturalRatio:image.naturalWidth/image.naturalHeight,naturalWidth:image.naturalWidth,fit:getComputedStyle(image).objectFit};}));
+  assert.equal(frames.length,6);
+  for(const frame of frames){assert.ok(frame.naturalWidth>=2400);assert.ok(Math.abs(frame.ratio-frame.naturalRatio)<0.001);assert.equal(frame.fit,'contain');}
   const normalize=value=>value.replace(/\s+/g,' ');
   const introText=normalize(await page.locator('.bank-intro').innerText());
   for(const section of copy.main.introSections.flatMap(section=>[section,...(section.extraParagraphs || [])]))assert.ok(introText.includes(normalize(section.ru)));
