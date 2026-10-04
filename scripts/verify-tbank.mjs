@@ -160,7 +160,7 @@ try {
  await page.goto(url+'?lang=ru');await submit(password);
  assert.equal(await page.locator('html').getAttribute('lang'),'ru');
  for(const section of copy.profile.introSections) assert.ok((await page.locator('.bank-intro').innerText()).replace(/\s+/g,' ').includes(section.ru.replace(/\s+/g,' ')));
- assert.equal(await page.locator('.bank-results > div').count(),5);
+ assert.equal(await page.locator('.bank-results > div').count(),copy.profile.introSections.at(-1).metrics.length);
  assert.deepEqual(await page.locator('.bank-results dd').allTextContents(),copy.profile.introSections.at(-1).metrics.map(metric=>metric.value));
  assert.equal((await page.locator('.desktop-caption p').first().innerText()).replace(/\s+/g,' '),(await import(new URL('../.private/tbank/translations.mjs',import.meta.url))).translations(copy).find(([en])=>en===copy.profile.captions[0])[1].replace(/\s+/g,' '));
  await page.setViewportSize({width:1200,height:900});
