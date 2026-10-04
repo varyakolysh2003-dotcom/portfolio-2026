@@ -21,11 +21,24 @@ let unlockedCase;
 function updateIntro(name) {
   const intro=document.querySelector('.bank-intro');
   intro.querySelectorAll('section').forEach(section=>section.remove());
-  for(const key of ['context','result']) {
+  const sections=caseCopy[name].introSections || ['context','result'].map(key=>({title:key==='context'?'Context':'Result',body:caseCopy[name][key]}));
+  for(const [index,content] of sections.entries()) {
     const section=document.createElement('section');section.className='bank-context';
-    const heading=document.createElement('h2');heading.textContent=key==='context'?'Context':'Result';
-    const paragraph=document.createElement('p');paragraph.textContent=caseCopy[name][key];
+    if(content.metrics && index>0)section.classList.add('bank-result');
+    const heading=document.createElement('h2');heading.textContent=content.title;
+    const paragraph=document.createElement('p');paragraph.textContent=content.body;
     section.append(heading,paragraph);intro.append(section);
+    if(content.metrics) {
+      const list=document.createElement('dl');list.className='bank-results';
+      for(const metric of content.metrics) {
+        const row=document.createElement('div');
+        const label=document.createElement('dt');label.textContent=metric.label;
+        const value=document.createElement('dd');value.textContent=metric.value;
+        if(metric.tone==='green')value.classList.add('green');
+        row.append(label,value);list.append(row);
+      }
+      section.append(list);
+    }
   }
 }
 function openPassword() {

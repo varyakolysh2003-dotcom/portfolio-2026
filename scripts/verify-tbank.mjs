@@ -44,7 +44,7 @@ try {
   const bytes=await readFile(path);assert.equal(hashes.has(createHash('sha256').update(bytes).digest('hex')),false,path);
   if(/\.(js|html|json|css)$/.test(path)) {
    const text=bytes.toString();assert.equal(text.includes(password),false);
-   for(const group of [copy.profile,copy.main])for(const phrase of [group.context,group.result,...group.captions,...(group.blocks || []).flat().flatMap(block=>[block.body,block.ru])])assert.equal(text.includes(phrase),false,`Plaintext in ${path}`);
+   for(const group of [copy.profile,copy.main])for(const phrase of [group.context,group.result,...group.captions,...(group.blocks || []).flat().flatMap(block=>[block.body,block.ru]),...(group.introSections || []).flatMap(section=>[section.body,section.ru])])assert.equal(text.includes(phrase),false,`Plaintext in ${path}`);
   }
  }
  // Production is served directly from the custom domain root.
@@ -110,7 +110,7 @@ try {
   await route.continue();
  });
  await submit(password);assert.equal(await page.locator('#password-form').isVisible(),false);assert.equal(await page.locator('.text-spoiler.spoiler--open').count(),copy.profile.blocks.flat().length*2);
- assert.ok((await page.locator('.bank-intro').innerText()).includes(copy.profile.result));
+ assert.ok((await page.locator('.bank-intro').innerText()).replace(/\s+/g,' ').includes(copy.profile.result.replace(/\s+/g,' ')));
  await page.waitForFunction(()=>document.querySelector('.bank-media[aria-busy=true]'));
  assert.equal(await page.locator('#main-cases').locator('*').count(),0);
  assert.ok(held.length<protectedFiles.length);
@@ -159,6 +159,9 @@ try {
  await page.reload();await page.waitForSelector('.dots');assert.equal(await page.locator('.spoiler--open').count(),0);
  await page.goto(url+'?lang=ru');await submit(password);
  assert.equal(await page.locator('html').getAttribute('lang'),'ru');
+ for(const section of copy.profile.introSections) assert.ok((await page.locator('.bank-intro').innerText()).replace(/\s+/g,' ').includes(section.ru.replace(/\s+/g,' ')));
+ assert.equal(await page.locator('.bank-results > div').count(),5);
+ assert.deepEqual(await page.locator('.bank-results dd').allTextContents(),copy.profile.introSections.at(-1).metrics.map(metric=>metric.value));
  assert.equal((await page.locator('.desktop-caption p').first().innerText()).replace(/\s+/g,' '),(await import(new URL('../.private/tbank/translations.mjs',import.meta.url))).translations(copy).find(([en])=>en===copy.profile.captions[0])[1].replace(/\s+/g,' '));
  await page.setViewportSize({width:1200,height:900});
  await loadVisibleMedia('#profile-cases');

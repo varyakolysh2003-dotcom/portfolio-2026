@@ -3,6 +3,12 @@
 .bank-intro h1 { font-size:14px;line-height:19.6px;letter-spacing:-.14px;font-weight:400;color:#000;min-height:20.685px }
 .bank-context { display:flex;flex-direction:column;gap:var(--text-gap) }
 .bank-context p { font-size:14px;line-height:19.6px;letter-spacing:-.14px;white-space:pre-wrap;padding-bottom:.685px }
+.bank-context.bank-result { margin-top:-12px;gap:8px }
+.bank-results { display:flex;flex-direction:column;gap:8px;margin:0;font-size:14px;line-height:19.6px;letter-spacing:-.14px }
+.bank-results > div { display:flex;justify-content:space-between;align-items:start;gap:8px;padding-bottom:.685px }
+.bank-results dt { text-decoration:underline;text-decoration-color:#9f9f9f;text-underline-offset:5px }
+.bank-results dd { margin:0;flex-shrink:0;color:transparent;background-image:linear-gradient(90deg,#2cbaf9,#918fff 50.476%,#2cbaf9);background-clip:text;-webkit-background-clip:text }
+.bank-results dd.green { background-image:linear-gradient(90deg,#58c500 31.707%,#4ac3ff 51.393%,#58c500 132.93%) }
 .bank-access,.bank-tabs { width:100% }
 .bank-tabs button { border:0;border-radius:30px;flex:1;height:36px;padding:0 10px;background:transparent;color:#9f9f9f;line-height:19.6px;letter-spacing:-.14px;cursor:pointer;white-space:nowrap }
 .bank-tabs [aria-selected=true] { background:#f9f9f9 }
