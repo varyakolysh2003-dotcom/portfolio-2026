@@ -38,8 +38,11 @@ function unlock() {
   caseCopy=unlockedCase.copy;
   addTranslations(caseCopy.translations || []);
   document.querySelectorAll('#profile-cases .bank-article').forEach((article,index)=>{
-    article.querySelectorAll('.bank-caption p').forEach(p=>{p.textContent=caseCopy.profile.captions[index];});
-    article.querySelectorAll('.bank-caption h2').forEach(h=>{h.textContent='Profile settings';});
+    article.querySelectorAll('.bank-caption').forEach(caption=>{
+      const block=caseCopy.profile.blocks?.[index]?.[Number(caption.dataset.block || 0)];
+      caption.querySelector('p').textContent=block?.body || caseCopy.profile.captions[index] || '';
+      caption.querySelector('h2').textContent=block?.title || 'Profile settings';
+    });
   });
   reveal();
   updateIntro('profile');

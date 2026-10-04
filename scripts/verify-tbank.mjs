@@ -44,14 +44,11 @@ try {
   const bytes=await readFile(path);assert.equal(hashes.has(createHash('sha256').update(bytes).digest('hex')),false,path);
   if(/\.(js|html|json|css)$/.test(path)) {
    const text=bytes.toString();assert.equal(text.includes(password),false);
-   for(const group of [copy.profile,copy.main])for(const phrase of [group.context,group.result,...group.captions])assert.equal(text.includes(phrase),false,`Plaintext in ${path}`);
+   for(const group of [copy.profile,copy.main])for(const phrase of [group.context,group.result,...group.captions,...(group.blocks || []).flat().flatMap(block=>[block.body,block.ru])])assert.equal(text.includes(phrase),false,`Plaintext in ${path}`);
   }
  }
- // Run the exact GitHub Pages adaptation from the workflow.
- const workflow=await readFile('.github/workflows/pages.yml','utf8');
- const adaptation=workflow.split("python3 - <<'PY'\n")[1].split('\n          PY')[0].replace(/^          /gm,'');
- const adapted=spawnSync('python3',['-c',adaptation],{cwd:temp,encoding:'utf8'});assert.equal(adapted.status,0,adapted.stderr);
- const base='/portfolio-2026';
+ // Production is served directly from the custom domain root.
+ const base='';
  server=createServer(async(req,res)=>{
   try {
    const path=new URL(req.url,'http://localhost').pathname;
@@ -112,7 +109,7 @@ try {
   await mediaGate;
   await route.continue();
  });
- await submit(password);assert.equal(await page.locator('#password-form').isVisible(),false);assert.equal(await page.locator('.text-spoiler.spoiler--open').count(),10);
+ await submit(password);assert.equal(await page.locator('#password-form').isVisible(),false);assert.equal(await page.locator('.text-spoiler.spoiler--open').count(),copy.profile.blocks.flat().length*2);
  assert.ok((await page.locator('.bank-intro').innerText()).includes(copy.profile.result));
  await page.waitForFunction(()=>document.querySelector('.bank-media[aria-busy=true]'));
  assert.equal(await page.locator('#main-cases').locator('*').count(),0);
@@ -157,12 +154,19 @@ try {
  assert.equal(new Set(mediaRequests).size,mediaRequests.length);
  assert.equal((await page.context().cookies()).some(c=>c.name==='tbank_session'),false);
  assert.equal(requests.some(url=>url.includes('/api/tbank/')),false);
- assert.equal(requests.some(url=>url.includes(base+base)),false);
+ assert.equal(requests.some(url=>url.includes('/portfolio-2026/')),false);
  assert.equal(requests.filter(url=>url.startsWith('http')).every(url=>new URL(url).pathname.startsWith(base+'/')),true);
  await page.reload();await page.waitForSelector('.dots');assert.equal(await page.locator('.spoiler--open').count(),0);
  await page.goto(url+'?lang=ru');await submit(password);
  assert.equal(await page.locator('html').getAttribute('lang'),'ru');
  assert.equal((await page.locator('.desktop-caption p').first().innerText()).replace(/\s+/g,' '),(await import(new URL('../.private/tbank/translations.mjs',import.meta.url))).translations(copy).find(([en])=>en===copy.profile.captions[0])[1].replace(/\s+/g,' '));
+ await page.setViewportSize({width:1200,height:900});
+ await loadVisibleMedia('#profile-cases');
+ await mkdir('.private/tbank/verification',{recursive:true});
+ await page.waitForFunction(()=>[...document.querySelectorAll('#profile-cases .blur-block')].every(el=>getComputedStyle(el).opacity==='0'));
+ await page.evaluate(()=>scrollTo(0,0));
+ await page.screenshot({path:'.private/tbank/verification/encrypted-desktop.png',fullPage:true});
+ for (const block of copy.profile.blocks.flat()) assert.ok((await page.locator('#profile-cases').innerText()).replace(/\s+/g,' ').includes(block.ru.replace(/\s+/g,' ')));
  await page.setViewportSize({width:375,height:812});
  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
  await loadVisibleMedia('#profile-cases');
@@ -170,7 +174,7 @@ try {
  await mkdir('.private/tbank/verification',{recursive:true});
  await page.screenshot({path:'.private/tbank/verification/encrypted-mobile.png',fullPage:true});
  assert.deepEqual(errors,[]);
- const report={lazyApi:apiChecks,unlockWithMediaBlocked:true,mainDeferred:true,viewportOnly:true,noRepeatedMediaRequests:true,reducedMotion:true,hiddenVideoPaused:true,staticSubpath:true,noBackendRequests:true,buildWithoutPrivateFilesOrPassword:true,missingBundleRejected:true,wrongPasswordRejected:true,tamperedCiphertextRejected:true,profileAndMainTabs:true,imagesDecoded:true,videoLoaded:true,reloadLocks:true,russianTranslations:true,responsiveWidths:[1200,375,320,768,1024],plaintextScanPassed:true,errors};
+ const report={lazyApi:apiChecks,unlockWithMediaBlocked:true,mainDeferred:true,viewportOnly:true,noRepeatedMediaRequests:true,reducedMotion:true,hiddenVideoPaused:true,customDomainRoot:true,noBackendRequests:true,buildWithoutPrivateFilesOrPassword:true,missingBundleRejected:true,wrongPasswordRejected:true,tamperedCiphertextRejected:true,profileAndMainTabs:true,imagesDecoded:true,videoLoaded:true,reloadLocks:true,russianTranslations:true,responsiveWidths:[1200,375,320,768,1024],plaintextScanPassed:true,errors};
  await writeFile('verification/tbank-checks.json',JSON.stringify(report,null,2)+'\n');console.log(report);
  if(process.env.TBANK_VERIFY_HOLD)await new Promise(resolve=>setTimeout(resolve,45000));
 } finally {await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));await rm(temp,{recursive:true,force:true});}

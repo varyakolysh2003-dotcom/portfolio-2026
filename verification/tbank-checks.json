@@ -12,7 +12,7 @@
   "noRepeatedMediaRequests": true,
   "reducedMotion": true,
   "hiddenVideoPaused": true,
-  "staticSubpath": true,
+  "customDomainRoot": true,
   "noBackendRequests": true,
   "buildWithoutPrivateFilesOrPassword": true,
   "missingBundleRejected": true,
