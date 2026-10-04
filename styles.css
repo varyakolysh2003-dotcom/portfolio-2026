@@ -88,6 +88,8 @@ button:focus-visible,a:focus-visible {
 .sound[aria-pressed=false] img {
   opacity:.4
 }
+/* Do not paint the English source while the requested Russian copy loads. */
+html.language-pending body { visibility:hidden }
 .language-toggle {
   display:flex;align-items:center;justify-content:center;
   width:40px;height:40px;padding:0;border:0;background:none;
