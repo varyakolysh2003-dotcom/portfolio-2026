@@ -147,7 +147,7 @@ try {
  await page.emulateMedia({reducedMotion:'no-preference'});
  await page.locator('video').scrollIntoViewIfNeeded();
  await page.waitForFunction(()=>document.querySelector('video')?.readyState>=2);
- assert.ok((await page.locator('.bank-intro').innerText()).includes(copy.main.result));
+ assert.ok((await page.locator('.bank-intro').innerText()).replace(/\s+/g,' ').includes(copy.main.result.replace(/\s+/g,' ')));
  await page.getByRole('tab',{name:'Main 8.4',exact:true}).press('ArrowLeft');assert.equal(await page.locator('#profile-cases').isVisible(),true);
  assert.equal(await page.locator('video').evaluate(video=>video.paused),true);
  const mediaRequests=requests.slice(requestStart).filter(url=>/encrypted\/\d+\.json$/.test(url) && !url.endsWith('/'+manifest.content));
@@ -176,6 +176,21 @@ try {
  await page.waitForFunction(()=>[...document.querySelectorAll('.blur-block')].every(el=>getComputedStyle(el).opacity==='0'));
  await mkdir('.private/tbank/verification',{recursive:true});
  await page.screenshot({path:'.private/tbank/verification/encrypted-mobile.png',fullPage:true});
+ await page.getByRole('tab',{name:'Главная 8.4',exact:true}).click();
+ for(const width of [1200,375]) {
+  await page.setViewportSize({width,height:900});
+  await loadVisibleMedia('#main-cases');
+  const normalize=value=>value.replace(/\s+/g,' ');
+  const introText=normalize(await page.locator('.bank-intro').innerText());
+  for(const section of copy.main.introSections.flatMap(section=>[section,...(section.extraParagraphs || [])]))assert.ok(introText.includes(normalize(section.ru)));
+  const caseText=normalize(await page.locator('#main-cases').innerText());
+  for(const block of copy.main.blocks)assert.ok(caseText.includes(normalize(block.ru)));
+  assert.equal(await page.locator('#main-cases .bank-article').count(),6);
+  assert.deepEqual(await page.locator('.bank-results dd').allTextContents(),['Completed','Q1','100%']);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
+  await page.evaluate(()=>scrollTo(0,0));
+  await page.screenshot({path:'.private/tbank/verification/main-'+width+'.png',fullPage:true});
+ }
  assert.deepEqual(errors,[]);
  const report={lazyApi:apiChecks,unlockWithMediaBlocked:true,mainDeferred:true,viewportOnly:true,noRepeatedMediaRequests:true,reducedMotion:true,hiddenVideoPaused:true,customDomainRoot:true,noBackendRequests:true,buildWithoutPrivateFilesOrPassword:true,missingBundleRejected:true,wrongPasswordRejected:true,tamperedCiphertextRejected:true,profileAndMainTabs:true,imagesDecoded:true,videoLoaded:true,reloadLocks:true,russianTranslations:true,responsiveWidths:[1200,375,320,768,1024],plaintextScanPassed:true,errors};
  await writeFile('verification/tbank-checks.json',JSON.stringify(report,null,2)+'\n');console.log(report);

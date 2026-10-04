@@ -25,9 +25,13 @@ function updateIntro(name) {
   for(const [index,content] of sections.entries()) {
     const section=document.createElement('section');section.className='bank-context';
     if(content.metrics && index>0)section.classList.add('bank-result');
+    if(content.resultSpacing===24)section.style.marginTop='0';
     const heading=document.createElement('h2');heading.textContent=content.title;
     const paragraph=document.createElement('p');paragraph.textContent=content.body;
     section.append(heading,paragraph);intro.append(section);
+    for(const extra of content.extraParagraphs || []) {
+      const paragraph=document.createElement('p');paragraph.textContent=extra.body;section.append(paragraph);
+    }
     if(content.metrics) {
       const list=document.createElement('dl');list.className='bank-results';
       for(const metric of content.metrics) {
