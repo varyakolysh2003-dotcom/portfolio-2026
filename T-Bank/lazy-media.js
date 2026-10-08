@@ -8,6 +8,7 @@ export function setupLazyMedia(root, mediaUrl) {
   const pending = new Map();
   const rerun = new Set();
   let disposed = false;
+  let refreshFrame;
   const resolve = value => value.startsWith('tbank-media:')
     ? mediaUrl(value.slice('tbank-media:'.length))
     : Promise.resolve(new URL(value, import.meta.url).href);
@@ -69,6 +70,7 @@ export function setupLazyMedia(root, mediaUrl) {
     if (rerun.delete(container)) void load(container);
   }
   function refresh() {
+    if (disposed) return;
     for (const container of containers) {
       for (const video of container.querySelectorAll('video')) {
         if (motion.matches || !visible(container)) video.pause();
@@ -76,15 +78,30 @@ export function setupLazyMedia(root, mediaUrl) {
       if (visible(container)) void load(container);
     }
   }
+  function scheduleRefresh() {
+    if (disposed || refreshFrame !== undefined) return;
+    refreshFrame = requestAnimationFrame(() => {
+      refreshFrame = undefined;
+      refresh();
+    });
+  }
   const observer = new IntersectionObserver(refresh);
   containers.forEach(container => observer.observe(container));
+  // An observer can report edge contact while visible() still returns false.
+  // Recheck on movement: threshold 0 need not fire again as the image enters.
+  window.addEventListener('scroll', scheduleRefresh, { passive:true, capture:true });
+  window.addEventListener('resize', scheduleRefresh);
   motion.addEventListener('change', refresh);
   mobile.addEventListener('change', refresh);
+  refresh();
   return {
     refresh,
     dispose() {
       disposed = true;
       observer.disconnect();
+      cancelAnimationFrame(refreshFrame);
+      window.removeEventListener('scroll', scheduleRefresh, true);
+      window.removeEventListener('resize', scheduleRefresh);
       motion.removeEventListener('change', refresh);
       mobile.removeEventListener('change', refresh);
       containers.forEach(container => container.querySelectorAll('video').forEach(video => video.pause()));

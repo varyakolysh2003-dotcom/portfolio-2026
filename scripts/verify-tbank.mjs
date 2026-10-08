@@ -91,6 +91,27 @@ try {
   } finally {window.fetch=originalFetch;URL.createObjectURL=originalCreate;URL.revokeObjectURL=originalRevoke}
  },{password});
  assert.ok(Object.values(apiChecks).every(Boolean),JSON.stringify(apiChecks));
+ // Edge contact must not leave a visible image locked after scrolling.
+ const boundaryPage=await browser.newPage({viewport:{width:1200,height:900}});
+ await boundaryPage.goto(url);
+ await boundaryPage.evaluate(async()=>{
+  const {setupLazyMedia}=await import('./lazy-media.js');
+  document.body.innerHTML='<div id="boundary-fixture" style="position:absolute;left:0;top:900px;width:600px"><div class="bank-media" style="height:300px"><img data-src="tbank-media:test"></div></div><div style="height:2700px"></div>';
+  scrollTo(0,0);
+  window.boundaryRequests=0;
+  window.boundaryLoader=setupLazyMedia(document.querySelector('#boundary-fixture'),async()=>{
+   window.boundaryRequests++;
+   return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300"/>');
+  });
+  // Wait for the initial observer delivery at the exact viewport edge.
+  await new Promise(resolve=>{const observer=new IntersectionObserver(()=>{observer.disconnect();requestAnimationFrame(resolve);});observer.observe(document.querySelector('.bank-media'));});
+ });
+ assert.equal(await boundaryPage.evaluate(()=>window.boundaryRequests),0);
+ await boundaryPage.evaluate(()=>scrollTo(0,100));
+ await boundaryPage.waitForSelector('.bank-media.spoiler--open',{timeout:3000});
+ assert.equal(await boundaryPage.evaluate(()=>window.boundaryRequests),1);
+ await boundaryPage.evaluate(()=>window.boundaryLoader.dispose());
+ await boundaryPage.close();
  await submit('wrong');assert.equal(await page.locator('.spoiler--open').count(),0);assert.equal(await page.locator('#case-password').inputValue(),'');
  const contentPath=join(temp,'dist/t-bank/encrypted',manifest.content);
  const originalEnvelope=await readFile(contentPath,'utf8');
