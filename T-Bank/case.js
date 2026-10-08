@@ -83,9 +83,10 @@ form.addEventListener('submit',async event=>{
 function selectTab(tab) {
   if(!authorized)return;
   const name=tab.dataset.case;
-  if(name==='main' && !document.querySelector('#main-cases').children.length) {
+  const panel=document.querySelector(`#${name}-cases`);
+  if(name!=='profile' && !panel.children.length) {
     const content=document.createElement('template');
-    content.innerHTML=unlockedCase.main;
+    content.innerHTML=unlockedCase[name];
     for(const element of content.content.querySelectorAll('[src],[srcset],[poster]')) {
       for(const attribute of ['src','srcset','poster']) {
         const value=element.getAttribute(attribute);
@@ -98,8 +99,8 @@ function selectTab(tab) {
       video.autoplay=false;
       video.preload='none';
     }
-    document.querySelector('#main-cases').replaceChildren(content.content);
-    mediaLoaders.set('main', setupLazyMedia(document.querySelector('#main-cases'), unlockedCase.mediaUrl));
+    panel.replaceChildren(content.content);
+    mediaLoaders.set(name, setupLazyMedia(panel, unlockedCase.mediaUrl));
   }
   status.hidden=true;
   for(const item of tabs){const selected=item===tab;item.setAttribute('aria-selected',String(selected));item.tabIndex=selected?0:-1;document.querySelector(`#${item.dataset.case}-cases`).hidden=!selected;}
@@ -112,9 +113,10 @@ for(const tab of tabs) {
   tab.addEventListener('click',()=>selectTab(tab));
   tab.addEventListener('keydown',event=>{
     let index=tabs.indexOf(tab);
-    if(event.key==='ArrowRight'||event.key==='ArrowLeft')index=1-index;
+    if(event.key==='ArrowRight')index=(index+1)%tabs.length;
+    else if(event.key==='ArrowLeft')index=(index+tabs.length-1)%tabs.length;
     else if(event.key==='Home')index=0;
-    else if(event.key==='End')index=1;
+    else if(event.key==='End')index=tabs.length-1;
     else return;
     event.preventDefault();tabs[index].focus();selectTab(tabs[index]);
   });

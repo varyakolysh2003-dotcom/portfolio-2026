@@ -24,6 +24,7 @@
 .bank-video video { transform:scale(1.1);transform-origin:center }
 .bank-caption { display:flex;flex-direction:column;gap:var(--text-gap) }
 .bank-caption p { font-size:14px;white-space:pre-wrap }
+.bank-caption ul { margin:0;padding-left:21px;font-size:14px;line-height:19.6px;letter-spacing:-.14px }
 .bank-caption.mobile-caption { display:none }
 .spoiler .blur-block { position:absolute;inset:0;z-index:2;background:#777;border-radius:inherit;transition:opacity .3s ease }
 .spoiler .dots { position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;transition:opacity .3s ease }

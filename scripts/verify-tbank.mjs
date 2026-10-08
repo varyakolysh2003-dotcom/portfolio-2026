@@ -44,7 +44,7 @@ try {
   const bytes=await readFile(path);assert.equal(hashes.has(createHash('sha256').update(bytes).digest('hex')),false,path);
   if(/\.(js|html|json|css)$/.test(path)) {
    const text=bytes.toString();assert.equal(text.includes(password),false);
-   for(const group of [copy.profile,copy.main])for(const phrase of [group.context,group.result,...group.captions,...(group.blocks || []).flat().flatMap(block=>[block.body,block.ru]),...(group.introSections || []).flatMap(section=>[section.body,section.ru])])assert.equal(text.includes(phrase),false,`Plaintext in ${path}`);
+   for(const group of [copy.profile,copy.main,copy.quizi])for(const phrase of [group.context,group.result,...group.captions,...(group.blocks || []).flat().flatMap(block=>[block.body,block.ru]),...(group.introSections || []).flatMap(section=>[section.body,section.ru])])assert.equal(text.includes(phrase),false,`Plaintext in ${path}`);
   }
  }
  // Production is served directly from the custom domain root.
@@ -181,19 +181,43 @@ try {
   await page.setViewportSize({width,height:900});
   await loadVisibleMedia('#main-cases');
   const frames=await page.locator('#main-cases .bank-frame').evaluateAll(nodes=>nodes.map(node=>{const image=node.querySelector('img');const rect=node.getBoundingClientRect();return {ratio:rect.width/rect.height,naturalRatio:image.naturalWidth/image.naturalHeight,naturalWidth:image.naturalWidth,fit:getComputedStyle(image).objectFit};}));
-  assert.equal(frames.length,6);
+  assert.equal(frames.length,7);
   for(const frame of frames){assert.ok(frame.naturalWidth>=2400);assert.ok(Math.abs(frame.ratio-frame.naturalRatio)<0.001);assert.equal(frame.fit,'contain');}
   const normalize=value=>value.replace(/\s+/g,' ');
   const introText=normalize(await page.locator('.bank-intro').innerText());
   for(const section of copy.main.introSections.flatMap(section=>[section,...(section.extraParagraphs || [])]))assert.ok(introText.includes(normalize(section.ru)));
   const caseText=normalize(await page.locator('#main-cases').innerText());
   for(const block of copy.main.blocks)assert.ok(caseText.includes(normalize(block.ru)));
-  assert.equal(await page.locator('#main-cases .bank-article').count(),6);
+  assert.equal(await page.locator('#main-cases .bank-article').count(),7);
   assert.deepEqual(await page.locator('.bank-results dd').allTextContents(),['Completed','Q1','100%']);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
   await page.evaluate(()=>scrollTo(0,0));
   await page.screenshot({path:'.private/tbank/verification/main-'+width+'.png',fullPage:true});
  }
+ assert.equal(await page.locator('#quizi-cases').locator('*').count(),0);
+ await page.getByRole('tab',{name:'Главная 8.4',exact:true}).press('ArrowRight');
+ assert.equal(await page.locator('#quizi-cases').isVisible(),true);
+ for(const width of [1200,689,375,320]) {
+  await page.setViewportSize({width,height:900});
+  await loadVisibleMedia('#quizi-cases');
+  const normalize=value=>value.replace(/\s+/g,' ').trim();
+  const intro=normalize(await page.locator('.bank-intro').innerText());
+  for(const section of copy.quizi.introSections)assert.ok(intro.includes(normalize(section.ru)));
+  const text=normalize(await page.locator('#quizi-cases').innerText());
+  for(const block of copy.quizi.blocks.flatMap(block=>[block,...(block.items || [])]))assert.ok(text.includes(normalize(block.ru)));
+  const frames=await page.locator('#quizi-cases .bank-frame').evaluateAll(nodes=>nodes.map(node=>{const image=node.querySelector('img');const rect=node.getBoundingClientRect();return {ratio:rect.width/rect.height,naturalRatio:image.naturalWidth/image.naturalHeight,naturalWidth:image.naturalWidth};}));
+  assert.equal(frames.length,8);
+  for(const frame of frames){assert.ok(frame.naturalWidth>=2400);assert.ok(Math.abs(frame.ratio-frame.naturalRatio)<0.001);}
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
+  await page.evaluate(()=>scrollTo(0,0));
+  await page.screenshot({path:'.private/tbank/verification/quizi-'+width+'.png',fullPage:true});
+ }
+ await page.getByRole('tab',{name:'Quizi',exact:true}).press('ArrowRight');
+ assert.equal(await page.locator('#profile-cases').isVisible(),true);
+ await page.getByRole('tab',{name:'Профиль',exact:true}).press('End');
+ assert.equal(await page.locator('#quizi-cases').isVisible(),true);
+ await page.getByRole('tab',{name:'Quizi',exact:true}).press('Home');
+ assert.equal(await page.locator('#profile-cases').isVisible(),true);
  assert.deepEqual(errors,[]);
  const report={lazyApi:apiChecks,unlockWithMediaBlocked:true,mainDeferred:true,viewportOnly:true,noRepeatedMediaRequests:true,reducedMotion:true,hiddenVideoPaused:true,customDomainRoot:true,noBackendRequests:true,buildWithoutPrivateFilesOrPassword:true,missingBundleRejected:true,wrongPasswordRejected:true,tamperedCiphertextRejected:true,profileAndMainTabs:true,imagesDecoded:true,videoLoaded:true,reloadLocks:true,russianTranslations:true,responsiveWidths:[1200,375,320,768,1024],plaintextScanPassed:true,errors};
  await writeFile('verification/tbank-checks.json',JSON.stringify(report,null,2)+'\n');console.log(report);

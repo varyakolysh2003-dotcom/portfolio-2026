@@ -13,6 +13,7 @@ try {
   const copy = JSON.parse(await readFile(`${root}/copy.json`, 'utf8'));
   const { translations } = await import(pathToFileURL(`${root}/translations.mjs`));
   const main = await readFile(`${root}/main.html`, 'utf8');
+  const quizi = await readFile(`${root}/quizi.html`, 'utf8');
   const salt = webcrypto.getRandomValues(new Uint8Array(16));
   const material = await webcrypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
   const key = await webcrypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations }, material, { name: 'AES-GCM', length: 256 }, false, ['encrypt']);
@@ -29,14 +30,15 @@ try {
   }
   // Encrypt every media file served by the old API, including unused originals.
   for (const name of (await readdir(`${root}/media`)).sort()) {
-    if (!/^(profile|main)(Desktop|Mobile)-\d-\d\.(png|svg)$/.test(name)) continue;
+    if (!/^(profile|main|quizi)(Desktop|Mobile)-\d+-\d+\.(png|svg)$/.test(name)) continue;
     media[name] = { file: await encrypt(await readFile(`${root}/media/${name}`)), type: name.endsWith('.svg') ? 'image/svg+xml' : 'image/png' };
   }
   // Public portfolio showreel assets remain public; all old protected URLs must resolve.
-  for (const match of main.matchAll(/\/api\/tbank\/media\/([^"'\s]+)/g)) {
+  for (const match of (main + quizi).matchAll(/\/api\/tbank\/media\/([^"'\s]+)/g)) {
     if (!media[match[1]]) throw new Error(`Missing protected media: ${match[1]}`);
   }
-  const content = await encrypt(Buffer.from(JSON.stringify({ copy: { ...copy, translations: translations(copy) }, main: main.replaceAll('/api/tbank/media/', 'tbank-media:').replaceAll('/assets/', '../assets/'), media })));
+  const protectedHtml = html => html.replaceAll('/api/tbank/media/', 'tbank-media:').replaceAll('/assets/', '../assets/');
+  const content = await encrypt(Buffer.from(JSON.stringify({ copy: { ...copy, translations: translations(copy) }, main: protectedHtml(main), quizi: protectedHtml(quizi), media })));
   await writeFile(`${staging}/manifest.json`, JSON.stringify({ version: 1, kdf: 'PBKDF2', hash: 'SHA-256', iterations, cipher: 'AES-GCM', salt: Buffer.from(salt).toString('base64'), content, files: Array.from({ length: index }, (_, i) => `${i}.json`) }));
   await mkdir(output, { recursive: true });
   // All encryption completes before replacing generated files; manifest is published last.
