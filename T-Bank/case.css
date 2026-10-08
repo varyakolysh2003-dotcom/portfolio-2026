@@ -53,5 +53,6 @@
 .text-particles { position:absolute;pointer-events:none;z-index:3 }
 /* Figma exports already include the frame crop and rounded corners. */
 .bank-media.bank-frame { aspect-ratio:600 / var(--media-height);border-radius:0;background:transparent }
+.bank-media.bank-frame.spoiler:not(.spoiler--open) { border-radius:24px }
 .bank-frame img { object-fit:contain }
 .text-spoiler:not(.spoiler--open) > :is(h2,p) { visibility:hidden;user-select:none }
