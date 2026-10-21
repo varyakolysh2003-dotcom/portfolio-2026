@@ -210,7 +210,7 @@ try {
   const caseText=normalize(await page.locator('#main-cases').innerText());
   for(const block of copy.main.blocks)assert.ok(caseText.includes(normalize(block.ru)));
   assert.equal(await page.locator('#main-cases .bank-article').count(),7);
-  assert.deepEqual(await page.locator('.bank-results dd').allTextContents(),['Completed','Q1','100%']);
+  assert.deepEqual(await page.locator('.bank-results dd').allTextContents(),copy.main.introSections.at(-1).metrics.map(metric=>metric.value));
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
   await page.evaluate(()=>scrollTo(0,0));
   await page.screenshot({path:'.private/tbank/verification/main-'+width+'.png',fullPage:true});

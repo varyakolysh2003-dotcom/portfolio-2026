@@ -1,5 +1,6 @@
 // Every new or updated case text keeps its English and Russian versions together.
 export const copy = {
+  "role": {"en": "I designed the complete end-to-end shared cart journey for two user roles and conducted A/B testing to validate solution hypotheses.", "ru": "Проработка полного end-to-end сценария совместной корзины для двух сущностей пользователей. Провела A/B тестирование для проверки гипотез решения."},
   "autoCartHeading": {
     "en": "Automatic Cart Creation",
     "ru": "Автосоздание корзины"
