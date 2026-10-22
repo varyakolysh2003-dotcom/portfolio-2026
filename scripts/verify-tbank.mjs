@@ -112,6 +112,21 @@ try {
  assert.equal(await boundaryPage.evaluate(()=>window.boundaryRequests),1);
  await boundaryPage.evaluate(()=>window.boundaryLoader.dispose());
  await boundaryPage.close();
+ // A fresh visitor must reveal every review block with a single submission.
+ for (const width of [1200,375]) {
+  const fresh=await browser.newPage({viewport:{width,height:900}});
+  await fresh.goto(url);
+  await fresh.locator('#case-password').fill(password);
+  await fresh.locator('#case-password').press('Enter');
+  await fresh.locator('.bank-tabs').waitFor({state:'visible'});
+  for (const media of await fresh.locator('[data-review], [data-desktop="profileDesktop-9-1.png"]').all()) {
+   await media.scrollIntoViewIfNeeded();
+   await fresh.waitForFunction(el=>el.classList.contains('spoiler--open') && !el.hasAttribute('aria-busy') && getComputedStyle(el.querySelector('.blur-block')).visibility==='hidden',await media.elementHandle());
+   assert.equal(await media.locator('img').evaluate(image=>image.complete && image.naturalWidth>0),true);
+  }
+  assert.equal(await fresh.locator('[data-media-error]').count(),0);
+  await fresh.close();
+ }
  await submit('wrong');assert.equal(await page.locator('.spoiler--open').count(),0);assert.equal(await page.locator('#case-password').inputValue(),'');
  const contentPath=join(temp,'dist/t-bank/encrypted',manifest.content);
  const originalEnvelope=await readFile(contentPath,'utf8');
@@ -245,7 +260,7 @@ try {
  await page.getByRole('tab',{name:'Quizi',exact:true}).press('Home');
  assert.equal(await page.locator('#profile-cases').isVisible(),true);
  assert.deepEqual(errors,[]);
- const report={lazyApi:apiChecks,unlockWithMediaBlocked:true,mainDeferred:true,viewportOnly:true,noRepeatedMediaRequests:true,reducedMotion:true,hiddenVideoPaused:true,customDomainRoot:true,noBackendRequests:true,buildWithoutPrivateFilesOrPassword:true,missingBundleRejected:true,wrongPasswordRejected:true,tamperedCiphertextRejected:true,profileAndMainTabs:true,imagesDecoded:true,videoLoaded:true,reloadLocks:true,russianTranslations:true,responsiveWidths:[1200,375,320,768,1024],plaintextScanPassed:true,errors};
+ const report={lazyApi:apiChecks,unlockWithMediaBlocked:true,mainDeferred:true,viewportOnly:true,noRepeatedMediaRequests:true,firstSubmitReviewReveal:true,transientMediaRecovery:true,reducedMotion:true,hiddenVideoPaused:true,customDomainRoot:true,noBackendRequests:true,buildWithoutPrivateFilesOrPassword:true,missingBundleRejected:true,wrongPasswordRejected:true,tamperedCiphertextRejected:true,profileAndMainTabs:true,imagesDecoded:true,videoLoaded:true,reloadLocks:true,russianTranslations:true,responsiveWidths:[1200,375,320,768,1024],plaintextScanPassed:true,errors};
  await writeFile('verification/tbank-checks.json',JSON.stringify(report,null,2)+'\n');console.log(report);
  if(process.env.TBANK_VERIFY_HOLD)await new Promise(resolve=>setTimeout(resolve,45000));
 } finally {await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));await rm(temp,{recursive:true,force:true});}

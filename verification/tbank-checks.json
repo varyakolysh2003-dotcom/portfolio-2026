@@ -10,6 +10,8 @@
   "mainDeferred": true,
   "viewportOnly": true,
   "noRepeatedMediaRequests": true,
+  "firstSubmitReviewReveal": true,
+  "transientMediaRecovery": true,
   "reducedMotion": true,
   "hiddenVideoPaused": true,
   "customDomainRoot": true,
