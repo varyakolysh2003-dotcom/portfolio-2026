@@ -121,11 +121,14 @@ try {
  await writeFile(contentPath,originalEnvelope);
  // Content authentication must finish while media responses are deliberately held.
  const requestStart=requests.length;
+ const windowReviewFile=await page.evaluate(()=>window.testMediaFiles['profileDesktop-7-1.png'].file);
  const held=[];
+ let failedReview=false;
  let releaseMedia;
  const mediaGate=new Promise(resolve=>{releaseMedia=resolve;});
  await page.route('**/encrypted/*.json',async route=>{
   if(route.request().url().endsWith('/manifest.json') || route.request().url().endsWith('/'+manifest.content))return route.continue();
+  if (!failedReview && route.request().url().endsWith('/'+windowReviewFile)) { failedReview=true; await route.fulfill({status:503,body:'Temporary failure'}); return; }
   held.push(route);
   await mediaGate;
   await route.continue();
@@ -144,6 +147,7 @@ try {
   }
  }
  await loadVisibleMedia('#profile-cases');
+ assert.equal(await page.locator('#profile-cases [data-media-error]').count(),0);
 
  for(const width of [1200,375,320,768,1024]) {
   await page.setViewportSize({width,height:900});
@@ -151,6 +155,7 @@ try {
   await loadVisibleMedia('#profile-cases');
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
  }
+ assert.equal(failedReview,true);
  const mediaFiles=await page.evaluate(()=>window.testMediaFiles);
  const mainFiles=Object.entries(mediaFiles).filter(([name])=>name.startsWith('main')).map(([,asset])=>asset.file);
  assert.equal(requests.slice(requestStart).some(url=>mainFiles.some(file=>url.endsWith('/encrypted/'+file))),false);
@@ -172,7 +177,7 @@ try {
  await page.getByRole('tab',{name:'Main 8.4',exact:true}).press('ArrowLeft');assert.equal(await page.locator('#profile-cases').isVisible(),true);
  assert.equal(await page.locator('video').evaluate(video=>video.paused),true);
  const mediaRequests=requests.slice(requestStart).filter(url=>/encrypted\/\d+\.json$/.test(url) && !url.endsWith('/'+manifest.content));
- assert.equal(new Set(mediaRequests).size,mediaRequests.length);
+ assert.equal(new Set(mediaRequests).size,mediaRequests.length-1); // One retry for the injected 503.
  assert.equal((await page.context().cookies()).some(c=>c.name==='tbank_session'),false);
  assert.equal(requests.some(url=>url.includes('/api/tbank/')),false);
  assert.equal(requests.some(url=>url.includes('/portfolio-2026/')),false);
@@ -180,7 +185,7 @@ try {
  await page.reload();await page.waitForSelector('.dots');assert.equal(await page.locator('.spoiler--open').count(),0);
  await page.goto(url+'?lang=ru');await submit(password);
  assert.equal(await page.locator('html').getAttribute('lang'),'ru');
- for(const section of copy.profile.introSections) assert.ok((await page.locator('.bank-intro').innerText()).replace(/\s+/g,' ').includes(section.ru.replace(/\s+/g,' ')));
+ for(const section of copy.profile.introSections) assert.ok((await page.locator('.bank-intro').innerText()).replace(/\s+/g,' ').includes((section.desktopRu || section.ru).replace(/\s+/g,' ')));
  assert.equal(await page.locator('.bank-results > div').count(),copy.profile.introSections.at(-1).metrics.length);
  assert.deepEqual(await page.locator('.bank-results dd').allTextContents(),copy.profile.introSections.at(-1).metrics.map(metric=>metric.value));
  assert.equal((await page.locator('.desktop-caption p').first().innerText()).replace(/\s+/g,' '),(await import(new URL('../.private/tbank/translations.mjs',import.meta.url))).translations(copy).find(([en])=>en===copy.profile.captions[0])[1].replace(/\s+/g,' '));

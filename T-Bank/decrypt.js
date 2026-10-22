@@ -2,9 +2,20 @@ const decode = value => Uint8Array.from(atob(value), char => char.charCodeAt(0))
 const directory = new URL('./encrypted/', import.meta.url);
 async function read(file) {
   if (!/^(manifest|\d+)\.json$/.test(file)) throw new Error('Invalid encrypted file');
-  const response = await fetch(new URL(file, directory));
-  if (!response.ok) throw new Error('Encrypted case unavailable');
-  return response.json();
+  // Numbered files are replaced when the bundle is rebuilt; never mix cached
+  // ciphertext with a fresh manifest. Retry a transient request once in-place.
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const response = await fetch(new URL(file, directory), { cache:'no-store' });
+      if (!response.ok) {
+        if (response.status < 500 || attempt) throw new Error('Encrypted case unavailable');
+        continue;
+      }
+      return await response.json();
+    } catch (error) {
+      if (attempt || !(error instanceof TypeError)) throw error;
+    }
+  }
 }
 export async function decryptCase(password) {
   const manifest = await read('manifest.json');

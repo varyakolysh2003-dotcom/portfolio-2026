@@ -60,3 +60,6 @@
 /* Original review exports retain the crop from the Figma image layers. */
 .bank-media[data-review="1"] img { width:105.83%; height:112.972%; left:-2.5%; top:-7.63%; object-fit:fill }
 .bank-media[data-review="2"] img { width:108.837%; height:117.478%; left:-3.996%; top:-8.31%; object-fit:fill }
+
+.bank-context .intro-mobile { display:none }
+@media(max-width:963px) { .bank-context .intro-mobile { display:block } .bank-context .intro-desktop { display:none } }

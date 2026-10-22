@@ -28,7 +28,12 @@ function updateIntro(name) {
     if(content.resultSpacing===24)section.style.marginTop='0';
     const heading=document.createElement('h2');heading.textContent=content.title;
     const paragraph=document.createElement('p');paragraph.textContent=content.body;
-    section.append(heading,paragraph);intro.append(section);
+    if(content.desktopBody) {
+      paragraph.className='intro-mobile';
+      const desktop=document.createElement('p');desktop.className='intro-desktop';desktop.textContent=content.desktopBody;
+      section.append(heading,desktop,paragraph);
+    } else section.append(heading,paragraph);
+    intro.append(section);
     for(const extra of content.extraParagraphs || []) {
       const paragraph=document.createElement('p');paragraph.textContent=extra.body;section.append(paragraph);
     }
