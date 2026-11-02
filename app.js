@@ -14,6 +14,7 @@ setupIconInteractions(document.querySelector('.icon-study'));
 const links = {
   cv: '/assets/cv/Kolysh-Varvara-Resume-eng.pdf',
   tbank: '/t-bank/', lavka: '/yandex-lavka/',
+  daigest: 'https://t.me/limitwatch_ai_bot',
   telegram: 'https://t.me/BarbaraKolysh',
   twitter: 'https://x.com/BarbaraKolysh',
   linkedin: 'https://www.linkedin.com/in/varvara-kolysh-5401492a3/'
@@ -55,6 +56,7 @@ const videos = [...document.querySelectorAll('video')];
 const mobileLayout = window.matchMedia('(max-width:963px)');
 function updatePosters() {
   for (const video of videos) {
+    if (video.dataset.poster) { video.poster = video.dataset.poster; continue; }
     const name = (video.dataset.src || video.getAttribute('src')).split('/').pop().replace(/-original\.mp4$/, '');
     const asset = `/assets/${name}${mobileLayout.matches ? '-mobile' : ''}`;
     video.poster = `${asset}.png`;
