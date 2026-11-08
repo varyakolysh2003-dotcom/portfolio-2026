@@ -1,0 +1,24 @@
+{
+  "fileKey": "r0nWm83DA537rthC3Jf96H",
+  "method": "Figma video export of original ATM frames; temporary export copies removed",
+  "durationSeconds": 10,
+  "fps": 30,
+  "videos": [
+    {
+      "file": "atm-scan.mp4",
+      "nodeId": "269:917"
+    },
+    {
+      "file": "atm-processing.mp4",
+      "nodeId": "269:987"
+    },
+    {
+      "file": "atm-preparing.mp4",
+      "nodeId": "269:778"
+    },
+    {
+      "file": "atm-collecting.mp4",
+      "nodeId": "269:813"
+    }
+  ]
+}

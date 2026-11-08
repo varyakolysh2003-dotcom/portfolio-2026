@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>if(new URLSearchParams(location.search).get('lang')==='ru'){document.documentElement.lang='ru';document.documentElement.classList.add('language-pending')}</script>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Banco Plata — Varvara Kolysh</title>
+  <meta name="description" content="A Banco Plata product design case study: cardless cash withdrawals, QR codes, ATM discovery, and usability testing.">
+  <link rel="icon" href="/assets/banco-plata/imgGeopin.png">
+  <link rel="preload" href="/fonts/Geist-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/banco-plata/case.css">
+  <script type="module" src="/banco-plata/case.js">
+</script>
+</head>
+<body>
+<main class="portfolio plata-page">
+  <aside class="profile plata-profile">
+    <div class="profile-top">
+      <a href="/" aria-label="Back to portfolio">
+<img class="avatar" src="/assets/banco-plata/imgGeopin.png" width="40" height="40" alt="Banco Plata" fetchpriority="high">
+</a>
+<a class="case-close" href="/" aria-label="Close case" title="Back to portfolio">
+<img src="/assets/banco-plata/imgCharmCross.svg" width="16" height="16" alt="">
+</a>
+    </div>
+    <div class="plata-intro">
+      <h1>Cardless withdrawal in PLATA ATM</h1>
+<div id="panel-context" class="plata-panel" role="tabpanel" aria-labelledby="tab-context" tabindex="0">
+<section>
+<h2>My role</h2>
+<p>I designed the complete end-to-end journey, from finding an ATM and generating a QR code to receiving cash, and conducted usability testing to gather participant feedback.</p>
+</section>
+<section>
+<h2>Context</h2>
+<p>Plata users can withdraw cash from ATMs without a physical card using a QR code generated in the app.</p>
+</section>
+<section>
+<h2>Task</h2>
+<p>Design the end-to-end QR cash withdrawal experience, from discovering the feature and finding an ATM to generating and using the QR code.</p>
+</section>
+</div>
+<div id="panel-process" class="plata-panel" role="tabpanel" aria-labelledby="tab-process" tabindex="0" hidden>
+<section>
+<h2>As is</h2>
+<p>The ATM and mobile banking app did not support cash operations without a bank card. Users had to look up ATM locations and services outside the banking app.</p>
+</section>
+<section>
+<h2>Pain points from as-is testing</h2>
+<p>Users depended on a physical card, external apps to find ATMs, and an internet connection. Generating a QR code raised concerns about the security of their money.</p>
+</section>
+</div>
+<div id="panel-result" class="plata-panel" role="tabpanel" aria-labelledby="tab-result" tabindex="0" hidden>
+<section>
+<h2>Desk research</h2>
+<p>I analyzed user reviews and media sources, and reviewed existing banking solutions from different countries.</p>
+</section>
+<section>
+<h2>To be</h2>
+<p>I designed the complete flow, including edge cases, from finding an ATM to withdrawing cash without a physical card.</p>
+<p>The flow gives users control over the security of their funds after generating a QR code.</p>
+<p>The ATM provides video instructions during the transaction.</p>
+</section>
+</div>
+    </div>
+    <div class="socials plata-tabs" role="tablist" aria-label="Case study overview">
+<button id="tab-context" role="tab" type="button" aria-selected="true" aria-controls="panel-context" tabindex="0">Context</button>
+<button id="tab-process" role="tab" type="button" aria-selected="false" aria-controls="panel-process" tabindex="-1">Process</button>
+<button id="tab-result" role="tab" type="button" aria-selected="false" aria-controls="panel-result" tabindex="-1">Result</button>
+    </div>
+  </aside>
+  <div class="gallery plata-gallery">
+<article class="plata-article" data-design-node="241:251">
+<div class="plata-media" role="img" aria-label="User &amp; Business Value" style="--art-height:398;aspect-ratio:600/398">
+<div class="plata-artwork" style="background:#585858;height:398px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:351px;left:calc(50% + 0.5px);top:23px;width:573px;transform:translate(-50%,0)" data-design-node="249:1100">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:100%;left:-0.01%;max-width:none;top:0;width:100.37%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At1906111.png" alt="" loading="eager" fetchpriority="high" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>User &amp; Business Value</h2>
+<p>For users: find an ATM that meets their needs without external apps, and access their account without a physical card or concerns about security. The ATM now supports the new flow and a video guide to using a QR code.</p>
+<p>Business goal: help customers complete their tasks without always having a physical card at hand, make cash withdrawals more convenient, simplify the process, and minimize support requests.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="250:1125">
+<div class="plata-media" role="img" aria-label="Hypotheses | JTBD and user survey" style="--art-height:580;aspect-ratio:600/580">
+<div class="plata-artwork" style="background:#3a3a3a;height:580px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:580px;left:63px;top:-0.05px;width:474px" data-design-node="250:1138">
+<img style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At1938501.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Hypotheses | JTBD and user survey</h2>
+<p>I formulated hypotheses for the entire user journey:</p>
+<ul>
+<li>
+<span>a clear entry point would help users find the feature faster;</span>
+</li>
+<li>
+<span>nearby ATMs with addresses and availability would reduce unsuccessful visits;</span>
+</li>
+<li>
+<span>transaction details and QR code expiry information would build confidence and reduce duplicates;</span>
+</li>
+<li>
+<span>clear statuses and errors would reduce support requests.</span>
+</li>
+</ul>
+<p>Using JTBD, I divided the tasks into three stages: before withdrawal, at the ATM, and after withdrawal.</p>
+<p>To explore these hypotheses, I surveyed 7 people who had already withdrawn cash without a card:</p>
+<ul>
+<li>
+<span>6 of 7 looked for ATMs in external map apps;</span>
+</li>
+<li>
+<span>opening hours were the main criterion when choosing an ATM, followed by fees;</span>
+</li>
+<li>
+<span>4 of 7 had encountered an out-of-service ATM in the past year;</span>
+</li>
+<li>
+<span>5 of 7 worried that someone else could use their QR code.</span>
+</li>
+</ul>
+<p>These findings informed an in-app ATM finder with availability statuses, visible withdrawal limits, and the option to cancel a QR code.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="241:265">
+<div class="plata-media" role="img" aria-label="Benchmarking" style="--art-height:383;aspect-ratio:600/383">
+<div class="plata-artwork" style="background:#3a3a3a;height:383px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:383px;left:calc(50% + 0.5px);top:-0.32px;width:599px;transform:translate(-50%,0)" data-design-node="249:1115">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:100%;left:0.1%;max-width:none;top:0;width:99.8%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At1915301.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Benchmarking</h2>
+<p>I reviewed existing solutions from Russian and Mexican banks, focusing on:</p>
+<ul>
+<li>
+<span>entry points for generating or scanning QR codes and finding ATMs;</span>
+</li>
+<li>
+<span>ATM search and information on the map;</span>
+</li>
+<li>
+<span>how cash withdrawals work without a physical card.</span>
+</li>
+</ul>
+<h2>Key findings</h2>
+<p>Banks approach cardless withdrawals differently. Some ask users to scan a QR code on the ATM screen; others ask them to hold their own code up to a scanner.</p>
+<p>Plata ATMs already have a QR scanner, so I prioritized:</p>
+<ul>
+<li>
+<span>security and step-by-step statuses across the ATM and phone during the transaction;</span>
+</li>
+<li>
+<span>detailed ATM information before the user leaves home;</span>
+</li>
+<li>
+<span>secure control of a QR code after it is generated;</span>
+</li>
+<li>
+<span>instructions for using a QR code at the ATM.</span>
+</li>
+</ul>
+</div>
+</article>
+<article class="plata-article" data-design-node="252:1139">
+<div class="plata-media" role="img" aria-label="User flow" style="--art-height:242;aspect-ratio:600/242">
+<div class="plata-artwork" style="background:#3a3a3a;height:242px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:228px;left:18px;top:7.26px;width:565px" data-design-node="252:1151">
+<img style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2028421.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>User flow</h2>
+<p>I built the flow around three stages of the user journey:</p>
+<ul>
+<li>
+<span>mobile banking: finding the feature and generating a QR code;</span>
+</li>
+<li>
+<span>finding an ATM and checking its information;</span>
+</li>
+<li>
+<span>withdrawing cash at the ATM.</span>
+</li>
+</ul>
+<p>For each stage, I mapped the transitions and edge cases.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="254:1165">
+<div class="plata-media" role="img" aria-label="Entry points" style="--art-height:424;aspect-ratio:600/424">
+<div class="plata-artwork" style="background:#3a3a3a;height:424px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:424px;left:-34px;top:0.11px;width:668px" data-design-node="258:1178">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:100.36%;left:0;max-width:none;top:-0.09%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038251.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Entry points</h2>
+<p>The survey and benchmarking showed that users look for withdrawals in different places. I added several entry points: a Cardless withdraw card on the home screen, a Cash actions block on the Payments screen, and search.</p>
+<p>Cash actions brings together two related tasks: withdrawing cash with a QR code and finding an ATM on the map.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="259:1279">
+<div class="plata-media" role="img" aria-label="QR code generation" style="--art-height:600;aspect-ratio:600/600">
+<div class="plata-artwork" style="background:#a6b0bd;height:600px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:558px;left:171px;top:21.2px;width:258px" data-design-node="259:1293">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:100%;left:0.11%;max-width:none;top:-0.07%;width:99.78%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038252.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>QR code generation</h2>
+<p>Everything is on one screen: account selection with the available balance, amount entry, and suggested amounts. A hint immediately explains that the amount must be a multiple of $50.</p>
+<p>Plata ATM terms and the daily limit appear below the button. Survey participants said they needed this information before withdrawing cash.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="259:1295">
+<div class="plata-media" role="img" aria-label="Generated QR code" style="--art-height:600;aspect-ratio:600/600">
+<div class="plata-artwork" style="background:#a6b0bd;height:600px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:558px;left:62px;top:21.52px;width:230px" data-design-node="259:1298">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:100%;left:-0.13%;max-width:none;top:-0.06%;width:100.26%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038253.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+<div style="position:absolute;height:498px;left:308px;top:21.52px;width:230px" data-design-node="259:1307">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:100.13%;left:0;max-width:none;top:-0.06%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038254.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Generated QR code</h2>
+<p>Alongside the code, the screen shows the account, amount, expiry time, and a link to nearby ATMs. Users can save the code as an image for later.</p>
+<p>Users can cancel the code at any time to stay in control of its security. Cancellation and generation errors have dedicated bottom sheets with clear explanations and actions.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="260:1308">
+<div class="plata-media" role="img" aria-label="After generating a QR code" style="--art-height:600;aspect-ratio:600/600">
+<div class="plata-artwork" style="background:#a6b0bd;height:600px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:917px;left:50%;top:-353.17px;width:342px;transform:translate(-50%,0)" data-design-node="260:1311">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:100%;left:-0.2%;max-width:none;top:-0.06%;width:100.41%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038255.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>After generating a QR code</h2>
+<p>Generated codes remain easy to find: an Active QR codes block appears on the Payments screen with the amount, account, and expiry time.</p>
+<p>Users can see which codes are still active and return to them before visiting an ATM. This reduces duplicate codes and uncertainty about control of their money after generation.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="262:1345">
+<div class="plata-media" role="img" aria-label="ATMs on the map and filters" style="--art-height:600;aspect-ratio:600/600">
+<div class="plata-artwork" style="background:#a6b0bd;height:600px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:499px;left:62px;top:50.83px;width:230px" data-design-node="262:1369">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:99.93%;left:0;max-width:none;top:0.07%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038256.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+<div style="position:absolute;height:498px;left:308px;top:21.52px;width:230px" data-design-node="262:1370">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:100.13%;left:0;max-width:none;top:-0.06%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038257.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>ATMs on the map and filters</h2>
+<p>ATMs appear on a map and in a list with distances and opening hours. Out-of-service ATMs are visually distinct, helping users choose an ATM within the banking app.</p>
+<p>Filters reflect the survey and benchmarking criteria: opening hours, withdrawal method (QR or card), cash availability, currency, and payment networks.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="268:205">
+<div class="plata-media" role="img" aria-label="ATM information" style="--art-height:600;aspect-ratio:600/600">
+<div class="plata-artwork" style="background:#a6b0bd;height:600px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:499px;left:62px;top:101.15px;width:230px" data-design-node="268:231">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:197.48%;left:0;max-width:none;top:0.01%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038258.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+<div style="position:absolute;height:997px;left:308px;top:-504.85px;width:230px" data-design-node="268:235">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:98.84%;left:0;max-width:none;top:0.01%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038258.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>ATM information</h2>
+<p>The ATM card contains everything users need to know before leaving home.</p>
+<p>Users can open the address in Google Maps or share it. The card also links to instructions and support.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="268:237">
+<div class="plata-media" role="img" aria-label="Service instructions" style="--art-height:600;aspect-ratio:600/600">
+<div class="plata-artwork" style="background:#a6b0bd;height:600px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:535px;left:62px;top:44.46px;width:230px" data-design-node="268:252">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:93.2%;left:0;max-width:none;top:1.26%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038259.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+<div style="position:absolute;height:498px;left:308px;top:21.52px;width:230px" data-design-node="268:253">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:100.13%;left:0;max-width:none;top:-0.06%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038260.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Service instructions</h2>
+<p>Short, step-by-step instructions explain cash withdrawals and deposits: what to tap on the ATM, where to hold the code, and what happens next.</p>
+<p>Instructions open directly from the ATM card, so users can understand the process in advance.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="268:255">
+<div class="plata-media" role="img" aria-label="Cardless withdrawal at the ATM" style="--art-height:539;aspect-ratio:600/539">
+<div class="plata-artwork" style="background:#a6b0bd;height:539px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:409px;left:62px;top:93px;width:230px" data-design-node="268:258">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:99.97%;left:0;max-width:none;top:-0.06%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038261.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+<div style="position:absolute;height:409px;left:308px;top:41px;width:230px" data-design-node="269:269">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:99.97%;left:0;max-width:none;top:-0.06%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038262.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Cardless withdrawal at the ATM</h2>
+<p>I designed the ATM interface to follow the same logic as the app: start with Deposit or Withdraw, then choose By QR code or By Card.</p>
+<p>Language and support buttons are available at every step.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="253:1152">
+<div class="plata-media" role="img" aria-label="Video guidance during scanning" style="--art-height:640;aspect-ratio:600/640">
+<div class="plata-artwork" style="background:#a6b0bd;height:640px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;background:black;height:596px;left:132px;overflow:hidden;border-radius:27.938px;top:18.09px;width:335.25px" data-design-node="269:917">
+<video class="plata-atm-video" poster="/assets/banco-plata/atm-scan-poster.png" data-src="/assets/banco-plata/atm-scan.mp4" autoplay muted loop playsinline preload="none" aria-label="Video guidance during scanning"></video>
+</div>
+</div>
+</div>
+<div class="plata-media" role="img" aria-label="Video guidance during scanning" style="--art-height:640;aspect-ratio:600/640">
+<div class="plata-artwork" style="background:#a6b0bd;height:640px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;background:black;height:596px;left:132px;overflow:hidden;border-radius:27.938px;top:18.09px;width:335.25px" data-design-node="269:987">
+<video class="plata-atm-video" poster="/assets/banco-plata/atm-processing-poster.png" data-src="/assets/banco-plata/atm-processing.mp4" autoplay muted loop playsinline preload="none" aria-label="Video guidance during scanning"></video>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Video guidance during scanning</h2>
+<p>During scanning, an animation shows where to hold the phone. This is the step that most often raises questions.</p>
+<p>Statuses progress from Hold the code up to Processing your code. Users understand what is happening and know to stay at the ATM.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="269:682">
+<div class="plata-media" role="img" aria-label="Amount entry" style="--art-height:539;aspect-ratio:600/539">
+<div class="plata-artwork" style="background:#a6b0bd;height:539px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:473px;left:167px;top:calc(50% + 0.41px);width:266px;transform:translate(0,-50%)" data-design-node="269:685">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:99.97%;left:0;max-width:none;top:-0.06%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At2038263.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Amount entry</h2>
+<p>After scanning, the screen shows the card and amount from the QR code, with a balance check and the option to request smaller notes. It also clearly states that there is no fee.</p>
+<p>Users can go back or exit at any time, staying in control of the transaction until confirmation.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="269:695">
+<div class="plata-media" role="img" aria-label="Preparing and collecting cash" style="--art-height:492;aspect-ratio:600/492">
+<div class="plata-artwork" style="background:#a6b0bd;height:492px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;background:black;height:409px;left:62px;overflow:hidden;border-radius:19.172px;top:41px;width:230.063px" data-design-node="269:778">
+<video class="plata-atm-video" poster="/assets/banco-plata/atm-preparing-poster.png" data-src="/assets/banco-plata/atm-preparing.mp4" autoplay muted loop playsinline preload="none" aria-label="Preparing and collecting cash"></video>
+</div>
+<div style="position:absolute;background:black;height:409px;left:308px;overflow:hidden;border-radius:19.172px;top:41.27px;width:230.063px" data-design-node="269:813">
+<video class="plata-atm-video" poster="/assets/banco-plata/atm-collecting-poster.png" data-src="/assets/banco-plata/atm-collecting.mp4" autoplay muted loop playsinline preload="none" aria-label="Preparing and collecting cash"></video>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Preparing and collecting cash</h2>
+<p>Two separate statuses distinguish cash preparation from dispensing: Preparing your cash and Please take your cash.</p>
+<p>A banknote animation shows where to collect the money, completing the journey and easing the worry that the account was debited but no cash was dispensed.</p>
+</div>
+</article>
+<article class="plata-article" data-design-node="270:1235">
+<div class="plata-media" role="img" aria-label="Usability testing" style="--art-height:383;aspect-ratio:600/383">
+<div class="plata-artwork" style="background:#3a3a3a;height:383px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:383px;left:calc(50% + 0.5px);top:-0.32px;width:599px;transform:translate(-50%,0)" data-design-node="270:1238">
+<img style="position:absolute;inset:0;max-width:none;object-fit:contain;pointer-events:none;width:100%;height:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At1915302.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+<div class="plata-media" role="img" aria-label="Usability testing" style="--art-height:220;aspect-ratio:600/220">
+<div class="plata-artwork" style="background:#3a3a3a;height:220px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:220px;left:calc(50% + 0.5px);top:-0.04px;width:599px;transform:translate(-50%,0)" data-design-node="270:1257">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:75.08%;left:1.21%;max-width:none;top:14.8%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At1915303.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Usability testing</h2>
+<p>I conducted qualitative usability testing with 5 participants across three scenarios:</p>
+<ul>
+<li>
+<span>generating a QR code;</span>
+</li>
+<li>
+<span>finding an ATM;</span>
+</li>
+<li>
+<span>withdrawing cash at an ATM.</span>
+</li>
+</ul>
+<p>I checked how easily participants found the entry point, whether the information and statuses were clear, and where doubts arose.</p>
+<h2>Key findings</h2>
+<p>All 5 participants completed all 3 scenarios without blockers. The map, filters, and ATM card were clear; 3 of 5 did not need instructions. Everyone found the ATM flow easy.</p>
+<p>Key issues:</p>
+<ul>
+<li>
+<span>3 of 5 initially looked for withdrawals on the home or account screen;</span>
+</li>
+<li>
+<span>the ATM address could not be copied;</span>
+</li>
+<li>
+<span>the ATM did not show the limit before amount entry.</span>
+</li>
+</ul>
+</div>
+</article>
+<article class="plata-article" data-design-node="269:1022">
+<div class="plata-media" role="img" aria-label="Design iterations" style="--art-height:580;aspect-ratio:600/580">
+<div class="plata-artwork" style="background:#3a3a3a;height:580px;overflow:hidden;position:relative;border-radius:24px;flex-shrink:0;width:600px">
+<div style="position:absolute;height:575px;left:0;top:2.04px;width:600px" data-design-node="270:1233">
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none" data-design-node="">
+<img style="position:absolute;height:99.98%;left:0;max-width:none;top:0.1%;width:100%" data-design-node="" src="/assets/banco-plata/imgScreenshot20261107At1938502.png" alt="" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+<div class="plata-caption">
+<h2>Design iterations</h2>
+<p>Based on testing, I made the following changes:</p>
+<ul>
+<li>
+<span>added a Withdraw quick action to the home screen and Cuenta account;</span>
+</li>
+<li>
+<span>moved Cash actions higher on the Pay screen, above Recipients and My payments;</span>
+</li>
+<li>
+<span>added Share address buttons to the ATM card;</span>
+</li>
+<li>
+<span>displayed the withdrawal limit below the amount field on the ATM.</span>
+</li>
+</ul>
+</div>
+</article>
+  </div>
+</main>
+</body>
+</html>

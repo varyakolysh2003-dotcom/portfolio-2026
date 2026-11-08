@@ -18,6 +18,8 @@ for (const file of ['index.html', 'styles.css', 'app.js', 'sound-effects.js', 'i
 await mkdir('dist/yandex-lavka', { recursive: true });
 for (const file of ['index.html', 'case.css', 'case.js', 'content.js', 'reader-interaction.js']) await cp(`Yandex Lavka/${file}`, `dist/yandex-lavka/${file}`);
 console.log('Built portfolio in dist/');
+await mkdir('dist/banco-plata', { recursive: true });
+for (const file of ['index.html', 'case.css', 'case.js', 'content.js']) await cp(`Banco Plata/${file}`, `dist/banco-plata/${file}`);
 await mkdir('dist/t-bank',{recursive:true});
 for (const file of ['index.html','case.css','case.js','decrypt.js','lazy-media.js','spoiler.js','text-spoiler.js','text-particles.js']) await cp(`T-Bank/${file}`, `dist/t-bank/${file}`);
 

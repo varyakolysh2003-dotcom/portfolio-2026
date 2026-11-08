@@ -14,9 +14,11 @@ createServer(async (req, res) => {
     let relative = pathname === '/' ? 'index.html' : pathname.slice(1);
     if (relative === 'yandex-lavka') { res.writeHead(302, { Location: '/yandex-lavka/' }).end(); return; }
     if (relative === 't-bank') { res.writeHead(302, { Location: '/t-bank/' }).end(); return; }
+    if (relative === 'banco-plata') { res.writeHead(302, { Location: '/banco-plata/' + new URL(req.url, 'http://localhost').search }).end(); return; }
     if (relative.endsWith('/')) relative += 'index.html';
     if (root === resolve('.') && relative.startsWith('yandex-lavka/')) relative = relative.replace('yandex-lavka/', 'Yandex Lavka/');
     if (root === resolve('.') && relative.startsWith('t-bank/')) relative = relative.replace('t-bank/', 'T-Bank/');
+    if (root === resolve('.') && relative.startsWith('banco-plata/')) relative = relative.replace('banco-plata/', 'Banco Plata/');
     const asset = root === resolve('.') && /^(assets|fonts)\//.test(relative) ? `public/${relative}` : relative;
     const file = resolve(root, asset);
     if (!file.startsWith(root + sep)) { res.writeHead(403).end(); return; }

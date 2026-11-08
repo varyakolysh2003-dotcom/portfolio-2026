@@ -80,7 +80,7 @@ export function translatePage() {
   document.querySelectorAll('[lang]').forEach(element => { if (element !== document.documentElement) element.lang = language; });
   for (const link of document.querySelectorAll('a[href]')) {
     const url = new URL(link.getAttribute('href'), location.href);
-    if (url.origin !== location.origin || !['/','/t-bank/','/yandex-lavka/'].includes(url.pathname)) continue;
+    if (url.origin !== location.origin || !['/','/t-bank/','/yandex-lavka/','/banco-plata/'].includes(url.pathname)) continue;
     if (language === 'ru') url.searchParams.set('lang', 'ru'); else url.searchParams.delete('lang');
     link.setAttribute('href', url.pathname + url.search + url.hash);
   }
