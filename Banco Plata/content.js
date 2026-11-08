@@ -61,10 +61,6 @@ export const translations = [
     "5 из 7 боятся, что их QR-кодом воспользуется кто-то другой."
   ],
   [
-    "These findings informed an in-app ATM finder with availability statuses, visible withdrawal limits, and the option to cancel a QR code.",
-    "Отсюда решения: свой поиск банкоматов со статусом, отображение лимита и возможность отменить QR-код."
-  ],
-  [
     "Benchmarking",
     "Анализ аналогов"
   ],
@@ -90,7 +86,7 @@ export const translations = [
   ],
   [
     "Banks approach cardless withdrawals differently. Some ask users to scan a QR code on the ATM screen; others ask them to hold their own code up to a scanner.",
-    "Все банки по-разному подходят к процессу обналичивания без участия карты. Часть банков предлагает сканировать кюар кода с экрана банкомата, другая - приложить кюар код к месту сканирования."
+    "Все банки по-разному подходят к процессу обналичивания без участия карты. Часть банков предлагает сканировать кюар кода с экрана банкомата, другая — приложить кюар код к месту сканирования."
   ],
   [
     "Plata ATMs already have a QR scanner, so I prioritized:",
@@ -394,7 +390,7 @@ export const translations = [
   ],
   [
     "I designed the complete flow, including edge cases, from finding an ATM to withdrawing cash without a physical card.",
-    "Спроектировала полный сценарий, включая пограничные случаи: от поиска банкомата до снятия наличных без физической карты."
+    "Спроектировала полный сценарий, включая edge случаи: от поиска банкомата до снятия наличных без физической карты."
   ],
   [
     "The flow gives users control over the security of their funds after generating a QR code.",
