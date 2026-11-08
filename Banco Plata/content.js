@@ -378,7 +378,7 @@ export const translations = [
   ],
   [
     "Desk research",
-    "Кабинетное исследование"
+    "Desk research"
   ],
   [
     "I analyzed user reviews and media sources, and reviewed existing banking solutions from different countries.",
@@ -386,7 +386,7 @@ export const translations = [
   ],
   [
     "To be",
-    "Как стало"
+    "To be"
   ],
   [
     "I designed the complete flow, including edge cases, from finding an ATM to withdrawing cash without a physical card.",
