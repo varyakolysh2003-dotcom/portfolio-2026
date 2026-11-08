@@ -374,7 +374,7 @@ export const translations = [
   ],
   [
     "Users depended on a physical card, external apps to find ATMs, and an internet connection. Generating a QR code raised concerns about the security of their money.",
-    "Пользователи зависели от физической карты, внешних приложений для поиска банкоматов и интернета. При генерации QR-кода возникала тревога за безопасность денег."
+    "Пользователи зависели от физической карты, внешних приложений для поиска банкоматов и интернета. При использовании QR-кода возникает тревога за безопасность счета."
   ],
   [
     "Desk research",
