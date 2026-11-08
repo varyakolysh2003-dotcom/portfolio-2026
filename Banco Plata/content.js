@@ -162,11 +162,11 @@ export const translations = [
   ],
   [
     "Alongside the code, the screen shows the account, amount, expiry time, and a link to nearby ATMs. Users can save the code as an image for later.",
-    "Кроме самого кода, на экране видны счёт списания, сумма, срок действия и ссылка на ближайшие банкоматы. Код можно сохранить картинкой и использовать позже."
+    "Кроме самого кода, на экране видны счёт списания, сумма, срок действия и раздел с ближайшими банкоматами. Код можно сохранить картинкой и использовать позже."
   ],
   [
     "Users can cancel the code at any time to stay in control of its security. Cancellation and generation errors have dedicated bottom sheets with clear explanations and actions.",
-    "Чтобы человек контролировал безопасность, код можно отменить в любой момент. Для отмены и ошибки генерации есть отдельный bottom sheet с понятным текстом и действием."
+    "Чтобы человек контролировал безопасность, код можно отменить в любой момент. Для отмены и ошибки генерации есть отдельный bottom sheet с кнопкой отмены QR-кода."
   ],
   [
     "After generating a QR code",
@@ -174,11 +174,11 @@ export const translations = [
   ],
   [
     "Generated codes remain easy to find: an Active QR codes block appears on the Payments screen with the amount, account, and expiry time.",
-    "Созданные коды не теряются, на экране Payments появляется блок «Active QR codes» с суммой, счётом и сроком действия."
+    "Созданные коды не теряются, в разделе Payments появляется блок «Active QR codes» с суммой, счётом и сроком действия."
   ],
   [
     "Users can see which codes are still active and return to them before visiting an ATM. This reduces duplicate codes and uncertainty about control of their money after generation.",
-    "Пользователь всегда видит, какие коды ещё действуют, и может вернуться к ним до похода к банкомату. Это снижает число дублей и неопределенности за контроль средств после генерации кюар кода."
+    "Пользователь всегда видит, какие коды ещё действуют, и может вернуться к ним до похода к банкомату. Это снижает число дублей и неопределенности за контроль средств после генерации QR-кода."
   ],
   [
     "ATMs on the map and filters",
@@ -186,7 +186,7 @@ export const translations = [
   ],
   [
     "ATMs appear on a map and in a list with distances and opening hours. Out-of-service ATMs are visually distinct, helping users choose an ATM within the banking app.",
-    "Банкоматы показаны на карте и списком с расстоянием и часами работы, а неработающие визуально отличаются. Так человек выбирает банкомат прямо в приложении, без внешних карт."
+    "Банкоматы показаны на карте и списком с расстоянием и часами работы. Так человек выбирает банкомат прямо в приложении, без внешних карт."
   ],
   [
     "Filters reflect the survey and benchmarking criteria: opening hours, withdrawal method (QR or card), cash availability, currency, and payment networks.",
@@ -214,7 +214,7 @@ export const translations = [
   ],
   [
     "Instructions open directly from the ATM card, so users can understand the process in advance.",
-    "Инструкции открываются прямо из карточки банкомата, поэтому разобраться в процессе можно заранее, а не стоя у банкомата."
+    "Инструкции открываются прямо в описании банкомата, поэтому разобраться в процессе можно заранее, а не стоя у банкомата."
   ],
   [
     "Cardless withdrawal at the ATM",
@@ -225,20 +225,16 @@ export const translations = [
     "Интерфейс банкомата спроектировала в той же логике, что и приложение: на старте два действия — Deposit и Withdraw, затем выбор способа — «By QR code» или «By Card»."
   ],
   [
-    "Language and support buttons are available at every step.",
-    "Кнопки смены языка и поддержки доступны на каждом шаге."
-  ],
-  [
     "Video guidance during scanning",
     "Video guidance during scanning"
   ],
   [
     "During scanning, an animation shows where to hold the phone. This is the step that most often raises questions.",
-    "Пока идёт сканирование, анимация показывает, куда подносить телефон. Именно здесь сценарий чаще всего вызывает вопросы."
+    "Пока идёт сканирование, анимация показывает, куда подносить телефон."
   ],
   [
     "Statuses progress from Hold the code up to Processing your code. Users understand what is happening and know to stay at the ATM.",
-    "Статусы сменяют друг друга по шагам: «Поднесите код» → «Обрабатываем код». Пользователь понимает, что происходит, и не уходит от банкомата раньше времени."
+    "Статусы сменяют друг друга по шагам: «Поднесите код» → «Обрабатываем код». Пользователь понимает, что происходит на каждом этапе."
   ],
   [
     "Amount entry",
@@ -262,7 +258,7 @@ export const translations = [
   ],
   [
     "A banknote animation shows where to collect the money, completing the journey and easing the worry that the account was debited but no cash was dispensed.",
-    "Анимация купюр показывает, где их забрать. Это закрывает последний шаг пути и снимает тревогу «списалось, а деньги не выдали»."
+    "Анимация купюр показывает, где их забрать. Это закрывает последний шаг пути и снимает тревогу у пользователя."
   ],
   [
     "Usability testing",
@@ -293,22 +289,6 @@ export const translations = [
     "Все 5 респондентов прошли все 3 сценария без блокеров. Карта, фильтры и карточка банкомата оказались понятными, 3 из 5 даже не понадобились инструкции. Флоу на банкомате был лёгким для всех."
   ],
   [
-    "Key issues:",
-    "Критические моменты:"
-  ],
-  [
-    "3 of 5 initially looked for withdrawals on the home or account screen;",
-    "3 из 5 сначала искали снятие на главной или в счёте;"
-  ],
-  [
-    "the ATM address could not be copied;",
-    "нельзя скопировать адрес банкомата;"
-  ],
-  [
-    "the ATM did not show the limit before amount entry.",
-    "на банкомате не видно лимита до ввода суммы."
-  ],
-  [
     "Design iterations",
     "Design iterations"
   ],
@@ -318,7 +298,7 @@ export const translations = [
   ],
   [
     "added a Withdraw quick action to the home screen and Cuenta account;",
-    "добавила быстрое действие Withdraw на главную и в счёт Cuenta;"
+    "Подняла блок в Payments выше в зоне вьюпорта и добавила точку входа с главной в счете пользователя;"
   ],
   [
     "moved Cash actions higher on the Pay screen, above Recipients and My payments;",
