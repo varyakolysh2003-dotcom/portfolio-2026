@@ -2,7 +2,7 @@
 export const translations = [
   [
     "User & Business Value",
-    "Польза для пользователей и бизнеса"
+    "User & Business Value"
   ],
   [
     "For users: find an ATM that meets their needs without external apps, and access their account without a physical card or concerns about security. The ATM now supports the new flow and a video guide to using a QR code.",
@@ -14,7 +14,7 @@ export const translations = [
   ],
   [
     "Hypotheses | JTBD and user survey",
-    "Гипотезы | JTBD и опрос пользователей"
+    "Hypotheses | JTBD and user survey"
   ],
   [
     "I formulated hypotheses for the entire user journey:",
@@ -62,7 +62,7 @@ export const translations = [
   ],
   [
     "Benchmarking",
-    "Анализ аналогов"
+    "Benchmarking"
   ],
   [
     "I reviewed existing solutions from Russian and Mexican banks, focusing on:",
@@ -82,7 +82,7 @@ export const translations = [
   ],
   [
     "Key findings",
-    "Главные выводы"
+    "Key findings"
   ],
   [
     "Banks approach cardless withdrawals differently. Some ask users to scan a QR code on the ATM screen; others ask them to hold their own code up to a scanner.",
@@ -110,7 +110,7 @@ export const translations = [
   ],
   [
     "User flow",
-    "Пользовательский путь"
+    "User flow"
   ],
   [
     "I built the flow around three stages of the user journey:",
@@ -134,7 +134,7 @@ export const translations = [
   ],
   [
     "Entry points",
-    "Точки входа"
+    "Entry points"
   ],
   [
     "The survey and benchmarking showed that users look for withdrawals in different places. I added several entry points: a Cardless withdraw card on the home screen, a Cash actions block on the Payments screen, and search.",
@@ -146,7 +146,7 @@ export const translations = [
   ],
   [
     "QR code generation",
-    "Генерация QR-кода"
+    "QR code generation"
   ],
   [
     "Everything is on one screen: account selection with the available balance, amount entry, and suggested amounts. A hint immediately explains that the amount must be a multiple of $50.",
@@ -158,7 +158,7 @@ export const translations = [
   ],
   [
     "Generated QR code",
-    "Сгенерированный QR-код"
+    "Generated QR code"
   ],
   [
     "Alongside the code, the screen shows the account, amount, expiry time, and a link to nearby ATMs. Users can save the code as an image for later.",
@@ -170,7 +170,7 @@ export const translations = [
   ],
   [
     "After generating a QR code",
-    "После генерации QR-кода"
+    "After generating a QR code"
   ],
   [
     "Generated codes remain easy to find: an Active QR codes block appears on the Payments screen with the amount, account, and expiry time.",
@@ -182,7 +182,7 @@ export const translations = [
   ],
   [
     "ATMs on the map and filters",
-    "Банкоматы на карте и фильтры"
+    "ATMs on the map and filters"
   ],
   [
     "ATMs appear on a map and in a list with distances and opening hours. Out-of-service ATMs are visually distinct, helping users choose an ATM within the banking app.",
@@ -194,7 +194,7 @@ export const translations = [
   ],
   [
     "ATM information",
-    "Информация о банкомате"
+    "ATM information"
   ],
   [
     "The ATM card contains everything users need to know before leaving home.",
@@ -206,7 +206,7 @@ export const translations = [
   ],
   [
     "Service instructions",
-    "Инструкции по операциям"
+    "Service instructions"
   ],
   [
     "Short, step-by-step instructions explain cash withdrawals and deposits: what to tap on the ATM, where to hold the code, and what happens next.",
@@ -218,7 +218,7 @@ export const translations = [
   ],
   [
     "Cardless withdrawal at the ATM",
-    "Снятие без карты в банкомате"
+    "Cardless withdrawal at the ATM"
   ],
   [
     "I designed the ATM interface to follow the same logic as the app: start with Deposit or Withdraw, then choose By QR code or By Card.",
@@ -230,7 +230,7 @@ export const translations = [
   ],
   [
     "Video guidance during scanning",
-    "Видеоинструкция при сканировании"
+    "Video guidance during scanning"
   ],
   [
     "During scanning, an animation shows where to hold the phone. This is the step that most often raises questions.",
@@ -242,7 +242,7 @@ export const translations = [
   ],
   [
     "Amount entry",
-    "Ввод суммы"
+    "Amount entry"
   ],
   [
     "After scanning, the screen shows the card and amount from the QR code, with a balance check and the option to request smaller notes. It also clearly states that there is no fee.",
@@ -254,7 +254,7 @@ export const translations = [
   ],
   [
     "Preparing and collecting cash",
-    "Подготовка и выдача наличных"
+    "Preparing and collecting cash"
   ],
   [
     "Two separate statuses distinguish cash preparation from dispensing: Preparing your cash and Please take your cash.",
@@ -266,7 +266,7 @@ export const translations = [
   ],
   [
     "Usability testing",
-    "Юзабилити-тестирование"
+    "Usability testing"
   ],
   [
     "I conducted qualitative usability testing with 5 participants across three scenarios:",
@@ -310,7 +310,7 @@ export const translations = [
   ],
   [
     "Design iterations",
-    "Итерации дизайна"
+    "Design iterations"
   ],
   [
     "Based on testing, I made the following changes:",
