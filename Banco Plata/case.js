@@ -1,8 +1,10 @@
 import { addTranslations, setupLanguage } from '/i18n.js';
 import { translations } from './content.js';
 import { setupVideoLoading } from '/page-reveal.js';
+import { setupSoundEffects } from '/sound-effects.js';
 
 addTranslations(translations);
+setupSoundEffects(document.querySelector('.sound'));
 const tabs = [...document.querySelectorAll('.plata-tabs [role="tab"]')];
 function selectTab(tab) {
   for (const item of tabs) {
