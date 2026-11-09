@@ -153,14 +153,6 @@ export const copy = {
     "en": "Families and couples value seeing who added what and whether everything has been bought. Friends want to know who is participating and paying. Colleagues need to split costs and wait for everyone.",
     "ru": "В семьях и парах ценно видеть, кто что добавил и все ли купили. У друзей — кто участвует и кто платит. У коллег — как разделить расходы и дождаться всех."
   },
-  "coreHeading": {
-    "en": "Core problem from customer interviews",
-    "ru": "Core problem из касдева"
-  },
-  "coreProblem": {
-    "en": "As a result, people spend time messaging and transferring money. Ordering takes longer, with a higher risk of forgetting something or placing the order incorrectly.",
-    "ru": "В результате люди тратят время на переписки и переводы денег, больше времени на заказ, выше риск что-то забыть или оформить не так."
-  },
   "taskExtra": {
     "en": "Form hypotheses and JTBD, study competitors with similar mechanics, and conduct qualitative testing to compare as-is and to-be experiences.",
     "ru": "Сформировать гипотезы и JTBD, изучить рынок конкурентов с похожей механикой и провести качественное тестирование для сравнения As is и to be."
