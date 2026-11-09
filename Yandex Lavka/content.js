@@ -19,7 +19,7 @@ export const copy = {
   },
   "process": {
     "en": "At the start of the research, I selected 20 people from different group segments to interview and test the current user journey. I wanted to understand where users got stuck in the Yandex Lavka app.",
-    "ru": "В начале исследования отобрала 20 человек разных групповых сегментов для опроса и тестирования текущего пути пользователей. Мне было важно понять, в какой момент наступает ступор в сценарии внутри приложения Яндекс Лавки у пользователей."
+    "ru": "В начале исследования отобрала 20 человек разных групповых сегментов для опроса и тестирования текущего пути пользователей. Мне было важно понять, в какой момент наступает ступор в сценарии внутри приложения."
   },
   "result": {
     "en": "Developed hypotheses and screens for focus-group testing.",
