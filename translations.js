@@ -13,6 +13,7 @@ export const translations = [
 ['Portfolio cases','Кейсы'],['Other projects','Другие проекты'],['143 users','143 пользователя'],
 ['30 Day design club concepts (2025)','Концепты 30 Day design club (2025)'],
 ['XCode + Claude Code animation concept','Концепт анимации XCode + Claude Code'],
+['ATM Cash Withdrawal via QR Code in Banco PLATA🐅','Снятие наличных по QR-коду в Banco PLATA🐅'],
 ['Three mobile concepts: character creation, a weekly planner and a meme generator','Три мобильных концепта: создание персонажа, недельный планер и генератор мемов'],
 ['Phone interface with an animated folder concept','Концепт анимированной папки на экране телефона'],
 ['CV','Резюме'],['Portfolio projects','Проекты'],['T-Bank','Т-Банк'],['Yandex Lavka','Яндекс Лавка'],
