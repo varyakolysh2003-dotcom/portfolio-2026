@@ -1,6 +1,6 @@
 import { addTranslations, setupLanguage } from '/i18n.js';
 import { translations } from './content.js';
-import { setupVideoLoading } from '/page-reveal.js';
+import { setupPageReveal, setupVideoLoading } from '/page-reveal.js';
 import { setupSoundEffects } from '/sound-effects.js';
 
 addTranslations(translations);
@@ -39,3 +39,4 @@ for (const media of document.querySelectorAll('.plata-media')) {
 }
 setupLanguage();
 setupVideoLoading([...document.querySelectorAll('.plata-atm-video')]);
+setupPageReveal();

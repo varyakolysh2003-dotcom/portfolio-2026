@@ -34,7 +34,7 @@ export function setupPageReveal(root = document) {
       try { await image.decode(); } catch { /* Show the browser fallback on failure. */ }
       // Case images can be fetched far ahead by native lazy loading. Keep
       // their fade for the moment they are actually visible to the reader.
-      if (!motion.matches && imageObserver && image.closest('.case-gallery, .bank-gallery')) {
+      if (!motion.matches && imageObserver && image.closest('.case-gallery, .bank-gallery, .plata-gallery')) {
         const rect = image.getBoundingClientRect();
         if (!image.getClientRects().length || rect.top >= innerHeight || rect.bottom <= 0) {
           waiting.set(image, show);
