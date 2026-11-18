@@ -1,4 +1,5 @@
 const preferenceKey = 'portfolio-sound-enabled';
+const clickSoundsAvailable = false;
 const soundGroups = {
   "default": [
     "/assets/sounds/default/click-002.mp3",
@@ -22,6 +23,10 @@ const soundGroups = {
 };
 
 export function setupSoundEffects(button) {
+  if (!clickSoundsAvailable) {
+    if (button) button.hidden = true;
+    return;
+  }
   let enabled = true;
   try {
     enabled = localStorage.getItem(preferenceKey) !== 'false';

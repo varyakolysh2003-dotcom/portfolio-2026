@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script>document.documentElement.classList.add('media-fade-enabled','language-pending');if(new URLSearchParams(location.search).get('lang')==='ru'){document.documentElement.lang='ru';document.documentElement.classList.add('language-pending')}</script>
+  <script>document.documentElement.classList.add('media-fade-enabled');if(new URLSearchParams(location.search).get('lang')==='ru'){document.documentElement.lang='ru';document.documentElement.classList.add('language-pending')}</script>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Banco Plata — Varvara Kolysh</title>
   <meta name="description" content="A Banco Plata product design case study: cardless cash withdrawals, QR codes, ATM discovery, and usability testing.">
@@ -29,11 +29,11 @@
 <div id="panel-context" class="plata-panel" role="tabpanel" aria-labelledby="tab-context" tabindex="0">
 <section>
 <h2>My role</h2>
-<p>I designed the complete end-to-end journey, from finding an ATM and generating a QR code to receiving cash, and conducted usability testing to gather participant feedback.</p>
+<p>I designed the complete end-to-end journey, from finding an ATM and generating a QR code to receiving cash, and conducted usability testing to gather participant feedback.</p>
 </section>
 <section>
 <h2>Context</h2>
-<p>Plata users can withdraw cash from ATMs without a physical card using a QR code generated in the app.</p>
+<p>Plata users can withdraw cash from ATMs without a physical card using a QR code generated in the app.</p>
 </section>
 <section>
 <h2>Task</h2>
@@ -43,11 +43,11 @@
 <div id="panel-process" class="plata-panel" role="tabpanel" aria-labelledby="tab-process" tabindex="0" hidden>
 <section>
 <h2>As is</h2>
-<p>The ATM and mobile banking app did not support cash operations without a bank card. Users had to look up ATM locations and services outside the banking app.</p>
+<p>The ATM and mobile banking app did not support cash operations without a bank card. Users had to look up ATM locations and services outside the banking app.</p>
 </section>
 <section>
 <h2>Pain points from as-is testing</h2>
-<p>Users depended on a physical card, external apps to find ATMs, and an internet connection. Generating a QR code raised concerns about the security of their money.</p>
+<p>Users depended on a physical card, external apps to find ATMs, and an internet connection. Generating a QR code raised concerns about the security of their money.</p>
 </section>
 </div>
 <div id="panel-result" class="plata-panel" role="tabpanel" aria-labelledby="tab-result" tabindex="0" hidden>
@@ -57,8 +57,8 @@
 </section>
 <section>
 <h2>To be</h2>
-<p>I designed the complete flow, including edge cases, from finding an ATM to withdrawing cash without a physical card.</p>
-<p>The flow gives users control over the security of their funds after generating a QR code.</p>
+<p>I designed the complete flow, including edge cases, from finding an ATM to withdrawing cash without a physical card.</p>
+<p>The flow gives users control over the security of their funds after generating a QR code.</p>
 <p>The ATM provides video instructions during the transaction.</p>
 </section>
 </div>
@@ -82,8 +82,8 @@
 </div>
 <div class="plata-caption">
 <h2>User &amp; Business Value</h2>
-<p>For users: find an ATM that meets their needs without external apps, and access their account without a physical card or concerns about security. The ATM now supports the new flow and a video guide to using a QR code.</p>
-<p>Business goal: help customers complete their tasks without always having a physical card at hand, make cash withdrawals more convenient, simplify the process, and minimize support requests.</p>
+<p>For users: find an ATM that meets their needs without external apps, and access their account without a physical card or concerns about security. The ATM now supports the new flow and a video guide to using a QR code.</p>
+<p>Business goal: help customers complete their tasks without always having a physical card at hand, make cash withdrawals more convenient, simplify the process, and minimize support requests.</p>
 </div>
 </article>
 <article class="plata-article" data-design-node="250:1125">
@@ -99,7 +99,7 @@
 <p>I formulated hypotheses for the entire user journey:</p>
 <ul>
 <li>
-<span>a clear entry point would help users find the feature faster;</span>
+<span>a clear entry point would help users find the feature faster;</span>
 </li>
 <li>
 <span>nearby ATMs with addresses and availability would reduce unsuccessful visits;</span>
@@ -112,7 +112,7 @@
 </li>
 </ul>
 <p>Using JTBD, I divided the tasks into three stages: before withdrawal, at the ATM, and after withdrawal.</p>
-<p>To explore these hypotheses, I surveyed 7 people who had already withdrawn cash without a card:</p>
+<p>To explore these hypotheses, I surveyed 7 people who had already withdrawn cash without a card:</p>
 <ul>
 <li>
 <span>6 of 7 looked for ATMs in external map apps;</span>
@@ -150,12 +150,12 @@
 <span>ATM search and information on the map;</span>
 </li>
 <li>
-<span>how cash withdrawals work without a physical card.</span>
+<span>how cash withdrawals work without a physical card.</span>
 </li>
 </ul>
 <h2>Key findings</h2>
-<p>Banks approach cardless withdrawals differently. Some ask users to scan a QR code on the ATM screen; others ask them to hold their own code up to a scanner.</p>
-<p>Plata ATMs already have a QR scanner, so I prioritized:</p>
+<p>Banks approach cardless withdrawals differently. Some ask users to scan a QR code on the ATM screen; others ask them to hold their own code up to a scanner.</p>
+<p>Plata ATMs already have a QR scanner, so I prioritized:</p>
 <ul>
 <li>
 <span>security and step-by-step statuses across the ATM and phone during the transaction;</span>
@@ -164,10 +164,10 @@
 <span>detailed ATM information before the user leaves home;</span>
 </li>
 <li>
-<span>secure control of a QR code after it is generated;</span>
+<span>secure control of a QR code after it is generated;</span>
 </li>
 <li>
-<span>instructions for using a QR code at the ATM.</span>
+<span>instructions for using a QR code at the ATM.</span>
 </li>
 </ul>
 </div>
@@ -185,7 +185,7 @@
 <p>I built the flow around three stages of the user journey:</p>
 <ul>
 <li>
-<span>mobile banking: finding the feature and generating a QR code;</span>
+<span>mobile banking: finding the feature and generating a QR code;</span>
 </li>
 <li>
 <span>finding an ATM and checking its information;</span>
@@ -209,8 +209,8 @@
 </div>
 <div class="plata-caption">
 <h2>Entry points</h2>
-<p>The survey and benchmarking showed that users look for withdrawals in different places. I added several entry points: a Cardless withdraw card on the home screen, a Cash actions block on the Payments screen, and search.</p>
-<p>Cash actions brings together two related tasks: withdrawing cash with a QR code and finding an ATM on the map.</p>
+<p>The survey and benchmarking showed that users look for withdrawals in different places. I added several entry points: a Cardless withdraw card on the home screen, a Cash actions block on the Payments screen, and search.</p>
+<p>Cash actions brings together two related tasks: withdrawing cash with a QR code and finding an ATM on the map.</p>
 </div>
 </article>
 <article class="plata-article" data-design-node="259:1279">
@@ -225,7 +225,7 @@
 </div>
 <div class="plata-caption">
 <h2>QR code generation</h2>
-<p>Everything is on one screen: account selection with the available balance, amount entry, and suggested amounts. A hint immediately explains that the amount must be a multiple of $50.</p>
+<p>Everything is on one screen: account selection with the available balance, amount entry, and suggested amounts. A hint immediately explains that the amount must be a multiple of $50.</p>
 <p>Plata ATM terms and the daily limit appear below the button. Survey participants said they needed this information before withdrawing cash.</p>
 </div>
 </article>
@@ -246,7 +246,7 @@
 </div>
 <div class="plata-caption">
 <h2>Generated QR code</h2>
-<p>Alongside the code, the screen shows the account, amount, expiry time, and a link to nearby ATMs. Users can save the code as an image for later.</p>
+<p>Alongside the code, the screen shows the account, amount, expiry time, and a link to nearby ATMs. Users can save the code as an image for later.</p>
 <p>Users can cancel the code at any time to stay in control of its security. Cancellation and generation errors have dedicated bottom sheets with clear explanations and actions.</p>
 </div>
 </article>
@@ -261,7 +261,7 @@
 </div>
 </div>
 <div class="plata-caption">
-<h2>After generating a QR code</h2>
+<h2>After generating a QR code</h2>
 <p>Generated codes remain easy to find: an Active QR codes block appears on the Payments screen with the amount, account, and expiry time.</p>
 <p>Users can see which codes are still active and return to them before visiting an ATM. This reduces duplicate codes and uncertainty about control of their money after generation.</p>
 </div>
@@ -283,7 +283,7 @@
 </div>
 <div class="plata-caption">
 <h2>ATMs on the map and filters</h2>
-<p>ATMs appear on a map and in a list with distances and opening hours. Out-of-service ATMs are visually distinct, helping users choose an ATM within the banking app.</p>
+<p>ATMs appear on a map and in a list with distances and opening hours. Out-of-service ATMs are visually distinct, helping users choose an ATM within the banking app.</p>
 <p>Filters reflect the survey and benchmarking criteria: opening hours, withdrawal method (QR or card), cash availability, currency, and payment networks.</p>
 </div>
 </article>
@@ -382,7 +382,7 @@
 </div>
 <div class="plata-caption">
 <h2>Amount entry</h2>
-<p>After scanning, the screen shows the card and amount from the QR code, with a balance check and the option to request smaller notes. It also clearly states that there is no fee.</p>
+<p>After scanning, the screen shows the card and amount from the QR code, with a balance check and the option to request smaller notes. It also clearly states that there is no fee.</p>
 <p>Users can go back or exit at any time, staying in control of the transaction until confirmation.</p>
 </div>
 </article>
@@ -400,7 +400,7 @@
 <div class="plata-caption">
 <h2>Preparing and collecting cash</h2>
 <p>Two separate statuses distinguish cash preparation from dispensing: Preparing your cash and Please take your cash.</p>
-<p>A banknote animation shows where to collect the money, completing the journey and easing the worry that the account was debited but no cash was dispensed.</p>
+<p>A banknote animation shows where to collect the money, completing the journey and easing the worry that the account was debited but no cash was dispensed.</p>
 </div>
 </article>
 <article class="plata-article" data-design-node="270:1235">
@@ -425,7 +425,7 @@
 <p>I conducted qualitative usability testing with 5 participants across three scenarios:</p>
 <ul>
 <li>
-<span>generating a QR code;</span>
+<span>generating a QR code;</span>
 </li>
 <li>
 <span>finding an ATM;</span>
@@ -454,7 +454,7 @@
 <p>Based on testing, I made the following changes:</p>
 <ul>
 <li>
-<span>added a Withdraw quick action to the home screen and Cuenta account;</span>
+<span>added a Withdraw quick action to the home screen and Cuenta account;</span>
 </li>
 <li>
 <span>moved Cash actions higher on the Pay screen, above Recipients and My payments;</span>
