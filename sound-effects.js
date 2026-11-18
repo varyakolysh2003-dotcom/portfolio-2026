@@ -1,4 +1,4 @@
-const preferenceKey = 'portfolio-sound-enabled';
+const preferenceKey = 'portfolio-icon-sound-enabled';
 const soundGroups = {
   "cat": [
     "/assets/sounds/cat/freesound_community-cat-meow-14536.mp3",
