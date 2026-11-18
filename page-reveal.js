@@ -19,6 +19,30 @@ motion.addEventListener('change', () => {
   waiting.clear();
 });
 
+export function setupContainerReveal(containers) {
+  for (const container of containers) {
+    if (seen.has(container)) continue;
+    seen.add(container);
+    const show = () => {
+      container.classList.add('media-ready');
+      if (!motion.matches) {
+        container.classList.add('media-entering');
+        container.addEventListener('animationend', () => container.classList.remove('media-entering'), { once:true });
+      }
+    };
+    // Decode every image, including video posters, before revealing the composition.
+    Promise.allSettled([...container.querySelectorAll('img')].map(image => image.decode())).then(() => {
+      const rect = container.getBoundingClientRect();
+      if (!motion.matches && imageObserver && (rect.top >= innerHeight || rect.bottom <= 0)) {
+        waiting.set(container, show);
+        imageObserver.observe(container);
+      } else {
+        show();
+      }
+    });
+  }
+}
+
 export function setupPageReveal(root = document) {
   for (const image of root.querySelectorAll('img:not(.video-poster):not([data-immediate])')) {
     if (seen.has(image)) continue;

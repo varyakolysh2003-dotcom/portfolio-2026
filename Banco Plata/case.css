@@ -11,6 +11,11 @@
 .plata-tabs button[aria-selected=true] { background:#f9f9f9;color:rgba(17,17,17,.9) }
 .plata-tabs button:hover { background:#efefef;color:rgba(17,17,17,.9) }
 .plata-gallery { gap:32px }
+.media-fade-enabled .plata-media:not(.media-ready) { opacity:0 }
+.media-fade-enabled .plata-media img:not(.video-poster):not([data-immediate]) { opacity:1 }
+@media(prefers-reduced-motion:reduce) {
+  .media-fade-enabled .plata-media:not(.media-ready) { opacity:1 }
+}
 .plata-article { display:flex;flex-direction:column;gap:8px;width:100%;min-width:0 }
 .plata-caption { display:flex;flex-direction:column;gap:4px }
 .plata-caption h2:not(:first-child) { margin-top:4px }
