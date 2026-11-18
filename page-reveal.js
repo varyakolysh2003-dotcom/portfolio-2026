@@ -30,8 +30,17 @@ export function setupContainerReveal(containers) {
         container.addEventListener('animationend', () => container.classList.remove('media-entering'), { once:true });
       }
     };
-    // Decode every image, including video posters, before revealing the composition.
-    Promise.allSettled([...container.querySelectorAll('img')].map(image => image.decode())).then(() => {
+    // Lazy images must finish loading before decode() can reliably prepare them.
+    const imagesReady = [...container.querySelectorAll('img')].map(async image => {
+      if (!image.complete) {
+        await new Promise(resolve => {
+          image.addEventListener('load', resolve, { once:true });
+          image.addEventListener('error', resolve, { once:true });
+        });
+      }
+      if (image.naturalWidth) await image.decode();
+    });
+    Promise.allSettled(imagesReady).then(() => {
       const rect = container.getBoundingClientRect();
       if (!motion.matches && imageObserver && (rect.top >= innerHeight || rect.bottom <= 0)) {
         waiting.set(container, show);
