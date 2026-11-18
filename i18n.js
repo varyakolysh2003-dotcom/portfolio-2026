@@ -116,6 +116,8 @@ export function setupLanguage() {
     if (records.some(record => record.type !== 'childList' || [...record.addedNodes].some(node => node.nodeType === 3 || node.textContent.trim() || (node.nodeType === 1 && node.matches('img,a,button,input'))))) translatePage();
   });
   translatePage();
-  // Initial copy and page-specific dictionaries are ready before first reveal.
-  document.documentElement.classList.remove('language-pending');
+  // Reveal the formatted copy with its final font metrics on the first paint.
+  document.fonts.load('14px Geist').catch(() => {}).finally(() => {
+    document.documentElement.classList.remove('language-pending');
+  });
 }

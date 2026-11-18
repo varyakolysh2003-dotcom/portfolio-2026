@@ -88,7 +88,7 @@ button:focus-visible,a:focus-visible {
 .sound[aria-pressed=false] img {
   opacity:.4
 }
-/* Do not paint the English source while the requested Russian copy loads. */
+/* Reveal text after language, typography, and font metrics are ready. */
 html.language-pending body { visibility:hidden }
 .language-toggle {
   display:flex;align-items:center;justify-content:center;
