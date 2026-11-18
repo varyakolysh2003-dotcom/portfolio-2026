@@ -1,10 +1,5 @@
 const preferenceKey = 'portfolio-sound-enabled';
-const clickSoundsAvailable = false;
 const soundGroups = {
-  "default": [
-    "/assets/sounds/default/click-002.mp3",
-    "/assets/sounds/default/click-003.mp3"
-  ],
   "cat": [
     "/assets/sounds/cat/freesound_community-cat-meow-14536.mp3",
     "/assets/sounds/cat/u_6ekfl947a2-cat-meow-297927.mp3"
@@ -23,7 +18,8 @@ const soundGroups = {
 };
 
 export function setupSoundEffects(button) {
-  if (!clickSoundsAvailable) {
+  const iconStudy = document.querySelector('.icon-study');
+  if (!iconStudy) {
     if (button) button.hidden = true;
     return;
   }
@@ -83,18 +79,20 @@ export function setupSoundEffects(button) {
 
   // A click covers mouse, touch taps, and keyboard activation exactly once.
   // It does not fire for scrolling or a cancelled touch gesture.
-  document.addEventListener('click', (event) => {
+  iconStudy.addEventListener('click', (event) => {
     if (!enabled) return;
+    const icon = event.target.closest('.study-icon');
+    if (!icon) return;
     if (activeClip) {
       activeClip.pause();
       activeClip.currentTime = 0;
     }
-    const icon = event.target.closest('.study-icon');
     const group = icon?.classList.contains('cat') ? 'cat'
       : icon?.classList.contains('live') ? 'bid'
       : icon?.classList.contains('food') ? 'food'
       : icon?.classList.contains('sold') ? 'shoes'
-      : 'default';
+      : null;
+    if (!group) return;
     activeClip = nextClip(group);
     activeClip.play().catch(() => { /* Ignore a browser playback restriction. */ });
   });
