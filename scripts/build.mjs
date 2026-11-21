@@ -14,6 +14,8 @@ try {
 await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
 await cp('public', 'dist', { recursive: true });
+await cp('CV/Kolysh Varvara Resume.pdf', 'dist/assets/cv/Kolysh-Varvara-Resume-eng.pdf');
+await cp('CV/Колыш Варвара Резюме.docx.pdf', 'dist/assets/cv/Kolysh-Varvara-Resume-ru.pdf');
 for (const file of ['index.html', 'styles.css', 'app.js', 'sound-effects.js', 'icon-interactions.js', 'page-reveal.js', 'i18n.js', 'translations.js']) await cp(file, `dist/${file}`);
 await mkdir('dist/yandex-lavka', { recursive: true });
 for (const file of ['index.html', 'case.css', 'case.js', 'content.js', 'reader-interaction.js']) await cp(`Yandex Lavka/${file}`, `dist/yandex-lavka/${file}`);
