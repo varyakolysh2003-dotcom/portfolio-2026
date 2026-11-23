@@ -12,7 +12,7 @@ for (const image of document.querySelectorAll('.gallery img[loading="lazy"]')) {
 setupIconInteractions(document.querySelector('.icon-study'));
 
 const links = {
-  cv: '/assets/cv/Kolysh-Varvara-Resume-eng.pdf',
+  cv: '/assets/cv/Kolysh-Varvara-Resume-eng.pdf?v=d4354bb458d3',
   tbank: '/t-bank/', lavka: '/yandex-lavka/',
   daigest: 'https://t.me/limitwatch_ai_bot',
   telegram: 'https://t.me/BarbaraKolysh',

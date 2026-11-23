@@ -85,7 +85,8 @@ export function translatePage() {
     link.setAttribute('href', url.pathname + url.search + url.hash);
   }
   for (const link of document.querySelectorAll('a[data-link="cv"]')) {
-    link.href = `/assets/cv/Kolysh-Varvara-Resume-${language === 'ru' ? 'ru' : 'eng'}.pdf`;
+    const version = language === 'ru' ? '9acdc95b71b9' : 'd4354bb458d3';
+    link.href = `/assets/cv/Kolysh-Varvara-Resume-${language === 'ru' ? 'ru' : 'eng'}.pdf?v=${version}`;
     link.download = language === 'ru' ? 'Колыш Варвара Резюме_ru.pdf' : 'Kolysh Varvara Resume_eng.pdf';
   }
   for (const button of document.querySelectorAll('.language-toggle')) {
